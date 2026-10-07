@@ -1,0 +1,74 @@
+/* Design tokens: Laura 18 ans. Toutes les valeurs de couleur, mouvement et couches vivent ici. */
+
+@theme {
+  /* Neutre / intro */
+  --color-neutral-background: #e7e8eb;
+  --color-neutral-ink: #0d0d11;
+
+  /* Univers 01: naissance et enfance */
+  --color-childhood-primary: #e7b9c4; /* rose poudré */
+  --color-childhood-secondary: #b6d2e8; /* bleu ciel */
+  --color-childhood-butter: #f0e1a0; /* jaune beurre */
+  --color-childhood-lavender: #dad3ec;
+  --color-childhood-background: #f5f1f2; /* blanc cassé */
+  --color-childhood-ink: #3b3042;
+
+  /* Univers 02: adolescence */
+  --color-adolescence-primary: #ff2bd6; /* magenta électrique */
+  --color-adolescence-secondary: #00f0ff; /* cyan */
+  --color-adolescence-violet: #7b2bff;
+  --color-adolescence-electric: #2d5bff;
+  --color-adolescence-fluo: #e4ff1a;
+  --color-adolescence-background: #08040f;
+  --color-adolescence-ink: #f6f3ff;
+
+  /* Univers 03: bêtises */
+  --color-mischief-primary: #ffd400; /* jaune */
+  --color-mischief-secondary: #e5202e; /* rouge */
+  --color-mischief-green: #17b857;
+  --color-mischief-blue: #1f4fe0;
+  --color-mischief-background: #ffd400;
+  --color-mischief-paper: #fffdf2;
+  --color-mischief-ink: #111111;
+
+  /* Finale */
+  --color-finale-background: #070605;
+  --color-finale-gold: #ffd27a;
+  --color-finale-ink: #f4ebdd;
+}
+
+@theme inline {
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+  --font-street: var(--font-anton), Impact, sans-serif;
+  --font-comic: var(--font-bangers), "Comic Sans MS", cursive;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+:root {
+  /* Mouvement (miroir de src/motion/tokens.ts) */
+  --motion-fast: 180ms;
+  --motion-medium: 520ms;
+  --motion-slow: 1200ms;
+  --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  /* Échelle z-index (couches systémiques uniquement) */
+  --z-nav: 40;
+  --z-grain: 60;
+  --z-curtain: 70;
+  --z-viewer: 80;
+  --z-cursor: 90;
+  --z-loader: 100;
+
+  /* Valeurs par défaut (intro / neutre) */
+  --u-bg: var(--color-neutral-background);
+  --u-ink: var(--color-neutral-ink);
+  --u-accent: var(--color-neutral-ink);
+  --u-accent-2: var(--color-neutral-ink);
+  --focus: var(--color-neutral-ink);
+  --nav-ink: var(--color-neutral-ink);
+}

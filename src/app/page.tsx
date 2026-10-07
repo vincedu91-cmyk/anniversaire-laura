@@ -5,6 +5,7 @@ import { ChildhoodSection } from "@/sections/childhood/ChildhoodSection";
 import { BirthdayMessage } from "@/sections/finale/BirthdayMessage";
 import { FilmTeaser } from "@/sections/finale/FilmTeaser";
 import { FinalMosaic } from "@/sections/finale/FinalMosaic";
+import { GuestbookStack } from "@/sections/finale/GuestbookStack";
 import { HeroIntro } from "@/sections/home/HeroIntro";
 import { MischiefSection } from "@/sections/mischief/MischiefSection";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <TransitionScene kind="mischief-finale" />
       <FinalMosaic />
       <BirthdayMessage />
+      <GuestbookStack />
       <FilmTeaser title={film.title} stats={film.stats} poster={film.poster} href="/le-film" />
     </>
   );

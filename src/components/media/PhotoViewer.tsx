@@ -10,7 +10,8 @@ import { duration, ease } from "@/motion/tokens";
 import { PhotoFrame } from "./PhotoFrame";
 
 interface ViewerApi {
-  open: (photo: Photo, group?: readonly Photo[]) => void;
+  /** `onClose` est appelé une fois la visionneuse fermée (ex. recomposer la mosaïque). */
+  open: (photo: Photo, group?: readonly Photo[], onClose?: () => void) => void;
 }
 
 const ViewerContext = createContext<ViewerApi>({ open: () => undefined });
@@ -26,9 +27,11 @@ export function PhotoViewerProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<ViewerState | null>(null);
   const opener = useRef<HTMLElement | null>(null);
   const panel = useRef<HTMLDivElement>(null);
+  const afterClose = useRef<(() => void) | null>(null);
 
-  const open = useCallback((photo: Photo, group: readonly Photo[] = [photo]) => {
+  const open = useCallback((photo: Photo, group: readonly Photo[] = [photo], onClose?: () => void) => {
     opener.current = document.activeElement as HTMLElement | null;
+    afterClose.current = onClose ?? null;
     const index = Math.max(0, group.findIndex((item) => item.id === photo.id));
     setState({ group, index });
   }, []);
@@ -36,6 +39,8 @@ export function PhotoViewerProvider({ children }: { children: ReactNode }) {
   const close = useCallback(() => {
     setState(null);
     opener.current?.focus();
+    afterClose.current?.();
+    afterClose.current = null;
   }, []);
 
   const step = useCallback((delta: number) => {

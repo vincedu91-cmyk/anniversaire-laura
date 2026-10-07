@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { MotionConfig } from "motion/react";
 import { SceneProvider } from "./SceneContext";
 import { Cursor } from "./Cursor";
@@ -13,6 +14,20 @@ import { FilmShortcut } from "../navigation/FilmShortcut";
 
 /** Coque de l'expérience: contexte de scène, navigation, curseur, son, visionneuse. */
 export function ExperienceShell({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
+  // Mode écran géant: aucune interface (navigation, curseur, boutons), seulement la scène.
+  if (pathname === "/projection") {
+    return (
+      <MotionConfig reducedMotion="never">
+        <SceneProvider>
+          <div className="grain" aria-hidden="true" />
+          <main id="main">{children}</main>
+        </SceneProvider>
+      </MotionConfig>
+    );
+  }
+
   return (
     <MotionConfig reducedMotion="user">
       <SceneProvider>

@@ -121,3 +121,9 @@ Voir `src/` : `data/` (photos, univers, timeline, film), `motion/` (tokens, pres
 2. `npm run photos` (exécuté aussi avant `dev` et `build`).
 3. Optionnel : enrichir une photo (année, légende, alt, mise en avant) via les `overrides` de `src/data/childhood.ts`, `adolescence.ts`, `mischief.ts`, clé = nom du fichier.
 4. Film : déposer `public/film/laura-18-ans.mp4`, `public/film/poster.jpg`, `public/film/sous-titres-fr.vtt`.
+
+## 14. Livre d'or, mosaïque cliquable, écran géant
+
+- **Livre d'or** (`/livre-d-or`, `/moderation`): messages texte ou vocaux, relus avant affichage (`supabase/README.md`). Les messages approuvés tombent en papiers après le message final (`GuestbookStack`). Aucun papier si aucun message.
+- **Mosaïque 18**: une fois formée (progression >= 0.84), chaque tuile ouvre sa photo dans la visionneuse; la mosaïque s'écarte puis se recompose (ressort) à la fermeture.
+- **Projection** (`/projection`): parcours chronométré sans souris, plan dans `src/data/projection.ts`. Les scènes sont les mêmes que sur le site, pilotées par une horloge au lieu du scroll. L'ambiance sonore change en cours de chapitre, calée sur l'image (`audioSwitch`). Clavier: Entrée (lancer), Espace (pause), flèches (chapitre), F (plein écran), M (son), R (recommencer). `?t=75` démarre à 75 s.

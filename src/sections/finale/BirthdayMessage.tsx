@@ -23,6 +23,38 @@ function Beat({ progress, window, children }: { progress: MotionValue<number>; w
   );
 }
 
+/** Les quatre temps du message, pilotés par une progression 0..1. */
+export function BirthdayBeats({ progress }: { progress: MotionValue<number> }) {
+  return (
+    <div className="stack h-full">
+      <Beat progress={progress} window={WINDOWS[0]}>
+        <p className="display text-[clamp(5rem,26vw,36rem)] text-finale-gold">LAURA</p>
+      </Beat>
+      <Beat progress={progress} window={WINDOWS[1]}>
+        <p className="display text-[clamp(5rem,24vw,34rem)] text-finale-ink">18 ANS</p>
+      </Beat>
+      <Beat progress={progress} window={WINDOWS[2]}>
+        <p className="text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[1.02] tracking-tight">
+          Joyeux anniversaire
+          <br />
+          <span className="text-finale-gold">Laura.</span>
+        </p>
+      </Beat>
+      <Beat progress={progress} window={WINDOWS[3]}>
+        <p className="text-[clamp(1.75rem,5.5vw,5rem)] font-medium leading-[1.1] tracking-tight">
+          Et maintenant...
+          <br />
+          <span className="mt-[0.4em] block text-finale-gold">
+            la suite de l&apos;histoire
+            <br />
+            commence.
+          </span>
+        </p>
+      </Beat>
+    </div>
+  );
+}
+
 /** LAURA, 18 ANS, Joyeux anniversaire Laura, puis la suite de l'histoire. Pas de phrase ajoutée. */
 export function BirthdayMessage() {
   return (
@@ -33,34 +65,7 @@ export function BirthdayMessage() {
       label="Message d'anniversaire"
       stageClassName="bg-finale-background text-finale-ink"
     >
-      {(progress) => (
-        <div className="stack h-full">
-          <Beat progress={progress} window={WINDOWS[0]}>
-            <p className="display text-[clamp(5rem,26vw,36rem)] text-finale-gold">LAURA</p>
-          </Beat>
-          <Beat progress={progress} window={WINDOWS[1]}>
-            <p className="display text-[clamp(5rem,24vw,34rem)] text-finale-ink">18 ANS</p>
-          </Beat>
-          <Beat progress={progress} window={WINDOWS[2]}>
-            <p className="text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[1.02] tracking-tight">
-              Joyeux anniversaire
-              <br />
-              <span className="text-finale-gold">Laura.</span>
-            </p>
-          </Beat>
-          <Beat progress={progress} window={WINDOWS[3]}>
-            <p className="text-[clamp(1.75rem,5.5vw,5rem)] font-medium leading-[1.1] tracking-tight">
-              Et maintenant...
-              <br />
-              <span className="mt-[0.4em] block text-finale-gold">
-                la suite de l&apos;histoire
-                <br />
-                commence.
-              </span>
-            </p>
-          </Beat>
-        </div>
-      )}
+      {(progress) => <BirthdayBeats progress={progress} />}
     </ScrollStory>
   );
 }

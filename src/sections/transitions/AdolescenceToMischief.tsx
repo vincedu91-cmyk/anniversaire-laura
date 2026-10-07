@@ -17,7 +17,7 @@ const BURST = Array.from({ length: 32 }, (_, i) => {
 
 const NEON_BARS = ["bg-adolescence-primary", "bg-adolescence-secondary", "bg-adolescence-violet", "bg-adolescence-fluo", "bg-adolescence-electric"] as const;
 
-function Stage({ progress }: { progress: MotionValue<number> }) {
+export function AdolescenceToMischiefStage({ progress }: { progress: MotionValue<number> }) {
   const freezePhoto = pickPhotos(adolescence.photos, 1)[0];
 
   useCrossing(progress, 0.5, () => audio.cue("scratch"));
@@ -99,7 +99,7 @@ function Stage({ progress }: { progress: MotionValue<number> }) {
 export function AdolescenceToMischief() {
   return (
     <ScrollStory height="420vh" label="Transition: freeze frame et explosion" stageClassName="bg-adolescence-background">
-      {(progress) => <Stage progress={progress} />}
+      {(progress) => <AdolescenceToMischiefStage progress={progress} />}
     </ScrollStory>
   );
 }

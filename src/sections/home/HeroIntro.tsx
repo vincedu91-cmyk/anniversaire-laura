@@ -30,7 +30,7 @@ function BehindPhoto({ progress, photo, config, index }: { progress: MotionValue
   );
 }
 
-function IntroStage({ progress }: { progress: MotionValue<number> }) {
+export function IntroStage({ progress }: { progress: MotionValue<number> }) {
   const ready = useReady();
   const photos = pickPhotos(childhood.photos, BEHIND.length);
 

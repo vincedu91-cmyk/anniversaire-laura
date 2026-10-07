@@ -22,7 +22,7 @@ function TitleLayer({ className, style }: { className: string; style?: React.CSS
   );
 }
 
-function Stage({ progress }: { progress: MotionValue<number> }) {
+export function ChildhoodToAdolescenceStage({ progress }: { progress: MotionValue<number> }) {
   const filterId = useId().replace(/:/g, "");
   const displacement = useRef<SVGFEDisplacementMapElement>(null);
 
@@ -116,7 +116,7 @@ function Stage({ progress }: { progress: MotionValue<number> }) {
 export function ChildhoodToAdolescence() {
   return (
     <ScrollStory height="380vh" label="Transition: elle a grandi" stageClassName="bg-childhood-background">
-      {(progress) => <Stage progress={progress} />}
+      {(progress) => <ChildhoodToAdolescenceStage progress={progress} />}
     </ScrollStory>
   );
 }

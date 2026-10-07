@@ -19,7 +19,7 @@ const CHAOS = [
   [78, 86, 34, "bg-mischief-blue", -26, "rounded-none"],
 ] as const;
 
-function Stage({ progress }: { progress: MotionValue<number> }) {
+export function MischiefToFinaleStage({ progress }: { progress: MotionValue<number> }) {
   const chaosOpacity = useTransform(progress, [0.12, 0.4], [1, 0]);
   const chaosScale = useTransform(progress, [0.12, 0.4], [1, 0.7]);
   const dark = useTransform(progress, [0.34, 0.6], [0, 1]);
@@ -73,7 +73,7 @@ function Stage({ progress }: { progress: MotionValue<number> }) {
 export function MischiefToFinale() {
   return (
     <ScrollStory height="400vh" label="Transition: du chaos au silence" stageClassName="bg-mischief-background">
-      {(progress) => <Stage progress={progress} />}
+      {(progress) => <MischiefToFinaleStage progress={progress} />}
     </ScrollStory>
   );
 }

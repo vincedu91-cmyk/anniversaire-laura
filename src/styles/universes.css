@@ -95,7 +95,8 @@ html[data-scene="film"] { --nav-ink: var(--color-finale-gold); }
 .rm-only { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-m] {
+  /* Le mode projection (html[data-projection]) joue ses animations: il est piloté par un chronomètre, pas par le scroll. */
+  :root:not([data-projection]) [data-m] {
     transform: none !important;
     opacity: 1 !important;
     clip-path: none !important;
@@ -103,12 +104,12 @@ html[data-scene="film"] { --nav-ink: var(--color-finale-gold); }
     animation: none !important;
     transition: none !important;
   }
-  .bubble, .glitch-a, .glitch-b, .shake { display: none !important; }
-  .scene { height: auto !important; }
-  .scene > .stage { position: relative; height: auto; min-height: 100dvh; overflow: visible; }
-  .stack > * { grid-area: auto; }
-  .rm-only { display: block; }
-  .rm-hide { display: none !important; }
-  .hscroll { overflow-x: auto; }
-  html { scroll-behavior: auto !important; }
+  :root:not([data-projection]) .bubble, :root:not([data-projection]) .glitch-a, :root:not([data-projection]) .glitch-b, :root:not([data-projection]) .shake { display: none !important; }
+  :root:not([data-projection]) .scene { height: auto !important; }
+  :root:not([data-projection]) .scene > .stage { position: relative; height: auto; min-height: 100dvh; overflow: visible; }
+  :root:not([data-projection]) .stack > * { grid-area: auto; }
+  :root:not([data-projection]) .rm-only { display: block; }
+  :root:not([data-projection]) .rm-hide { display: none !important; }
+  :root:not([data-projection]) .hscroll { overflow-x: auto; }
+  html:not([data-projection]) { scroll-behavior: auto !important; }
 }

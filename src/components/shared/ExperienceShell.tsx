@@ -12,14 +12,17 @@ import { UniverseNavigation } from "../navigation/UniverseNavigation";
 import { ScrollProgress } from "../navigation/ScrollProgress";
 import { FilmShortcut } from "../navigation/FilmShortcut";
 
+/** Pages volontairement absentes de la navigation: projection, réponse d'invité, administration. */
+const BARE_PATHS = ["/projection", "/invitation", "/gestion-invitations", "/moderation"];
+
 /** Coque de l'expérience: contexte de scène, navigation, curseur, son, visionneuse. */
 export function ExperienceShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
-  // Mode écran géant: aucune interface (navigation, curseur, boutons), seulement la scène.
-  if (pathname === "/projection") {
+  // Pages sans interface de site (navigation, curseur, boutons): écran géant et pages utilitaires.
+  if (BARE_PATHS.includes(pathname)) {
     return (
-      <MotionConfig reducedMotion="never">
+      <MotionConfig reducedMotion={pathname === "/projection" ? "never" : "user"}>
         <SceneProvider>
           <div className="grain" aria-hidden="true" />
           <main id="main">{children}</main>

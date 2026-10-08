@@ -35,3 +35,14 @@ update private.settings set reveal_at = '2099-01-01 18:00:00+02' where id; -- re
 - La modération passe par deux fonctions SQL qui exigent le secret; 8 échecs en 10 minutes bloquent les essais.
 - Les messages vocaux sont dans un bucket public à noms aléatoires (uuid), limité à 3 Mo et aux types audio. Un message refusé reste techniquement présent dans le bucket: le supprimer depuis le tableau de bord Supabase si besoin.
 - Il n'y a pas de limitation d'envoi par visiteur: un champ piège anti-robots filtre le plus simple. En cas d'abus, la modération suffit (rien n'est affiché sans approbation).
+
+## Invitations (réponses des invités)
+
+Après le schéma du livre d'or, la migration `migrations/20261008000000_rsvp_schema.sql` ajoute les invitations. **Le plus simple : coller `setup-complet.sql`** (livre d'or + invitations en un seul fichier) dans l'éditeur SQL, puis exécuter `set-moderation-secret.sql`.
+
+| Page | Rôle |
+|---|---|
+| `/gestion-invitations` | Page privée, sans lien depuis le site : liste des invités, réponses, ajout, import, liens personnels, export publipostage. Même secret que la modération. |
+| `/invitation?c=<jeton>` | Page de réponse de l'invité (un clic : présent, peut-être, absent). Le jeton est propre à chaque invité. |
+
+Données personnelles : seuls le prénom, le nom et l'e-mail sont conservés, dans un schéma que l'API publique ne peut pas lire. À purger après la soirée (vider la table `private.guests` depuis l'éditeur SQL).

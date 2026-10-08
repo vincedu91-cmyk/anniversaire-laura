@@ -59,3 +59,7 @@ next-env.d.ts
 # divers locaux
 *.stackdump
 /.claude/
+
+# e-mail d'invitation: sorties générées (contiennent les photos de Laura)
+/email/dist/
+/public/mail/polaroid-*

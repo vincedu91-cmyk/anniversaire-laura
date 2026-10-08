@@ -1,5 +1,5 @@
 -- Livre d'or de Laura: messages des proches, modération avant affichage.
--- Projet Supabase: anniversaire-laura (videlmnjplqwgalwrjdi, eu-west-3).
+-- Projet Supabase: Anniversaire-18-ans-laura (wzgrupqpupqdyjvbumnf).
 -- Principe de sécurité: un visiteur (rôle anon) peut seulement DÉPOSER un message "pending"
 -- et LIRE les messages approuvés (et révélés). Toute modération passe par des fonctions
 -- protégées par un secret hashé (bcrypt) avec limitation des essais.

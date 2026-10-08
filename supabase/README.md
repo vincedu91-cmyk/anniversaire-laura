@@ -1,7 +1,7 @@
 # Supabase: livre d'or de Laura
 
-Projet: `anniversaire-laura` (`videlmnjplqwgalwrjdi`, région eu-west-3).
-Console SQL: https://supabase.com/dashboard/project/videlmnjplqwgalwrjdi/sql/new
+Projet: `Anniversaire-18-ans-laura` (`wzgrupqpupqdyjvbumnf`).
+Console SQL: https://supabase.com/dashboard/project/wzgrupqpupqdyjvbumnf/sql/new
 
 ## Mise en place (une seule fois)
 

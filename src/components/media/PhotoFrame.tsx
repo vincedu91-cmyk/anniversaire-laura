@@ -28,7 +28,17 @@ const TONES: Record<UniverseId, readonly Tone[]> = {
   ],
 };
 
+// Teintes de remplacement de l'Univers 03: des tirages noir et blanc, sobres.
+const LAURA_TONES: readonly Tone[] = [
+  { bg: "bg-[#2b2c30]", fg: "text-laura-print" },
+  { bg: "bg-[#8a8c91]", fg: "text-laura-ink" },
+  { bg: "bg-[#c9cacd]", fg: "text-laura-ink" },
+  { bg: "bg-[#5b6270]", fg: "text-laura-print" },
+];
+
 interface PhotoFrameProps {
+  /** "laura": palette sobre de l'Univers 03 (par défaut: palette de l'univers de la photo). */
+  tone?: "laura";
   photo: Photo;
   sizes: string;
   /** Index d'affichage: choisit la teinte du cadre vide et son numéro. */
@@ -39,7 +49,7 @@ interface PhotoFrameProps {
 }
 
 /** Image réelle (next/image) ou cadre `[PHOTO À AJOUTER]` quand la photo n'existe pas encore. */
-export function PhotoFrame({ photo, sizes, index = 0, priority = false, className = "", imageClassName = "" }: PhotoFrameProps) {
+export function PhotoFrame({ photo, sizes, index = 0, priority = false, className = "", imageClassName = "", tone: palette }: PhotoFrameProps) {
   if (!photo.placeholder) {
     return (
       <div className={`relative h-full w-full overflow-hidden ${className}`}>
@@ -58,7 +68,7 @@ export function PhotoFrame({ photo, sizes, index = 0, priority = false, classNam
     );
   }
 
-  const tones = TONES[photo.universe];
+  const tones = palette === "laura" ? LAURA_TONES : TONES[photo.universe];
   const tone = tones[index % tones.length];
   return (
     <div

@@ -6,8 +6,8 @@ import { adolescence } from "@/data/adolescence";
 import { childhood } from "@/data/childhood";
 import { fetchApprovedMessages, type GuestbookMessage } from "@/data/guestbook";
 import { mischief } from "@/data/mischief";
+import { pickPhotos } from "@/data/photos";
 import { buildPlan, chapterIndexAt, type TimedChapter, type TransitionKey } from "@/data/projection";
-import type { UniverseData } from "@/data/types";
 import { audio } from "@/lib/audio";
 import { markReady } from "@/lib/ready";
 import { useCrossing } from "@/motion/hooks";
@@ -15,20 +15,22 @@ import { BirthdayBeats } from "@/sections/finale/BirthdayMessage";
 import { MosaicStage } from "@/sections/finale/FinalMosaic";
 import { PaperStage } from "@/sections/finale/GuestbookStack";
 import { IntroStage } from "@/sections/home/HeroIntro";
-import { AdolescenceToMischiefStage } from "@/sections/transitions/AdolescenceToMischief";
+import { LauraEvidenceStage } from "@/sections/laura/LauraEvidence";
+import { LauraIntroStage } from "@/sections/laura/LauraIntro";
+import { AdolescenceToLauraStage } from "@/sections/transitions/AdolescenceToLaura";
 import { ChildhoodToAdolescenceStage } from "@/sections/transitions/ChildhoodToAdolescence";
-import { MischiefToFinaleStage } from "@/sections/transitions/MischiefToFinale";
+import { LauraToFinaleStage } from "@/sections/transitions/LauraToFinale";
 import { ProjectionSlides } from "./ProjectionSlides";
 
-const UNIVERSES: Record<string, UniverseData> = { childhood, adolescence, mischief };
+const UNIVERSES = { childhood, adolescence } as const;
 // L'horloge suit le temps réel (donc le son): on ne borne que les très longues suspensions (onglet masqué).
 const MAX_FRAME_MS = 1000;
 const RESTART_GRACE_S = 3;
 
 const TRANSITIONS: Record<TransitionKey, { Stage: (props: { progress: MotionValue<number> }) => React.JSX.Element; bg: string }> = {
   "childhood-adolescence": { Stage: ChildhoodToAdolescenceStage, bg: "bg-childhood-background" },
-  "adolescence-mischief": { Stage: AdolescenceToMischiefStage, bg: "bg-adolescence-background" },
-  "mischief-finale": { Stage: MischiefToFinaleStage, bg: "bg-mischief-background" },
+  "adolescence-laura": { Stage: AdolescenceToLauraStage, bg: "bg-adolescence-background" },
+  "laura-finale": { Stage: LauraToFinaleStage, bg: "bg-laura-paper" },
 };
 
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
@@ -46,7 +48,19 @@ function ChapterView({ chapter, clock, messages }: { chapter: TimedChapter; cloc
         </div>
       );
     case "slides":
-      return <ProjectionSlides universe={UNIVERSES[chapter.universe ?? "childhood"]} count={chapter.slides ?? 8} progress={progress} />;
+      return <ProjectionSlides universe={UNIVERSES[chapter.universe === "adolescence" ? "adolescence" : "childhood"]} count={chapter.slides ?? 8} progress={progress} />;
+    case "laura-intro":
+      return (
+        <div className="absolute inset-0 overflow-hidden bg-laura-paper text-laura-ink">
+          <LauraIntroStage progress={progress} />
+        </div>
+      );
+    case "laura-evidence":
+      return (
+        <div className="absolute inset-0 overflow-hidden bg-laura-paper text-laura-ink">
+          <LauraEvidenceStage progress={progress} photos={pickPhotos(mischief.photos, 10, 4)} withTitle />
+        </div>
+      );
     case "transition": {
       const { Stage, bg } = TRANSITIONS[chapter.transition ?? "childhood-adolescence"];
       return (

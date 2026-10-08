@@ -7,7 +7,7 @@ import { FilmTeaser } from "@/sections/finale/FilmTeaser";
 import { FinalMosaic } from "@/sections/finale/FinalMosaic";
 import { GuestbookStack } from "@/sections/finale/GuestbookStack";
 import { HeroIntro } from "@/sections/home/HeroIntro";
-import { MischiefSection } from "@/sections/mischief/MischiefSection";
+import { LauraSection } from "@/sections/laura/LauraSection";
 
 /** Parcours complet: intro, enfance, adolescence, bêtises, finale, film. */
 export default function Home() {
@@ -18,9 +18,9 @@ export default function Home() {
       <ChildhoodSection />
       <TransitionScene kind="childhood-adolescence" />
       <AdolescenceSection />
-      <TransitionScene kind="adolescence-mischief" />
-      <MischiefSection />
-      <TransitionScene kind="mischief-finale" />
+      <TransitionScene kind="adolescence-laura" />
+      <LauraSection />
+      <TransitionScene kind="laura-finale" />
       <FinalMosaic />
       <BirthdayMessage />
       <GuestbookStack />

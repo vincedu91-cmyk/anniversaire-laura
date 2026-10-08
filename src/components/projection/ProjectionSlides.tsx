@@ -2,7 +2,6 @@
 
 import { easeOut, motion, useTransform, type MotionValue } from "motion/react";
 import { adolescenceStickers } from "@/data/adolescence";
-import { evidenceLabel, personalities } from "@/data/mischief";
 import { pickPhotos, yearLabel } from "@/data/photos";
 import type { Photo, UniverseData } from "@/data/types";
 import { PhotoFrame } from "@/components/media/PhotoFrame";
@@ -92,40 +91,6 @@ function AdolescenceSlide({ progress, photo, index, start, end }: SlideProps) {
   );
 }
 
-// ---- Bêtises: la preuve claque, puis le tampon
-
-function MischiefSlide({ progress, photo, index, start, end }: SlideProps) {
-  const span = end - start;
-  const personality = personalities[index % personalities.length];
-  const opacity = useTransform(progress, [start - 0.0004, start, end - 0.0004, end], [0, 1, 1, 0]);
-  const slam = useTransform(progress, [start, start + span * 0.16], [2, 1], { ease: easeOut });
-  const spin = useTransform(progress, [start, start + span * 0.16], [personality.rotate * 4, personality.rotate], { ease: easeOut });
-  const stampOpacity = useTransform(progress, [start + span * 0.34, start + span * 0.38], [0, 1]);
-  const stampScale = useTransform(progress, [start + span * 0.34, start + span * 0.42], [2.2, 1], { ease: easeOut });
-  const left = index % 2 === 0;
-  return (
-    <motion.div data-m className="absolute inset-0" style={{ opacity }}>
-      <motion.div
-        data-m
-        className={`absolute top-1/2 h-[76dvh] -translate-y-1/2 border-[8px] border-mischief-ink bg-mischief-paper p-4 pb-16 shadow-[14px_14px_0_0_rgb(17_17_17)] ${left ? "left-[10vw]" : "right-[10vw]"}`}
-        style={{ aspectRatio: "4 / 5", scale: slam, rotate: spin }}
-      >
-        <div className="h-full w-full overflow-hidden">
-          <PhotoFrame photo={photo} index={index} sizes="40vw" />
-        </div>
-        <p className="font-comic absolute inset-x-4 bottom-3 text-[clamp(1.5rem,3vw,3.5rem)] tracking-wider">{evidenceLabel(index)}</p>
-      </motion.div>
-      <motion.p
-        data-m
-        className={`font-comic absolute top-1/2 max-w-[34vw] -translate-y-1/2 border-[8px] border-mischief-secondary px-6 py-3 text-center text-[clamp(2.5rem,6vw,7rem)] leading-none tracking-wider text-mischief-secondary mix-blend-multiply ${left ? "right-[8vw]" : "left-[8vw]"}`}
-        style={{ opacity: stampOpacity, scale: stampScale, rotate: -personality.rotate * 2 }}
-      >
-        {personality.stamp}
-      </motion.p>
-    </motion.div>
-  );
-}
-
 const THEMES = {
   childhood: {
     bg: "bg-childhood-background text-childhood-ink",
@@ -141,16 +106,10 @@ const THEMES = {
     labelClass: "font-street text-[clamp(5rem,15vw,18rem)] uppercase leading-none tracking-wide",
     Slide: AdolescenceSlide,
   },
-  mischief: {
-    bg: "bg-mischief-background text-mischief-ink",
-    number: "03",
-    label: "LES BÊTISES",
-    labelClass: "font-comic text-[clamp(5rem,15vw,18rem)] leading-none tracking-wider",
-    Slide: MischiefSlide,
-  },
 } as const;
 
 interface ProjectionSlidesProps {
+  /** Enfance ou adolescence: l'Univers 03 a ses propres scènes (src/sections/laura). */
   universe: UniverseData;
   count: number;
   progress: MotionValue<number>;
@@ -158,7 +117,7 @@ interface ProjectionSlidesProps {
 
 /** Diaporama d'un univers pour l'écran géant: une carte-titre puis `count` photos, au rythme du chapitre. */
 export function ProjectionSlides({ universe, count, progress }: ProjectionSlidesProps) {
-  const theme = THEMES[universe.id];
+  const theme = THEMES[universe.id === "adolescence" ? "adolescence" : "childhood"];
   const photos = pickPhotos(universe.photos, count);
   return (
     <div className={`absolute inset-0 overflow-hidden ${theme.bg}`}>

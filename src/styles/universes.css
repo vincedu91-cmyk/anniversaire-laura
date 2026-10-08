@@ -27,6 +27,16 @@
   --focus: var(--color-mischief-ink);
 }
 
+/* Univers 03: dossier éditorial. Le thème "mischief" ci-dessus reste utilisé par la page de réponse. */
+[data-universe="laura"] {
+  --u-bg: var(--color-laura-paper);
+  --u-ink: var(--color-laura-ink);
+  --u-accent: var(--color-laura-red);
+  --u-accent-2: var(--color-laura-biro);
+  --u-font-accent: var(--font-scribble);
+  --focus: var(--color-laura-red);
+}
+
 [data-universe="finale"] {
   --u-bg: var(--color-finale-background);
   --u-ink: var(--color-finale-ink);

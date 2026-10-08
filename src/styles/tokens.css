@@ -31,6 +31,16 @@
   --color-mischief-paper: #fffdf2;
   --color-mischief-ink: #111111;
 
+  /* Univers 03: "Et puis il y a Laura, quoi..." (dossier éditorial, un seul accent: le rouge tampon) */
+  --color-laura-paper: #e9eae6; /* papier de dossier, gris très clair */
+  --color-laura-print: #f7f6f2; /* bord blanc des tirages */
+  --color-laura-ink: #131315;
+  --color-laura-red: #c4302b; /* tampon */
+  --color-laura-biro: #1e3a8a; /* annotations au stylo bille */
+  --color-laura-postit: #f0d95a;
+  --color-laura-tape: #cfcbbe;
+  --color-laura-grey: #8a8c91;
+
   /* Finale */
   --color-finale-background: #070605;
   --color-finale-gold: #ffd27a;
@@ -44,6 +54,7 @@
   --font-street: var(--font-anton), Impact, sans-serif;
   --font-comic: var(--font-bangers), "Comic Sans MS", cursive;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-scribble: var(--font-reenie), "Bradley Hand", cursive;
 }
 
 :root {

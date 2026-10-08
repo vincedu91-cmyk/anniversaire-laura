@@ -1,13 +1,13 @@
-import { AdolescenceToMischief } from "@/sections/transitions/AdolescenceToMischief";
+import { AdolescenceToLaura } from "@/sections/transitions/AdolescenceToLaura";
 import { ChildhoodToAdolescence } from "@/sections/transitions/ChildhoodToAdolescence";
-import { MischiefToFinale } from "@/sections/transitions/MischiefToFinale";
+import { LauraToFinale } from "@/sections/transitions/LauraToFinale";
 
-export type TransitionKind = "childhood-adolescence" | "adolescence-mischief" | "mischief-finale";
+export type TransitionKind = "childhood-adolescence" | "adolescence-laura" | "laura-finale";
 
 const SCENES: Record<TransitionKind, () => React.JSX.Element> = {
   "childhood-adolescence": ChildhoodToAdolescence,
-  "adolescence-mischief": AdolescenceToMischief,
-  "mischief-finale": MischiefToFinale,
+  "adolescence-laura": AdolescenceToLaura,
+  "laura-finale": LauraToFinale,
 };
 
 /** Passage cinématographique d'un univers à l'autre. Chaque scène est pilotée par le scroll. */

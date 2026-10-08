@@ -27,7 +27,7 @@ Aucun contenu inventé. Toute information absente s'affiche `[À COMPLÉTER]`. L
 | Intro | Presque vide, neutre, monumental | Typo qui grandit et se décompose | Aucune |
 | 01 Naissance / enfance | Tendre, lumineux, tactile, onirique | Doux, lent, parallaxe, flottement | Grain léger, papier, bulles |
 | 02 Adolescence | Rapide, social, chaotique contrôlé | Vitesse, velocity skew, RGB split, scroll horizontal | Photocopie, glitch, stickers |
-| 03 Bêtises | Drôle, cartoon, scrapbook, dossier d'enquête | Impacts, pops élastiques, tampons | Papier, contours épais, ombres dures |
+| 03 Et puis il y a Laura, quoi… | Adulte, drôle, complice, jamais moqueur: on rit avec Laura | Dossier qui devient incontrôlable (intro lente, preuves qui s'accélèrent, chaos contrôlé, FREEZE) | Papier, tirages à bord blanc, ruban, tampons rouges, stylo bille |
 | Finale | Calme, noir, or | Respiration, assemblage lent | Aucune |
 
 ## 3. Palettes (tokens dans `src/styles/tokens.css`)
@@ -108,8 +108,8 @@ Principes :
 ## 11. Transitions entre univers (scènes)
 
 - **Enfance > Adolescence** : pastel, désintégration, accélération des photos, déformation typo, `PUIS... ELLE A GRANDI.`, RGB split, glitch, néon. Coupe brutale sur `02 ADOLESCENCE`.
-- **Adolescence > Bêtises** : néon, freeze frame, record scratch (visuel + son si activé), explosion cartoon.
-- **Bêtises > Finale** : chaos qui retombe, silence, obscurité, or, `18`.
+- **Adolescence > Laura**: néon, freeze frame, disque qui se bloque, noir, silence, puis une feuille de papier tombe.
+- **Laura > Finale**: le dossier gelé s'éteint, silence, obscurité, or, `18`.
 
 ## 12. Architecture
 
@@ -127,3 +127,14 @@ Voir `src/` : `data/` (photos, univers, timeline, film), `motion/` (tokens, pres
 - **Livre d'or** (`/livre-d-or`, `/moderation`): messages texte ou vocaux, relus avant affichage (`supabase/README.md`). Les messages approuvés tombent en papiers après le message final (`GuestbookStack`). Aucun papier si aucun message.
 - **Mosaïque 18**: une fois formée (progression >= 0.84), chaque tuile ouvre sa photo dans la visionneuse; la mosaïque s'écarte puis se recompose (ressort) à la fermeture.
 - **Projection** (`/projection`): parcours chronométré sans souris, plan dans `src/data/projection.ts`. Les scènes sont les mêmes que sur le site, pilotées par une horloge au lieu du scroll. L'ambiance sonore change en cours de chapitre, calée sur l'image (`audioSwitch`). Clavier: Entrée (lancer), Espace (pause), flèches (chapitre), F (plein écran), M (son), R (recommencer). `?t=75` démarre à 75 s.
+
+## 15. Univers 03: "ET PUIS IL Y A LAURA, QUOI…"
+
+Remplace l'ancien concept "Les bêtises" (cartoon). Règle: on rit avec Laura, jamais de Laura; aucun ton enfantin.
+
+- **Direction**: scrapbook éditorial + dossier confidentiel + chaos maîtrisé. Un seul accent (rouge tampon `#C4302B`), papier gris clair, encre, stylo bille bleu (annotations), post-it jaune sourd. Police d'annotation: Reenie Beanie. Thème `data-universe="laura"` (tokens `--color-laura-*`).
+- **Rythme** (`src/sections/laura/`): Acte 1 `LauraIntro` ("On pourrait s'arrêter là." / "Mais..." / titre ligne par ligne) > Acte 2 `LauraDossier` (calme, 4 preuves) > Actes 3 à 5 `LauraEvidence` (arrivées de plus en plus rapides, chaos contrôlé, FREEZE en noir et blanc + tampon "DOSSIER CLASSÉ.", silence).
+- **Textes**: uniquement des micro-textes génériques (`src/data/mischief.ts`: tampons, notes, post-its). Aucun événement réel n'est affirmé.
+- **Identifiants internes inchangés** (`mischief`) pour ne pas toucher aux autres univers. Route: `/et-puis-il-y-a-laura` (l'ancienne `/les-betises` redirige). Nom dans la navigation: `03 LAURA`.
+- **Transitions**: `AdolescenceToLaura` (papier qui tombe) et `LauraToFinale`. Projection: chapitres `laura-intro` et `laura-evidence` (`src/data/projection.ts`).
+- **Son**: partition sèche (basse, tic-tac, silences) à la place de la fanfare; silence au freeze en mode projection.

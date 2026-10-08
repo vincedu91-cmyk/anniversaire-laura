@@ -1,7 +1,7 @@
 import type { SceneId, UniverseId } from "./types";
 
-export type TransitionKey = "childhood-adolescence" | "adolescence-mischief" | "mischief-finale";
-export type ChapterKind = "intro" | "slides" | "transition" | "mosaic" | "message" | "guestbook" | "end";
+export type TransitionKey = "childhood-adolescence" | "adolescence-laura" | "laura-finale";
+export type ChapterKind = "intro" | "slides" | "laura-intro" | "laura-evidence" | "transition" | "mosaic" | "message" | "guestbook" | "end";
 
 export interface ProjectionChapter {
   id: string;
@@ -27,9 +27,11 @@ export const projectionPlan: readonly ProjectionChapter[] = [
   { id: "childhood", kind: "slides", universe: "childhood", slides: 8, seconds: 56, audio: "childhood" },
   { id: "t-childhood-adolescence", kind: "transition", transition: "childhood-adolescence", seconds: 26, audio: "childhood", audioSwitch: { at: 0.5, scene: "adolescence" } },
   { id: "adolescence", kind: "slides", universe: "adolescence", slides: 12, seconds: 44, audio: "adolescence" },
-  { id: "t-adolescence-mischief", kind: "transition", transition: "adolescence-mischief", seconds: 32, audio: "adolescence", audioSwitch: { at: 0.7, scene: "mischief" } },
-  { id: "mischief", kind: "slides", universe: "mischief", slides: 9, seconds: 44, audio: "mischief" },
-  { id: "t-mischief-finale", kind: "transition", transition: "mischief-finale", seconds: 24, audio: "mischief", audioSwitch: { at: 0.34, scene: "intro" } },
+  // Univers 03: le silence tombe avec le papier (0.82), le dossier démarre, tout se fige à 0.9 (silence).
+  { id: "t-adolescence-laura", kind: "transition", transition: "adolescence-laura", seconds: 30, audio: "adolescence", audioSwitch: { at: 0.5, scene: "intro" } },
+  { id: "laura-intro", kind: "laura-intro", seconds: 36, audio: "intro", audioSwitch: { at: 0.5, scene: "mischief" } },
+  { id: "laura-evidence", kind: "laura-evidence", seconds: 54, audio: "mischief", audioSwitch: { at: 0.9, scene: "intro" } },
+  { id: "t-laura-finale", kind: "transition", transition: "laura-finale", seconds: 22, audio: "intro" },
   { id: "mosaic", kind: "mosaic", seconds: 40, audio: "finale" },
   { id: "message", kind: "message", seconds: 32, audio: "finale" },
   { id: "guestbook", kind: "guestbook", seconds: 0, audio: "finale" },

@@ -86,17 +86,19 @@ const scenes: Partial<Record<SceneId, SceneScore>> = {
       if (step % 2 === 0) tone(ctx, out, { freq: midi(lead[(step >> 1) % 8]), time, dur: stepDur * 1.6, type: "square", gain: 0.025 });
     },
   },
-  // Bêtises: oom-pah de cirque + glissando de flûte
+  // Univers 03 "Et puis il y a Laura, quoi...": un dossier qu'on feuillette. Basse sèche, tic-tac, une note
+  // légèrement fausse de temps en temps, beaucoup de silence. Rien d'enfantin.
   mischief: {
-    bpm: 132, stepsPerBeat: 2, steps: 16,
+    bpm: 92, stepsPerBeat: 2, steps: 16,
     play(ctx, out, step, time, stepDur) {
-      const root = [48, 55, 53, 55];
-      if (step % 4 === 0) tone(ctx, out, { freq: midi(root[(step >> 2) % 4]), time, dur: stepDur * 2.4, type: "triangle", gain: 0.2 });
-      if (step % 4 === 2) {
-        const chord = [60, 64, 67];
-        chord.forEach((n) => tone(ctx, out, { freq: midi(n), time, dur: stepDur * 1.4, type: "square", gain: 0.03 }));
+      const bass = [40, 40, 43, 38];
+      if (step % 4 === 0) tone(ctx, out, { freq: midi(bass[(step >> 2) % 4]), time, dur: stepDur * 1.6, type: "triangle", gain: 0.14 });
+      if (step % 2 === 1) noise(ctx, out, time, 0.018, 0.035, 9000);
+      if (step === 6) tone(ctx, out, { freq: midi(64), time, dur: stepDur * 1.2, type: "sine", gain: 0.03 });
+      if (step === 14) {
+        tone(ctx, out, { freq: midi(65), time, dur: stepDur * 2.2, type: "sine", gain: 0.022 });
+        tone(ctx, out, { freq: midi(70), time, dur: stepDur * 2.2, type: "sine", gain: 0.015 });
       }
-      if (step === 14) tone(ctx, out, { freq: midi(72), glideTo: midi(96), time, dur: stepDur * 1.8, type: "sine", gain: 0.06 });
     },
   },
   // Finale: nappe chaude et cloches rares

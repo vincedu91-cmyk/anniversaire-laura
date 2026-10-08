@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Bangers, Bricolage_Grotesque, Caveat, Geist_Mono } from "next/font/google";
+import { Anton, Bangers, Bricolage_Grotesque, Caveat, Geist_Mono, Reenie_Beanie } from "next/font/google";
 import "@/styles/globals.css";
 import { ExperienceShell } from "@/components/shared/ExperienceShell";
 
@@ -9,6 +9,8 @@ const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono"
 const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat", display: "swap" });
 const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton", display: "swap" });
 const bangers = Bangers({ subsets: ["latin"], weight: "400", variable: "--font-bangers", display: "swap" });
+// Annotations au stylo bille de l'Univers 03.
+const reenie = Reenie_Beanie({ subsets: ["latin"], weight: "400", variable: "--font-reenie", display: "swap" });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 const TITLE = "Laura — 18 ans de souvenirs";
@@ -38,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${bricolage.variable} ${geistMono.variable} ${caveat.variable} ${anton.variable} ${bangers.variable}`}>
+    <html lang="fr" className={`${bricolage.variable} ${geistMono.variable} ${caveat.variable} ${anton.variable} ${bangers.variable} ${reenie.variable}`}>
       <body>
         <a href="#main" className="skip-link">
           Aller au contenu

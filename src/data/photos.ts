@@ -1,3 +1,4 @@
+import laura from "./laura.json";
 import manifestJson from "./photos.generated.json";
 import type { Photo, PhotoOverrides, UniverseId } from "./types";
 
@@ -94,7 +95,19 @@ export function restPhotos(photos: readonly Photo[], consumed: number): Photo[] 
   return photos.length > consumed ? photos.slice(consumed) : [];
 }
 
-/** Année affichable, jamais inventée. */
+/** Naissance de Laura (src/data/laura.json): sert de repère quand une photo n'a pas de date. */
+export const BIRTH_YEAR: number = laura.birthYear;
+export const BIRTH_LABEL = `${laura.birthMonth} ${laura.birthYear}`;
+
+/**
+ * Année affichée pour une photo: sa vraie date (EXIF, nom de fichier ou override) si elle existe,
+ * sinon l'année de naissance. Renseigner `year` dans les overrides d'une photo pour la corriger.
+ */
 export function yearLabel(photo: Pick<Photo, "year">): string {
-  return photo.year ? String(photo.year) : "[ANNÉE]";
+  return String(photo.year ?? BIRTH_YEAR);
+}
+
+/** Date du héros de l'univers Naissance: la date de la photo, sinon "Juillet 2009". */
+export function birthLabel(photo: Pick<Photo, "year">): string {
+  return photo.year ? String(photo.year) : BIRTH_LABEL;
 }

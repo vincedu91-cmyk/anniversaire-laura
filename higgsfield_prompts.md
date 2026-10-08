@@ -129,11 +129,11 @@ Gentle lullaby-like instrumental, soft felt piano and warm ukulele playing a swe
 
 ### 2.5 Voix off Enfance
 
-Voix : **chaleureuse, douce, bienveillante, rythme posé, légèrement souriante** (narratrice ou narrateur de conte). Remplacer `[MOIS] [ANNÉE]` par les vraies informations.
+Voix : **chaleureuse, douce, bienveillante, rythme posé, légèrement souriante** (narratrice ou narrateur de conte). La date de naissance est renseignée : Juillet 2009.
 
 | ID | Début | Durée est. | Texte (français) |
 |---|---|---|---|
-| VO_ENF_01 | 0:33 | 10 s | « Tout a commencé un jour de [MOIS] [ANNÉE], quand une toute petite Laura est arrivée… et que le monde de toute une famille a changé pour toujours. » |
+| VO_ENF_01 | 0:33 | 10 s | « Tout a commencé un jour de Juillet 2009, quand une toute petite Laura est arrivée… et que le monde de toute une famille a changé pour toujours. » |
 | VO_ENF_02 | 1:15 | 9 s | « Premiers sourires, premiers pas, premières bêtises… chaque jour apportait sa nouvelle découverte, et chaque découverte, son éclat de rire. » |
 | VO_ENF_03 | 2:00 | 10 s | « Les genoux écorchés, les gâteaux d'anniversaire, les dessins collés sur le frigo… une enfance faite de câlins, de cabanes et de rêves à n'en plus finir. » |
 | VO_ENF_04 | 2:45 | 8 s | « À l'école, au jardin, pendant les vacances… Laura grandissait, curieuse de tout, toujours prête à tout essayer. » |

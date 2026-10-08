@@ -3,7 +3,7 @@
 import { motion, useTransform } from "motion/react";
 import { useRef } from "react";
 import type { UniverseData } from "@/data/types";
-import { yearLabel } from "@/data/photos";
+import { birthLabel } from "@/data/photos";
 import { MemoryPhoto } from "@/components/media/MemoryPhoto";
 import { PhotoReveal } from "@/components/media/PhotoReveal";
 import { KineticTitle } from "@/components/typography/KineticTitle";
@@ -60,7 +60,7 @@ export function ChildhoodHero({ universe }: { universe: UniverseData }) {
         className="absolute left-[8vw] top-[20dvh] z-10 -rotate-6 font-hand text-[clamp(2.5rem,6vw,5rem)] leading-none text-childhood-ink/80 md:left-[12vw] md:top-[14dvh]"
         style={{ y: noteY }}
       >
-        {yearLabel(hero)}
+        {birthLabel(hero)}
       </motion.p>
 
       <motion.div

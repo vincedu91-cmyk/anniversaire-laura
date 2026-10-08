@@ -18,7 +18,7 @@ Le parcours est une ligne de vie : `NAISSANCE > ENFANCE > ADOLESCENCE > FOLIE > 
 Émotions successives : tendresse, nostalgie, énergie, rire, émotion, célébration.
 
 Règle d'or : la technologie est au service des photos, les photos au service de l'histoire, l'histoire au service de Laura.
-Aucun contenu inventé. Toute information absente s'affiche `[À COMPLÉTER]` ou `[ANNÉE]`.
+Aucun contenu inventé. Toute information absente s'affiche `[À COMPLÉTER]`. La date de naissance (Juillet 2009, dans `src/data/laura.json`) sert de repère aux photos sans date; la vraie date d'une photo (EXIF, nom de fichier ou `overrides`) la remplace automatiquement.
 
 ## 2. Mood par univers
 

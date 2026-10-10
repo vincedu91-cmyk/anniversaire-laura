@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Génère timeline.json pour « LAURA : 18 ANS DE SOUVENIRS » (16:9, 1920x1080, 30 fps, 10 min).
+"""Génère timeline.json pour « LAURA : 18 ANS DE SOUVENIRS » (16:9, 1920x1080, 30 fps, 6 min).
 
 Usage :  python generate_timeline.py
 
@@ -7,12 +7,15 @@ Usage :  python generate_timeline.py
   PHOTO_001.jpg, PHOTO_002.jpg… sont utilisés ("placeholder": true) pour valider la structure.
 - Relancer le script après avoir déposé les vraies photos : la durée par photo s'ajuste
   pour que chaque partie conserve exactement sa durée (découpage à l'image près).
-- Les identifiants d'assets (BG_*, TR_*, SFX_*, VO_*…) correspondent aux titres de
-  higgsfield_prompts.md ; le script vérifie que tout asset référencé est déclaré.
+- Pas de voix off : la vidéo est portée par les musiques et rythmée par les SFX
+  (fichiers produits par generate_sfx.py, remplaçables par des sons de bibliothèque de même nom).
+- Le script vérifie que tout asset référencé est déclaré.
 """
 from __future__ import annotations
 
 import json
+import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -23,16 +26,21 @@ OUTPUT = ROOT / "timeline.json"
 
 MEDIA_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".heic", ".mp4", ".mov"}
 VIDEO_EXTS = {".mp4", ".mov"}
-PLACEHOLDER_COUNT = 36   # 36 photos x 5 s = 180 s par partie
-MAX_PER_SECTION = 72     # 2,5 s minimum par photo
+PLACEHOLDER_COUNT = 21   # 21 photos x 5 s = 105 s par partie
+MAX_PER_SECTION = 42     # 2,5 s minimum par photo
 
+TOTAL_S = 360
 SECTION_RANGES = {
-    "intro": (0, 30),
-    "enfance": (30, 210),
-    "ado": (210, 390),
-    "clown": (390, 570),
-    "outro": (570, 600),
+    "intro": (0, 20),
+    "enfance": (20, 125),
+    "ado": (125, 230),
+    "clown": (230, 335),
+    "outro": (335, TOTAL_S),
 }
+# Intro : titre, teaser (flashs d'un temps à 120 BPM), titre verrouillé.
+INTRO_TITLE_END, INTRO_TEASER_END = 3, 17
+# Outro : assemblage de la mosaïque, maintien, message final.
+OUTRO_ASSEMBLY_END, OUTRO_HOLD_END = 347, 352
 FOLDERS = {
     "enfance": "photos/Naissance-Enfance",
     "ado": "photos/Adolescence",
@@ -88,30 +96,80 @@ VIDEO_ASSETS = [
     ("TITLE_OUT_FINAL", "outro", "normal", 8, False),
 ]
 
-# (id, BPM, durée cible s)
+# Musiques. Avec "ext" : morceau fourni (assets/audio/music/<id>.<ext>) ; sans : à générer (.wav).
+# BPM « estimé » = mesure automatique approximative, à vérifier à l'oreille.
 MUSIC = [
-    ("MUS_INTRO", 120, 30), ("MUS_ENFANCE", 100, 180), ("MUS_ADO", 128, 180),
-    ("MUS_CLOWN", 120, 180), ("MUS_OUTRO", 72, 30),
+    {"id": "MUS_INTRO", "bpm": 120, "duration_s": 20},
+    {"id": "MUS_ENFANCE", "bpm": 129, "bpm_estimated": True, "duration_s": 147.0, "ext": "mp3",
+     "title": "Une chanson douce", "artist": "Henri Salvador"},
+    {"id": "MUS_ADO", "bpm": 99, "bpm_estimated": True, "duration_s": 218.6, "ext": "mp3",
+     "title": "La Boulette", "artist": "Diam's"},
+    {"id": "MUS_CLOWN", "bpm": 129, "bpm_estimated": True, "duration_s": 192.1, "ext": "mp3",
+     "title": "Maladie (Cheveux blonds)", "artist": "Mauvais Djo"},
+    {"id": "MUS_OUTRO", "bpm": 72, "duration_s": 25},
+]
+MUSIC_BY_ID = {m["id"]: m for m in MUSIC}
+
+# Texte affiché à l'écran (manuscrit), au début de la partie Naissance & Enfance.
+SCREEN_TEXTS = [
+    {"id": "TXT_DATE_NAISSANCE", "text": "Juillet 2009", "start": 21.5, "end": 28.5, "section": "enfance",
+     "style": "date_manuscrite", "font": "Caveat"},
 ]
 
-# (id, début s, durée estimée s, section)
-VOICE = [
-    ("VO_INT_01", 25.5, 4, "intro"),
-    ("VO_ENF_01", 33.0, 10, "enfance"), ("VO_ENF_02", 75.0, 9, "enfance"),
-    ("VO_ENF_03", 120.0, 10, "enfance"), ("VO_ENF_04", 165.0, 8, "enfance"),
-    ("VO_ENF_05", 199.0, 7, "enfance"),
-    ("VO_ADO_01", 212.0, 7, "ado"), ("VO_ADO_02", 258.0, 7, "ado"),
-    ("VO_ADO_03", 305.0, 7, "ado"), ("VO_ADO_04", 355.0, 8, "ado"),
-    ("VO_CLO_01", 393.0, 8, "clown"), ("VO_CLO_02", 440.0, 8, "clown"),
-    ("VO_CLO_03", 490.0, 8, "clown"), ("VO_CLO_04", 540.0, 7, "clown"),
-    ("VO_OUT_01", 575.0, 8, "outro"), ("VO_OUT_02", 592.5, 3, "outro"),
-]
+
+def probe_duration(path: Path) -> float | None:
+    """Durée réelle d'un fichier audio via ffprobe ; None si absent ou illisible."""
+    if not path.is_file():
+        return None
+    try:
+        out = subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+            capture_output=True, text=True, check=True, timeout=30,
+        ).stdout.strip()
+        return round(float(out), 2)
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None
+
+
+# ---------------------------------------------------------------- voix off
+# Source unique : le script validé. Chaque réplique y est notée « ### VO_ID · m:ss,d · … »,
+# suivie d'une ligne « > texte *(note de jeu)* ». Les fichiers viennent de voix-off/decouper_voix.py.
+VOICE_SCRIPT = ROOT / "voix-off" / "script_neutre.md"
+VOICE_SOURCE = "ElevenLabs — Hugo (Deep French Storyteller)"
+VOICE_DUCKING_DB = -10
+
+
+def voice_path(voice_id: str) -> Path:
+    return ROOT / "assets" / "audio" / "vo" / f"{voice_id}.mp3"
+
+
+def parse_timecode(tc: str) -> float:
+    minutes, seconds = tc.split(":")
+    return int(minutes) * 60 + float(seconds.replace(",", "."))
+
+
+def load_voice_script() -> list[dict]:
+    """Répliques du script : id, début (s), section, texte (sans les notes de jeu)."""
+    if not VOICE_SCRIPT.is_file():
+        return []
+    lines = VOICE_SCRIPT.read_text(encoding="utf-8").splitlines()
+    cues = []
+    for i, line in enumerate(lines):
+        head = re.match(r"^### (VO_(\w+?)_\d+) · (\d+:\d+(?:,\d+)?)", line)
+        if not head:
+            continue
+        quote = next((l for l in lines[i + 1:] if l.startswith("> ")), "> ")
+        text = re.sub(r"\s*\*\([^)]*\)\*\s*", " ", quote[2:]).strip()
+        section = {"INT": "intro", "ENF": "enfance", "ADO": "ado", "CLO": "clown", "OUT": "outro"}[head.group(2)]
+        cues.append({"asset": head.group(1), "start": parse_timecode(head.group(3)), "section": section, "text": text})
+    return cues
+
 
 # (id, durée s)
 SFX = [
     ("SFX_INT_RISER", 5), ("SFX_INT_IMPACT", 2), ("SFX_INT_WHOOSH", 1),
     ("SFX_ENF_BULLE_POP", 1), ("SFX_ENF_CARILLON", 2), ("SFX_ENF_WHOOSH_DOUX", 1.5),
-    ("SFX_ENF_PAGE", 1), ("SFX_ENF_SCINTILLE", 2), ("SFX_ENF_RIRE_BEBE", 3),
+    ("SFX_ENF_PAGE", 1), ("SFX_ENF_SCINTILLE", 2),
     ("SFX_ADO_GLITCH", 1), ("SFX_ADO_FLASH", 0.5), ("SFX_ADO_ACCEL", 3),
     ("SFX_ADO_BASS_HIT", 1.5), ("SFX_ADO_REWIND", 1.5), ("SFX_ADO_SPRAY", 1.5),
     ("SFX_ADO_RECORD_SCRATCH", 1.5),
@@ -273,8 +331,9 @@ def make_transition(spec: dict, start_f: int) -> tuple[dict, list[dict]]:
 
 # ---------------------------------------------------------------- sections
 def build_intro(media: dict[str, list[dict]]) -> list[dict]:
-    """0:00-0:30 à 120 BPM : titre 4 s, teaser 42 flashs d'1 temps (0,5 s), titre verrouillé 5 s."""
-    title_end, teaser_end, end = to_frames(4), to_frames(25), to_frames(30)
+    """0:00-0:20 à 120 BPM : titre 3 s, teaser de 28 flashs d'un temps (0,5 s), titre verrouillé 3 s."""
+    title_end, teaser_end = to_frames(INTRO_TITLE_END), to_frames(INTRO_TEASER_END)
+    end = to_frames(SECTION_RANGES["intro"][1])
     beat = FPS // 2
     clips = [{
         "id": "INT_TITLE_01", **time_fields(0, title_end), "type": "title",
@@ -289,7 +348,7 @@ def build_intro(media: dict[str, list[dict]]) -> list[dict]:
     }]
     flash_count = (teaser_end - title_end) // beat
     order = ["enfance", "ado", "clown"]
-    per_folder = flash_count // len(order)
+    per_folder = -(-flash_count // len(order))  # arrondi supérieur : l'index reste dans le dossier
     for j in range(flash_count):
         key = cycle(order, j)
         pool = media[key]
@@ -301,7 +360,8 @@ def build_intro(media: dict[str, list[dict]]) -> list[dict]:
             "layers": [{"role": "photo", "fit": "cover_blur_fill", "scale": 1.0}],
             "effects": [{"type": "punch_in", "from_scale": 1.0, "to_scale": 1.12, "on_beat": True}],
             "transition_in": {"style": "cut_on_beat", "asset": None, "duration": 0},
-            "sfx": [],
+            # Un whoosh toutes les deux coupes (1 par seconde) pour marquer le rythme du teaser.
+            "sfx": [{"asset": "SFX_INT_WHOOSH", "at": to_seconds(a), "gain_db": -16}] if j % 2 == 0 else [],
         })
     clips.append({
         "id": "INT_TITLE_LOCK", **time_fields(teaser_end, end), "type": "title_lock",
@@ -416,8 +476,10 @@ def build_clown(media: list[dict]) -> list[dict]:
 
 
 def build_outro(media: dict[str, list[dict]]) -> list[dict]:
-    """9:30-10:00 : mosaïque 32x18 (cellules de 60 px) qui s'assemble en « 18 », puis message final."""
-    s, assembly_end, hold_end, end = (to_frames(t) for t in (570, 586, 592, 600))
+    """5:35-6:00 : mosaïque 32x18 (cellules de 60 px) qui s'assemble en « 18 », puis message final."""
+    s, assembly_end, hold_end, end = (
+        to_frames(t) for t in (SECTION_RANGES["outro"][0], OUTRO_ASSEMBLY_END, OUTRO_HOLD_END, TOTAL_S)
+    )
     transition, sfx = make_transition(ENTRY["outro"], s)
     pool = [{"folder": FOLDERS[key], "files": [m["file"] for m in media[key]]} for key in FOLDERS]
     return [
@@ -457,48 +519,62 @@ def build_outro(media: dict[str, list[dict]]) -> list[dict]:
                 {"role": "title", "asset": "TITLE_OUT_FINAL", "blend": "normal", "in_offset_s": 0.5},
                 {"role": "overlay", "asset": "OVL_OUT_FEUX_ARTIFICE", "blend": "screen", "opacity": 0.8},
             ],
-            "effects": [{"type": "fade_to_black", "start": 597.0, "duration_s": 3.0}],
+            "effects": [{"type": "fade_to_black", "start": TOTAL_S - 3.0, "duration_s": 3.0}],
             "transition_in": {"style": "continu", "asset": None, "duration": 0}, "sfx": [],
         },
     ]
 
 
 # ---------------------------------------------------------------- audio global
-def build_audio() -> dict:
-    def music(asset, start, end, fade_in, fade_out, gain_db, bpm):
-        return {"asset": asset, "start": start, "end": end, "fade_in_s": fade_in,
-                "fade_out_s": fade_out, "gain_db": gain_db, "bpm": bpm}
+def sfx_path(sfx_id: str) -> Path:
+    return ROOT / "assets" / "audio" / "sfx" / f"{sfx_id}.wav"
 
+
+def build_voice_over() -> list[dict]:
+    """Répliques du script avec la durée réelle du fichier découpé (None si absent)."""
+    return [
+        {**cue, "duration": probe_duration(voice_path(cue["asset"])), "gain_db": 0}
+        for cue in load_voice_script()
+    ]
+
+
+def build_audio() -> dict:
+    def music(asset, start, end, fade_in, fade_out, gain_db, media_start=0.0, note=None):
+        cue = {"asset": asset, "start": start, "end": end, "media_start_s": media_start, "fade_in_s": fade_in,
+               "fade_out_s": fade_out, "gain_db": gain_db, "bpm": MUSIC_BY_ID[asset]["bpm"]}
+        return {**cue, "note": note} if note else cue
+
+    enf, ado, clo, out = (SECTION_RANGES[k] for k in ("enfance", "ado", "clown", "outro"))
     return {
         "loudness_target_lufs": -16, "sample_rate_hz": 48000,
-        "ducking": {"target": "music", "trigger": "voice_over", "reduction_db": -12,
-                    "attack_s": 0.2, "release_s": 0.6},
         "music": [
-            music("MUS_INTRO", 0.0, 30.5, 0.0, 1.5, -6, 120),
-            music("MUS_ENFANCE", 30.0, 209.6, 1.5, 0.1, -10, 100),   # coupe nette sous le record scratch
-            music("MUS_ADO", 210.0, 389.6, 0.0, 0.05, -8, 128),      # coupe nette sous le 2e scratch
-            music("MUS_CLOWN", 390.0, 570.0, 0.0, 0.5, -8, 120),
-            music("MUS_OUTRO", 570.0, 600.0, 1.0, 3.0, -8, 72),
+            # Intro portée par les SFX (whooshes, montée, impact) : pas de musique.
+            music("MUS_ENFANCE", enf[0], enf[1] - 0.4, 1.5, 0.1, -6, 0.0, "coupe nette sous le record scratch"),
+            music("MUS_ADO", ado[0], ado[1] - 0.4, 0.0, 0.05, -6, 0.0,
+                  "La Boulette ; point d'entrée à ajuster si besoin ; coupe nette sous le 2e scratch"),
+            music("MUS_CLOWN", clo[0], clo[1], 0.0, 2.5, -6),
+            # Bouclage émotion : fin d'« Une chanson douce » (silence final à 2:24.4) sur la mosaïque.
+            music("MUS_ENFANCE", out[0], out[1], 1.5, 2.5, -6, 144.4 - (out[1] - out[0]),
+                  "fin d'« Une chanson douce » en attendant une musique d'outro"),
         ],
-        "voice_over": [
-            {"asset": vid, "start": start, "est_duration": dur, "section": section, "gain_db": -2}
-            for vid, start, dur, section in VOICE
-        ],
+        "ducking": {"target": "music", "trigger": "voice_over", "reduction_db": VOICE_DUCKING_DB,
+                    "attack_s": 0.25, "release_s": 0.6},
+        "voice_over": build_voice_over(),
+        "screen_texts": SCREEN_TEXTS,
         "sfx_global": [
-            {"asset": "SFX_INT_RISER", "at": 20.0, "gain_db": -10, "note": "montée vers le titre"},
-            {"asset": "SFX_INT_IMPACT", "at": 25.0, "gain_db": -6, "note": "verrouillage du titre"},
-            {"asset": "SFX_ENF_RIRE_BEBE", "at": 90.0, "gain_db": -16},
-            {"asset": "SFX_ENF_RIRE_BEBE", "at": 150.0, "gain_db": -16},
-            {"asset": "SFX_ADO_ACCEL", "at": 385.5, "gain_db": -8, "note": "accélération avant le gag de fin"},
-            {"asset": "SFX_ADO_RECORD_SCRATCH", "at": 388.9, "gain_db": -6, "note": "stop net à 389.6"},
-            {"asset": "SFX_CLO_RIMSHOT", "at": 401.5, "gain_db": -10},
-            {"asset": "SFX_CLO_WAH_WAH", "at": 468.0, "gain_db": -10},
-            {"asset": "SFX_CLO_RIMSHOT", "at": 498.5, "gain_db": -10},
-            {"asset": "SFX_OUT_APPLAUSE", "at": 547.5, "gain_db": -12, "note": "après VO_CLO_04"},
-            {"asset": "SFX_CLO_TADAA", "at": 567.0, "gain_db": -8},
-            {"asset": "SFX_OUT_SCINTILLE", "at": 586.0, "gain_db": -12},
-            {"asset": "SFX_OUT_FEU_ARTIFICE", "at": 592.0, "gain_db": -10},
-            {"asset": "SFX_OUT_APPLAUSE", "at": 594.5, "gain_db": -14},
+            {"asset": "SFX_INT_RISER", "at": 12.0, "gain_db": -8, "note": "montée vers le titre verrouillé"},
+            {"asset": "SFX_INT_IMPACT", "at": float(INTRO_TEASER_END), "gain_db": -4, "note": "verrouillage du titre"},
+            {"asset": "SFX_ENF_SCINTILLE", "at": 21.5, "gain_db": -12, "note": "apparition de « Juillet 2009 »"},
+            {"asset": "SFX_ADO_ACCEL", "at": ado[1] - 4.5, "gain_db": -6, "note": "accélération avant le gag de fin"},
+            {"asset": "SFX_ADO_RECORD_SCRATCH", "at": ado[1] - 1.1, "gain_db": -4, "note": "stop net 0,4 s avant la coupe"},
+            {"asset": "SFX_CLO_RIMSHOT", "at": clo[0] + 22.5, "gain_db": -8},
+            {"asset": "SFX_CLO_WAH_WAH", "at": clo[0] + 50.0, "gain_db": -8},
+            {"asset": "SFX_CLO_RIMSHOT", "at": clo[0] + 75.5, "gain_db": -8},
+            {"asset": "SFX_OUT_APPLAUSE", "at": clo[1] - 13.0, "gain_db": -12},
+            {"asset": "SFX_CLO_TADAA", "at": clo[1] - 3.0, "gain_db": -6},
+            {"asset": "SFX_OUT_SCINTILLE", "at": float(OUTRO_ASSEMBLY_END), "gain_db": -10},
+            {"asset": "SFX_OUT_FEU_ARTIFICE", "at": float(OUTRO_HOLD_END), "gain_db": -8},
+            {"asset": "SFX_OUT_APPLAUSE", "at": OUTRO_HOLD_END + 2.5, "gain_db": -12},
         ],
     }
 
@@ -511,16 +587,39 @@ def build_registry() -> dict:
     registry["MASK_18"] = {"type": "image", "path": "assets/masks/MASK_18.png", "blend": "mask",
                            "source": "local",
                            "note": "« 18 » blanc très gras sur fond noir, 1920x1080, à créer dans l'éditeur"}
-    for aid, bpm, dur in MUSIC:
-        registry[aid] = {"type": "music", "path": f"assets/audio/music/{aid}.wav", "bpm": bpm,
-                         "duration_s": dur, "source": "higgsfield_text_to_audio"}
-    for aid, _start, dur, _section in VOICE:
-        registry[aid] = {"type": "voice_over", "path": f"assets/audio/vo/{aid}.wav",
-                         "est_duration_s": dur, "source": "higgsfield_text_to_speech"}
+    for m in MUSIC:
+        provided = "ext" in m
+        entry = {"type": "music", "path": f"assets/audio/music/{m['id']}.{m.get('ext', 'wav')}", "bpm": m["bpm"],
+                 "bpm_estimated": m.get("bpm_estimated", False), "duration_s": m["duration_s"],
+                 "source": "fichier fourni" if provided else "à générer (text-to-audio)"}
+        registry[m["id"]] = {**entry, "title": m["title"], "artist": m["artist"]} if provided else entry
     for aid, dur in SFX:
-        registry[aid] = {"type": "sfx", "path": f"assets/audio/sfx/{aid}.wav", "duration_s": dur,
-                         "source": "higgsfield_text_to_audio"}
+        path = sfx_path(aid)
+        registry[aid] = {"type": "sfx", "path": path.relative_to(ROOT).as_posix(),
+                         "duration_s": probe_duration(path) or dur, "source": "synthèse (generate_sfx.py)",
+                         "status": "ok" if path.is_file() else "à générer"}
+    for cue in load_voice_script():
+        path = voice_path(cue["asset"])
+        registry[cue["asset"]] = {"type": "voice_over", "path": path.relative_to(ROOT).as_posix(),
+                                  "duration_s": probe_duration(path), "source": VOICE_SOURCE,
+                                  "status": "ok" if path.is_file() else "à générer"}
     return registry
+
+
+def voice_overlaps(cues: list[dict], sfx: list[dict]) -> list[str]:
+    """Répliques qui débordent sur la suivante, sur la fin de leur section ou sur un SFX marquant."""
+    issues = []
+    for cur, nxt in zip(cues, cues[1:] + [None]):
+        if cur["duration"] is None:
+            continue
+        end = round(cur["start"] + cur["duration"], 2)
+        limit = min(nxt["start"] if nxt else TOTAL_S, SECTION_RANGES[cur["section"]][1])
+        if end > limit:
+            issues.append(f"{cur['asset']} finit à {end} s > {limit} s")
+        clashes = [s["asset"] for s in sfx if cur["start"] < s["at"] < end and s.get("gain_db", 0) > -8]
+        if clashes:
+            issues.append(f"{cur['asset']} recouvre {', '.join(clashes)}")
+    return issues
 
 
 # ---------------------------------------------------------------- validation
@@ -594,7 +693,7 @@ def main() -> None:
     timeline = {
         "project": {
             "title": "LAURA : 18 ANS DE SOUVENIRS", "width": WIDTH, "height": HEIGHT, "fps": FPS,
-            "aspect_ratio": "16:9", "duration_s": 600, "duration_tc": timecode(600 * FPS),
+            "aspect_ratio": "16:9", "duration_s": TOTAL_S, "duration_tc": timecode(TOTAL_S * FPS),
             "timecode_format": "MM:SS:FF",
             "export": {"container": "mp4", "video": "H.264 High, 16 Mb/s", "audio": "AAC 320 kb/s 48 kHz"},
             "notes": [
@@ -616,6 +715,9 @@ def main() -> None:
             "assets_declared": len(registry),
             "assets_referenced": len(used),
             "assets_unused": sorted(registry.keys() - used),
+            "sfx_missing": sorted(k for k, v in registry.items() if v["type"] == "sfx" and v["status"] != "ok"),
+            "voice_missing": sorted(k for k, v in registry.items() if v["type"] == "voice_over" and v["status"] != "ok"),
+            "voice_overlaps": voice_overlaps(audio["voice_over"], audio["sfx_global"]),
         },
     }
     OUTPUT.write_text(json.dumps(timeline, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

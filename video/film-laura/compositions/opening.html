@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr" data-composition-variables="[
+    {&quot;id&quot;:&quot;friendName&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Prénom de l’ami·e dans la conversation&quot;,&quot;default&quot;:&quot;Sam&quot;,&quot;maxLength&quot;:14},
+    {&quot;id&quot;:&quot;clock&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Heure affichée sur le téléphone&quot;,&quot;default&quot;:&quot;21:47&quot;,&quot;maxLength&quot;:5}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ouverture — la conversation</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Bricolage Grotesque";
+          src: url("assets/fonts/BricolageGrotesque-latin.woff2") format("woff2");
+          font-weight: 200 800;
+        }
+        @font-face {
+          font-family: "Geist Mono";
+          src: url("assets/fonts/GeistMono-latin.woff2") format("woff2");
+          font-weight: 100 900;
+        }
+
+        #opening {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #0d0d11;
+          font-family: "Bricolage Grotesque", sans-serif;
+          color: #e7e8eb;
+        }
+        #op-bg {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(60% 70% at 50% 46%, #23212b 0%, #141319 55%, #0b0a0e 100%);
+        }
+        #op-glow {
+          position: absolute;
+          left: 440px;
+          top: 20px;
+          width: 1040px;
+          height: 1040px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 210, 122, 0.16) 0%, rgba(255, 210, 122, 0) 62%);
+        }
+        #op-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(58% 120% at 50% 50%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.85) 100%);
+        }
+
+        /* Caméra : l'extérieur zoome, l'intérieur contre-translate (coordinate-target-zoom). */
+        #op-cam {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          transform-origin: 50% 50%;
+        }
+        #op-cam-in {
+          display: grid;
+          place-items: center;
+          width: 100%;
+          height: 100%;
+        }
+        #op-phone-wrap {
+          width: 452px;
+          height: 920px;
+        }
+
+        /* ------------------------------------------------------------ téléphone */
+        #op-phone {
+          position: relative;
+          width: 452px;
+          height: 920px;
+          border-radius: 70px;
+          background: linear-gradient(145deg, #2b2a31 0%, #121116 60%, #1d1c22 100%);
+          box-shadow:
+            0 0 0 2px #3a3940,
+            0 60px 120px rgba(0, 0, 0, 0.65),
+            0 0 90px rgba(255, 210, 122, 0.08);
+          padding: 14px;
+        }
+        #op-screen {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 57px;
+          overflow: hidden;
+          background: #efe7de;
+          display: flex;
+          flex-direction: column;
+        }
+        #op-island {
+          position: absolute;
+          top: 12px;
+          left: 149px;
+          width: 126px;
+          height: 34px;
+          border-radius: 20px;
+          background: #050506;
+          z-index: 5;
+        }
+        #op-status {
+          height: 54px;
+          flex: none;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 8px 36px 0 40px;
+          background: #f6f3ef;
+          color: #111b21;
+          font-size: 17px;
+          font-weight: 600;
+        }
+        .op-status-icons {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+        }
+        .op-bars {
+          display: flex;
+          gap: 2px;
+          align-items: flex-end;
+          height: 12px;
+        }
+        .op-bars i {
+          display: block;
+          width: 3px;
+          background: #111b21;
+          border-radius: 1px;
+        }
+        .op-batt {
+          width: 26px;
+          height: 13px;
+          border: 2px solid #111b21;
+          border-radius: 4px;
+          padding: 1px;
+        }
+        .op-batt i {
+          display: block;
+          width: 68%;
+          height: 100%;
+          background: #111b21;
+          border-radius: 1px;
+        }
+        #op-header {
+          height: 74px;
+          flex: none;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 0 18px;
+          background: #f6f3ef;
+          border-bottom: 1px solid #ddd5cb;
+          color: #111b21;
+        }
+        .op-back {
+          font-size: 30px;
+          font-weight: 300;
+          color: #1f7a5c;
+          width: 18px;
+        }
+        #op-avatar {
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          background: #f0e1a0;
+          display: grid;
+          place-items: center;
+          font-weight: 700;
+          font-size: 20px;
+          color: #3b3042;
+        }
+        .op-who {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.15;
+        }
+        #op-name {
+          font-weight: 700;
+          font-size: 20px;
+        }
+        .op-state {
+          position: relative;
+          height: 18px;
+          font-size: 14px;
+          color: #3f4e56;
+        }
+        .op-state span {
+          position: absolute;
+          left: 0;
+          top: 0;
+          white-space: nowrap;
+        }
+        #op-state-typing {
+          color: #145740;
+          opacity: 0;
+        }
+        #op-chat {
+          position: relative;
+          flex: 1;
+          overflow: hidden;
+          background-color: #efe7de;
+          background-image:
+            radial-gradient(circle at 20px 20px, rgba(59, 48, 66, 0.06) 3px, transparent 4px),
+            radial-gradient(circle at 60px 50px, rgba(59, 48, 66, 0.05) 6px, transparent 7px),
+            radial-gradient(circle at 40px 80px, rgba(59, 48, 66, 0.045) 2px, transparent 3px);
+          background-size: 84px 96px;
+        }
+        #op-thread {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          padding: 12px 14px 14px;
+        }
+        .op-day {
+          align-self: center;
+          font-size: 13px;
+          font-weight: 600;
+          color: #3f4e56;
+          background: #fbf8f4;
+          padding: 5px 12px;
+          border-radius: 8px;
+          margin-bottom: 6px;
+        }
+        .op-msg {
+          max-width: 80%;
+          padding: 9px 12px 8px 13px;
+          border-radius: 14px;
+          font-size: 21px;
+          line-height: 1.28;
+          color: #111b21;
+          box-shadow: 0 1px 1px rgba(17, 27, 33, 0.12);
+        }
+        .op-msg .op-meta {
+          float: right;
+          margin: 8px 0 -4px 10px;
+          font-family: "Geist Mono", monospace;
+          font-size: 11px;
+          color: #3f4e56;
+          white-space: nowrap;
+        }
+        .op-msg.in {
+          align-self: flex-start;
+          background: #ffffff;
+          border-top-left-radius: 4px;
+          transform-origin: 0% 100%;
+        }
+        .op-msg.out {
+          align-self: flex-end;
+          background: #d9fdd3;
+          border-top-right-radius: 4px;
+          transform-origin: 100% 100%;
+        }
+        .op-msg.out .op-meta b {
+          color: #1b5f87;
+          font-weight: 400;
+        }
+        .op-msg.final {
+          font-size: 25px;
+          font-weight: 700;
+          padding: 12px 16px 10px 16px;
+        }
+        #op-typing {
+          position: absolute;
+          left: 14px;
+          bottom: 14px;
+          width: 84px;
+          height: 44px;
+          border-radius: 14px;
+          border-top-left-radius: 4px;
+          background: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          transform-origin: 0% 100%;
+          box-shadow: 0 1px 1px rgba(17, 27, 33, 0.12);
+          opacity: 0;
+        }
+        #op-typing i {
+          display: block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #8696a0;
+        }
+        #op-input {
+          height: 74px;
+          flex: none;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 14px 10px;
+          background: #f6f3ef;
+        }
+        .op-field {
+          flex: 1;
+          height: 44px;
+          border-radius: 22px;
+          background: #ffffff;
+          display: flex;
+          align-items: center;
+          padding: 0 18px;
+          font-size: 18px;
+          color: #54656f;
+        }
+        .op-mic {
+          flex: none;
+          display: grid;
+          place-items: center;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #1f7a5c;
+        }
+
+        /* ------------------------------------------------------------ expansion des photos */
+        #op-flash {
+          position: absolute;
+          inset: 0;
+          background: #f4ebdd;
+          opacity: 0;
+        }
+        #op-burst {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 50%;
+        }
+        .op-card {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300px;
+          height: 368px;
+          padding: 14px 14px 52px;
+          background: #fbf8f2;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+          opacity: 0;
+        }
+        .op-card .op-pic {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        .op-card img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .op-card.enfance .op-pic {
+          background: linear-gradient(160deg, #e7b9c4 0%, #dad3ec 55%, #b6d2e8 100%);
+        }
+        .op-card.ado .op-pic {
+          background: linear-gradient(160deg, #7b2bff 0%, #ff2bd6 60%, #00f0ff 130%);
+        }
+        .op-card.betises .op-pic {
+          background: linear-gradient(160deg, #ffd400 0%, #ffd400 45%, #e5202e 120%);
+        }
+        .op-card .op-ph {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          font-family: "Geist Mono", monospace;
+          font-size: 14px;
+          letter-spacing: 0.14em;
+          color: #2c2431;
+        }
+        .op-card.ado .op-ph {
+          color: #f6f3ff;
+        }
+        .op-card .op-ph b {
+          font-family: "Bricolage Grotesque", sans-serif;
+          font-size: 64px;
+          font-weight: 800;
+          letter-spacing: -0.03em;
+          line-height: 1;
+        }
+        .op-card .op-cap {
+          position: absolute;
+          left: 16px;
+          right: 16px;
+          bottom: 14px;
+          font-family: "Geist Mono", monospace;
+          font-size: 13px;
+          letter-spacing: 0.12em;
+          color: #3b3042;
+        }
+        #op-dim {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(70% 70% at 50% 50%, rgba(10, 9, 12, 0.74) 0%, rgba(10, 9, 12, 0.92) 100%);
+          opacity: 0;
+        }
+
+        /* ------------------------------------------------------------ titre */
+        #op-title {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          text-align: center;
+        }
+        #op-title-l1 {
+          display: flex;
+          gap: 0.32em;
+          font-size: 78px;
+          font-weight: 300;
+          letter-spacing: -0.01em;
+          color: #f4ebdd;
+        }
+        #op-title-l2 {
+          display: flex;
+          align-items: baseline;
+          gap: 0.22em;
+          font-size: 232px;
+          font-weight: 800;
+          letter-spacing: -0.045em;
+          line-height: 1.1;
+          color: #f4ebdd;
+        }
+        #op-title .w {
+          display: inline-block;
+        }
+        #op-title-laura {
+          color: #ffd27a;
+        }
+        #op-title-quoi {
+          font-weight: 300;
+          font-style: italic;
+        }
+        .op-dot {
+          display: inline-block;
+          margin-left: 0.04em;
+        }
+        #op-title-meta {
+          margin-top: 34px;
+          font-family: "Geist Mono", monospace;
+          font-size: 22px;
+          letter-spacing: 0.42em;
+          color: #d8cfc2;
+        }
+        #op-fade {
+          position: absolute;
+          inset: 0;
+          background: #f5f1f2;
+          opacity: 0;
+        }
+      </style>
+
+      <div data-hf-id="hf-1xuv" id="opening" data-composition-id="opening" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-gg9s" id="op-bg"></div>
+        <div data-hf-id="hf-4q12" id="op-glow"></div>
+        <div data-hf-id="hf-jxjw" id="op-vignette" data-layout-ignore=""></div>
+
+        <div data-hf-id="hf-l31u" id="op-cam">
+          <div data-hf-id="hf-r06u" id="op-cam-in">
+            <div data-hf-id="hf-nnis" id="op-phone-wrap">
+              <div data-hf-id="hf-hopj" id="op-phone">
+                <div data-hf-id="hf-z1p5" id="op-screen">
+                  <div data-hf-id="hf-yoma" id="op-island"></div>
+                  <div data-hf-id="hf-7m6j" id="op-status">
+                    <span data-hf-id="hf-qysu" id="op-clock">21:47</span>
+                    <span data-hf-id="hf-8b9a" class="op-status-icons">
+                      <span data-hf-id="hf-hj8b" class="op-bars"><i data-hf-id="hf-232q" style="height: 4px"></i><i data-hf-id="hf-wlvd" style="height: 7px"></i><i data-hf-id="hf-deqt" style="height: 10px"></i><i data-hf-id="hf-bbw7" style="height: 12px"></i></span>
+                      <span data-hf-id="hf-tsra" class="op-batt"><i data-hf-id="hf-wt6k"></i></span>
+                    </span>
+                  </div>
+                  <div data-hf-id="hf-fecg" id="op-header" data-layout-allow-occlusion="">
+                    <span data-hf-id="hf-4xhv" class="op-back">‹</span>
+                    <span data-hf-id="hf-aqq0" id="op-avatar">S</span>
+                    <span data-hf-id="hf-5abb" class="op-who">
+                      <span data-hf-id="hf-lw88" id="op-name">Sam</span>
+                      <span data-hf-id="hf-zslc" class="op-state"><span data-hf-id="hf-hwmr" id="op-state-online">en ligne</span><span data-hf-id="hf-n7li" id="op-state-typing">écrit…</span></span>
+                    </span>
+                  </div>
+                  <div data-hf-id="hf-xk0j" id="op-chat">
+                    <div data-hf-id="hf-50vi" id="op-thread" data-layout-allow-overflow="">
+                      <span data-hf-id="hf-ugx6" class="op-day">AUJOURD’HUI</span>
+                      <!-- La conversation (texte validé le 9 oct. 2026) : data-at = instant d’apparition (s, temps local). -->
+                      <div data-hf-id="hf-sya5" class="op-msg in" data-at="1.6">Wesh… on est d’accord que Laura a 18 ans ? 👀<span data-hf-id="hf-4uac" class="op-meta">21:38</span></div>
+                      <div data-hf-id="hf-pkb5" class="op-msg out" data-at="3.6">Bah ouais frère ! C’est maintenant qu’on panique.<span data-hf-id="hf-xv8s" class="op-meta">21:38 <b data-hf-id="hf-b0qr">✓✓</b></span></div>
+                      <div data-hf-id="hf-sn94" class="op-msg in" data-at="5.8">18 ANS !!! 😭<span data-hf-id="hf-4fzb" class="op-meta">21:39</span></div>
+                      <div data-hf-id="hf-5p14" class="op-msg out" data-at="7.0">Le temps passe… les dossiers restent gros 😂<span data-hf-id="hf-8687" class="op-meta">21:39 <b data-hf-id="hf-b08z">✓✓</b></span></div>
+                      <div data-hf-id="hf-fmb0" class="op-msg in" data-at="8.9">Attends, on fait quoi ? Gâteau ? Discours ?<span data-hf-id="hf-792r" class="op-meta">21:40</span></div>
+                      <div data-hf-id="hf-j46q" class="op-msg out" data-at="10.9">Mdr, tu veux l’endormir pour son anniversaire ? 💀<span data-hf-id="hf-uo7n" class="op-meta">21:40 <b data-hf-id="hf-alxy">✓✓</b></span></div>
+                      <div data-hf-id="hf-w40e" class="op-msg in" data-at="13.4">Un diapo avec ses photos gênantes ? 😂<span data-hf-id="hf-7nds" class="op-meta">21:41</span></div>
+                      <div data-hf-id="hf-cnke" class="op-msg out" data-at="15.2">Un diapo ? T’as aucune ambition.<span data-hf-id="hf-kw7s" class="op-meta">21:41 <b data-hf-id="hf-a7mx">✓✓</b></span></div>
+                      <div data-hf-id="hf-n0ba" class="op-msg in" data-at="16.8">PARDON ??? 😭<span data-hf-id="hf-6ggp" class="op-meta">21:42</span></div>
+                      <div data-hf-id="hf-flh2" class="op-msg out" data-at="17.9">J’ai les photos de quand elle était petite.<span data-hf-id="hf-p8z1" class="op-meta">21:42 <b data-hf-id="hf-9tbw">✓✓</b></span></div>
+                      <div data-hf-id="hf-c0lw" class="op-msg in" data-at="19.9">Nan. NAN. Supprime ça, c’est abusé !<span data-hf-id="hf-6urq" class="op-meta">21:43</span></div>
+                      <div data-hf-id="hf-f7xh" class="op-msg out" data-at="21.7">J’ai aussi l’époque collège/lycée 😂 C’est sa sœur qui a balancé<span data-hf-id="hf-5nun" class="op-meta">21:44 <b data-hf-id="hf-9f0v">✓✓</b></span></div>
+                      <div data-hf-id="hf-ekrp" class="op-msg in" data-at="24.3">MAIS T’ES SURTOUT PAS CENSÉ AVOIR ÇA 💀<span data-hf-id="hf-8pof" class="op-meta">21:44</span></div>
+                      <div data-hf-id="hf-1b7t" class="op-msg out" data-at="26.2">Et attends… j’ai pas encore sorti les vrais doss’<span data-hf-id="hf-625o" class="op-meta">21:45 <b data-hf-id="hf-90pu">✓✓</b></span></div>
+                      <div data-hf-id="hf-3ifl" class="op-msg in" data-at="28.7">…<span data-hf-id="hf-yxok" class="op-meta">21:45</span></div>
+                      <div data-hf-id="hf-d10m" class="op-msg in" data-at="30.4">Y A DES DOSSIERS ?!<span data-hf-id="hf-4v8l" class="op-meta">21:46</span></div>
+                      <div data-hf-id="hf-cmvu" class="op-msg out" data-at="31.6">Plusieurs, même. 😇<span data-hf-id="hf-429l" class="op-meta">21:46 <b data-hf-id="hf-8met">✓✓</b></span></div>
+                      <div data-hf-id="hf-fnu0" class="op-msg in" data-at="32.7">Vas-y frère ! BALANCE !<span data-hf-id="hf-596o" class="op-meta">21:46</span></div>
+                      <div data-hf-id="hf-ogii" class="op-msg in final" id="op-final" data-at="34.0">On balance TOUTES LES ARCHIVES. 🔥<span data-hf-id="hf-59jm" class="op-meta">21:47</span></div>
+                    </div>
+                    <div data-hf-id="hf-gbls" id="op-typing"><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i><i data-hf-id="hf-ylp6"></i></div>
+                  </div>
+                  <div data-hf-id="hf-kls7" id="op-input">
+                    <span data-hf-id="hf-6u02" class="op-field">Message</span>
+                    <span class="op-mic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="9" y="3" width="6" height="11" rx="3" fill="#ffffff" /><path d="M6 11a6 6 0 0 0 12 0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" /><path d="M12 17v3" stroke="#ffffff" stroke-width="2" stroke-linecap="round" /></svg></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-7fkr" id="op-flash" data-layout-allow-occlusion=""></div>
+
+        <div data-hf-id="hf-qloh" id="op-burst">
+          <!-- BURST:BEGIN (généré par scripts/build_film.py — ne pas éditer à la main) -->
+          <div class="op-card enfance" data-layout-ignore data-tx="-700" data-ty="-300" data-rot="-8" data-scale="0.92"><div class="op-pic"><div class="op-ph"><b>01</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ENFANCE</span></div>
+          <div class="op-card ado" data-layout-ignore data-tx="-330" data-ty="-360" data-rot="5" data-scale="0.86"><div class="op-pic"><div class="op-ph"><b>01</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ADOLESCENCE</span></div>
+          <div class="op-card betises" data-layout-ignore data-tx="60" data-ty="-330" data-rot="-4" data-scale="0.9"><div class="op-pic"><div class="op-ph"><b>01</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">EN VRILLE</span></div>
+          <div class="op-card enfance" data-layout-ignore data-tx="430" data-ty="-350" data-rot="7" data-scale="0.88"><div class="op-pic"><div class="op-ph"><b>02</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ENFANCE</span></div>
+          <div class="op-card ado" data-layout-ignore data-tx="760" data-ty="-280" data-rot="-6" data-scale="0.9"><div class="op-pic"><div class="op-ph"><b>02</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ADOLESCENCE</span></div>
+          <div class="op-card betises" data-layout-ignore data-tx="-800" data-ty="60" data-rot="6" data-scale="0.95"><div class="op-pic"><div class="op-ph"><b>02</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">EN VRILLE</span></div>
+          <div class="op-card ado" data-layout-ignore data-tx="-470" data-ty="20" data-rot="-3" data-scale="1.0"><div class="op-pic"><div class="op-ph"><b>03</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ADOLESCENCE</span></div>
+          <div class="op-card enfance" data-layout-ignore data-tx="-90" data-ty="30" data-rot="4" data-scale="1.04"><div class="op-pic"><div class="op-ph"><b>03</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ENFANCE</span></div>
+          <div class="op-card betises" data-layout-ignore data-tx="300" data-ty="10" data-rot="-7" data-scale="0.98"><div class="op-pic"><div class="op-ph"><b>03</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">EN VRILLE</span></div>
+          <div class="op-card enfance" data-layout-ignore data-tx="690" data-ty="70" data-rot="5" data-scale="0.94"><div class="op-pic"><div class="op-ph"><b>04</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ENFANCE</span></div>
+          <div class="op-card betises" data-layout-ignore data-tx="-620" data-ty="380" data-rot="-5" data-scale="0.9"><div class="op-pic"><div class="op-ph"><b>04</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">EN VRILLE</span></div>
+          <div class="op-card enfance" data-layout-ignore data-tx="-220" data-ty="390" data-rot="8" data-scale="0.88"><div class="op-pic"><div class="op-ph"><b>05</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ENFANCE</span></div>
+          <div class="op-card ado" data-layout-ignore data-tx="170" data-ty="380" data-rot="-2" data-scale="0.92"><div class="op-pic"><div class="op-ph"><b>04</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ADOLESCENCE</span></div>
+          <div class="op-card enfance" data-layout-ignore data-tx="560" data-ty="400" data-rot="-8" data-scale="0.9"><div class="op-pic"><div class="op-ph"><b>06</b><span>PHOTO À VENIR</span></div></div><span class="op-cap">ENFANCE</span></div>
+          <!-- BURST:END -->
+        </div>
+        <div data-hf-id="hf-as8b" id="op-dim" data-layout-allow-occlusion=""></div>
+
+        <div data-hf-id="hf-i73x" id="op-title">
+          <div data-hf-id="hf-cir3" id="op-title-l1"><span data-hf-id="hf-kqix" class="w">Et</span><span data-hf-id="hf-anyj" class="w">puis</span><span data-hf-id="hf-fxdp" class="w">il</span><span data-hf-id="hf-kqmr" class="w">y</span><span data-hf-id="hf-b7a3" class="w">a</span></div>
+          <div data-hf-id="hf-3uv8" id="op-title-l2">
+            <span data-hf-id="hf-tqcl" class="w" id="op-title-laura">Laura,</span>
+            <span data-hf-id="hf-fdqz" class="w" id="op-title-quoi">quoi<span data-hf-id="hf-jads" class="op-dot">.</span><span data-hf-id="hf-4ppk" class="op-dot">.</span><span data-hf-id="hf-3ish" class="op-dot">.</span></span>
+          </div>
+          <div data-hf-id="hf-mwco" id="op-title-meta">18 ANS · LES ARCHIVES</div>
+        </div>
+
+        <div data-hf-id="hf-8bm1" id="op-fade" data-layout-allow-occlusion=""></div>
+      </div>
+
+      <script>
+        (function () {
+          const ID = "opening";
+          const W = 1920;
+          const H = 1080;
+
+          // ---------------------------------------------------------------- repères (s, temps local = temps du film)
+          const T = {
+            phoneIn: 0.15,
+            typingStart: 33.0,
+            final: 34.0,
+            vibrate: 35.6, // = fin de la nappe de tension : la suspension commence ici
+            zoomStart: 37.0,
+            whooshPeak: 39.8,
+            impact: 39.85,
+            titleIn: 41.7,
+            fadeOut: 44.7,
+            end: 45.4,
+          };
+          const VIBRATION_BURSTS = [0, 0.62]; // calé sur SFX_WA_VIBRE (2 salves de 0,42 s)
+          const BUZZ_S = 0.42;
+          const SHAKE_STEP_S = 0.03;
+          const TYPING_ROOM_PX = 52; // bulle « écrit… » (44 px) + espacement
+          const CHAT_SCALE = 1.25; // en-tête encore visible, texte ≈ 26 px à l'écran
+          const CHAT_SCALE_PEAK = 1.36;
+          const CHAT_SHIFT_Y = -44; // bas du téléphone ≈ 520 px sous le centre à ×1,25
+
+          // Variables (prénom de l'ami·e, heure) : lues une fois.
+          const vars = window.__hyperframes?.getVariables ? window.__hyperframes.getVariables() : {};
+          const friend = String(vars.friendName || "Sam").trim() || "Sam";
+          document.getElementById("op-name").textContent = friend;
+          document.getElementById("op-avatar").textContent = friend.charAt(0).toUpperCase();
+          if (vars.clock) document.getElementById("op-clock").textContent = vars.clock;
+
+          function build() {
+            const root = document.getElementById(ID);
+            const thread = document.getElementById("op-thread");
+            const msgs = Array.from(thread.querySelectorAll(".op-msg"));
+            const finalEl = document.getElementById("op-final");
+
+            // Mesures une seule fois, avant toute transformation GSAP.
+            // offsetFor(el) = translation verticale du fil pour que `el` soit le dernier message visible.
+            const threadH = thread.offsetHeight;
+            const bottomPad = 14;
+            const offsetFor = (el) => threadH - bottomPad - (el.offsetTop + el.offsetHeight);
+            const typingOffset = offsetFor(msgs[msgs.length - 2]) - TYPING_ROOM_PX;
+
+            // Centre de la dernière bulle par rapport au centre de l'image (pour le zoom).
+            const rootRect = root.getBoundingClientRect();
+            const k = rootRect.width / W || 1;
+            const fr = finalEl.getBoundingClientRect();
+            const targetX = (fr.left - rootRect.left + fr.width / 2) / k - W / 2;
+            const targetY = (fr.top - rootRect.top + fr.height / 2) / k - H / 2;
+
+            const tl = gsap.timeline({ paused: true });
+
+            // ---------------------------------------------------------------- 1. apparition du téléphone
+            tl.fromTo("#op-phone-wrap", { y: 520, rotation: -4, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 1.3, ease: "expo.out" }, T.phoneIn);
+            tl.fromTo("#op-glow", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 2.4, ease: "power2.out" }, 0);
+
+            // ---------------------------------------------------------------- 2. la conversation
+            tl.set(thread, { y: offsetFor(msgs[0]) + 140 }, 0);
+            tl.to(".op-day", { opacity: 0, duration: 0.3 }, 12.0);
+            msgs.forEach((el) => {
+              const at = Number(el.dataset.at);
+              const isFinal = el === finalEl;
+              tl.fromTo(
+                el,
+                { opacity: 0, scale: 0.55 },
+                { opacity: 1, scale: 1, duration: isFinal ? 0.45 : 0.3, ease: isFinal ? "back.out(2.2)" : "back.out(1.7)" },
+                at,
+              );
+              tl.to(thread, { y: offsetFor(el), duration: 0.32, ease: "power2.out" }, at);
+            });
+
+            // Les bulles sorties par le haut du fil (sous l'en-tête) sont retirées une fois cachées.
+            const chatH = document.getElementById("op-chat").clientHeight;
+            const threadTop = chatH - threadH;
+            const scrolls = msgs.map((el) => [Number(el.dataset.at), offsetFor(el)]);
+            scrolls.push([T.typingStart, typingOffset]);
+            const hidden = new Set();
+            scrolls.forEach(([at, y]) => {
+              msgs.forEach((el) => {
+                const bottom = threadTop + el.offsetTop + el.offsetHeight + y;
+                if (!hidden.has(el) && Number(el.dataset.at) < at && bottom <= 0) {
+                  hidden.add(el);
+                  tl.set(el, { opacity: 0 }, at + 0.32);
+                }
+              });
+            });
+
+            // « écrit… » : en-tête + bulle animée ; le dernier message la remplace.
+            tl.to(thread, { y: typingOffset, duration: 0.3, ease: "power2.out" }, T.typingStart);
+            tl.fromTo("#op-typing", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, T.typingStart);
+            tl.to("#op-typing", { opacity: 0, scale: 0.6, duration: 0.12 }, T.final - 0.08);
+            tl.fromTo("#op-state-typing", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.typingStart);
+            tl.fromTo("#op-state-online", { opacity: 1 }, { opacity: 0, duration: 0.15 }, T.typingStart);
+            tl.to("#op-state-typing", { opacity: 0, duration: 0.15 }, T.final);
+            tl.to("#op-state-online", { opacity: 1, duration: 0.15 }, T.final);
+            const typingCycles = Math.floor((T.final - T.typingStart) / 0.6);
+            document.querySelectorAll("#op-typing i").forEach((dot, i) => {
+              tl.fromTo(
+                dot,
+                { y: 0, opacity: 0.45 },
+                { y: -7, opacity: 1, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: typingCycles * 2 - 1 },
+                T.typingStart + i * 0.14,
+              );
+            });
+
+            // ---------------------------------------------------------------- 3. montée dramatique : la caméra se rapproche
+            // Cadrage serré sur le bas du fil (lisibilité en projection), puis lente poussée jusqu'à la vibration.
+            tl.fromTo("#op-cam", { scale: 1 }, { scale: CHAT_SCALE, duration: 1.3, ease: "power2.inOut" }, 1.3);
+            tl.fromTo("#op-cam-in", { y: 0 }, { y: CHAT_SHIFT_Y, duration: 1.3, ease: "power2.inOut" }, 1.3);
+            tl.to("#op-cam", { scale: CHAT_SCALE_PEAK, duration: T.vibrate - 2.6, ease: "power1.in" }, 2.6);
+            tl.fromTo("#op-vignette", { opacity: 0.55 }, { opacity: 1, duration: T.vibrate - 1, ease: "power1.in" }, 1);
+            tl.to("#op-glow", { opacity: 0.35, duration: 3, ease: "power1.inOut" }, 9);
+            tl.fromTo(
+              finalEl,
+              { boxShadow: "0 1px 1px rgba(17,27,33,0.12)" },
+              { boxShadow: "0 0 0 3px rgba(255,210,122,0.9), 0 10px 30px rgba(255,210,122,0.45)", duration: 0.6, immediateRender: false },
+              T.final + 0.3,
+            );
+
+            // ---------------------------------------------------------------- 4. vibration, puis suspension
+            const shakeSteps = Math.floor(BUZZ_S / SHAKE_STEP_S);
+            VIBRATION_BURSTS.forEach((offset) => {
+              tl.fromTo(
+                "#op-phone-wrap",
+                { x: -7, rotation: -1.4 },
+                { x: 7, rotation: 1.4, duration: SHAKE_STEP_S, ease: "none", yoyo: true, repeat: shakeSteps - 1, immediateRender: false },
+                T.vibrate + offset,
+              );
+              tl.to("#op-phone-wrap", { x: 0, rotation: 0, duration: 0.05 }, T.vibrate + offset + BUZZ_S);
+            });
+
+            // ---------------------------------------------------------------- 5. zoom cinématographique dans la dernière bulle
+            tl.to("#op-cam-in", { x: -targetX, y: -targetY, duration: 1.5, ease: "power2.inOut", immediateRender: false }, T.zoomStart);
+            tl.to("#op-cam", { scale: 4.4, duration: 2.0, ease: "power2.in" }, T.zoomStart);
+            tl.to("#op-cam", { scale: 18, duration: 0.8, ease: "power3.in" }, T.zoomStart + 2.0);
+            tl.fromTo("#op-cam", { filter: "blur(0px)" }, { filter: "blur(16px)", duration: 0.55, ease: "power2.in", immediateRender: false }, T.whooshPeak - 0.55);
+            tl.to("#op-glow", { opacity: 0, duration: 0.8 }, T.zoomStart + 1.2);
+
+            // ---------------------------------------------------------------- 6. whoosh → éclair → impact
+            tl.fromTo("#op-flash", { opacity: 0 }, { opacity: 1, duration: 0.28, ease: "power2.in" }, T.whooshPeak - 0.25);
+            tl.set("#op-cam", { opacity: 0 }, T.impact);
+            tl.set("#op-vignette", { opacity: 0.6 }, T.impact);
+            tl.to("#op-flash", { opacity: 0, duration: 0.6, ease: "power2.out" }, T.impact + 0.05);
+
+            // ---------------------------------------------------------------- 7. expansion des photographies (center-outward-expansion)
+            document.querySelectorAll("#op-burst .op-card").forEach((card, i) => {
+              tl.fromTo(
+                card,
+                { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0.15, rotation: 0, opacity: 0 },
+                {
+                  x: Number(card.dataset.tx),
+                  y: Number(card.dataset.ty),
+                  rotation: Number(card.dataset.rot),
+                  scale: Number(card.dataset.scale),
+                  opacity: 1,
+                  duration: 1.35,
+                  ease: "expo.out",
+                },
+                T.impact + 0.02 + i * 0.035,
+              );
+            });
+            tl.fromTo("#op-burst", { scale: 1 }, { scale: 1.09, duration: T.end - T.impact, ease: "none" }, T.impact);
+
+            // ---------------------------------------------------------------- 8. titre
+            tl.fromTo("#op-dim", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.inOut" }, T.titleIn - 0.5);
+            tl.fromTo("#op-title-l1 .w", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out", stagger: 0.08 }, T.titleIn);
+            tl.fromTo(
+              "#op-title-laura",
+              { scale: 1.35, opacity: 0, filter: "blur(10px)" },
+              { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" },
+              T.titleIn + 0.55,
+            );
+            tl.fromTo("#op-title-quoi", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, T.titleIn + 1.0);
+            document.querySelectorAll("#op-title .op-dot").forEach((dot, i) => {
+              tl.fromTo(dot, { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(3)" }, T.titleIn + 1.35 + i * 0.2);
+            });
+            tl.fromTo(
+              "#op-title-meta",
+              { opacity: 0, y: 24 },
+              { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" },
+              T.titleIn + 1.9,
+            );
+
+            // ---------------------------------------------------------------- 9. vers l'univers 01 (fond crème)
+            tl.fromTo("#op-title", { scale: 1, opacity: 1 }, { scale: 1.06, opacity: 0, duration: 0.7, ease: "power2.in" }, T.fadeOut);
+            tl.fromTo("#op-fade", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.inOut" }, T.fadeOut);
+
+            window.__timelines[ID] = tl;
+          }
+
+          document.fonts.ready.then(build);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

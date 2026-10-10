@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "reel-vertical",
+      "confirmed_in": [
+        "reel-laura"
+      ],
+      "updated_at": "2026-10-09T22:04:49.106Z"
+    },
+    "aspect": {
+      "value": "1080x1920",
+      "confirmed_in": [
+        "reel-laura"
+      ],
+      "updated_at": "2026-10-09T22:04:53.104Z"
+    },
+    "language": {
+      "value": "fr",
+      "confirmed_in": [
+        "reel-laura"
+      ],
+      "updated_at": "2026-10-09T22:04:57.086Z"
+    },
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "reel-laura"
+      ],
+      "updated_at": "2026-10-09T22:05:02.246Z"
+    },
+    "storyboard": {
+      "value": "yes",
+      "confirmed_in": [
+        "reel-laura"
+      ],
+      "updated_at": "2026-10-09T22:05:06.079Z"
+    }
+  },
+  "sightings": {}
+}

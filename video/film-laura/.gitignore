@@ -1,0 +1,9 @@
+node_modules/
+renders/
+snapshots/
+.hyperframes/
+.waveform-cache/
+# Copies générées par scripts/build_film.py depuis la racine du dépôt
+assets/audio/
+assets/video/enfance/
+assets/photos/

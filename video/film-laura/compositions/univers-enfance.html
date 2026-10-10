@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Univers 01 — Naissance & enfance</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Bricolage Grotesque";
+          src: url("assets/fonts/BricolageGrotesque-latin.woff2") format("woff2");
+          font-weight: 200 800;
+        }
+        @font-face {
+          font-family: "Geist Mono";
+          src: url("assets/fonts/GeistMono-latin.woff2") format("woff2");
+          font-weight: 100 900;
+        }
+        @font-face {
+          font-family: "Caveat";
+          src: url("assets/fonts/Caveat-latin.woff2") format("woff2");
+          font-weight: 400 700;
+        }
+
+        #enfance {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #f5f1f2;
+          font-family: "Bricolage Grotesque", sans-serif;
+          color: #3b3042;
+        }
+        .enf-bg {
+          position: absolute;
+          inset: 0;
+        }
+        .enf-bg video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        #enf-wash {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(70% 70% at 50% 50%, rgba(245, 241, 242, 0) 40%, rgba(245, 241, 242, 0.55) 100%);
+        }
+
+        /* ------------------------------------------------------------ emplacements photo */
+        #enf-stage {
+          position: absolute;
+          inset: 0;
+          perspective: 1800px;
+        }
+        #enfance .slot {
+          position: absolute;
+          left: 410px;
+          top: 150px;
+          width: 1100px;
+          height: 760px;
+          opacity: 0;
+        }
+        #enfance .slot-media {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          padding: 20px;
+          border-radius: 30px;
+          background: #fbf8f4;
+          box-shadow:
+            0 30px 70px rgba(59, 48, 66, 0.22),
+            0 6px 16px rgba(59, 48, 66, 0.12);
+        }
+        #enfance .m-frame {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 16px;
+          overflow: hidden;
+        }
+        #enfance .m-kb {
+          position: absolute;
+          inset: 0;
+        }
+        #enfance .m-bg {
+          position: absolute;
+          left: -40px;
+          top: -40px;
+          width: calc(100% + 80px);
+          height: calc(100% + 80px);
+          object-fit: cover;
+          filter: blur(28px) saturate(0.9);
+          opacity: 0.85;
+        }
+        #enfance .m-fg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        #enfance .ph {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: linear-gradient(150deg, #e7b9c4 0%, #dad3ec 50%, #b6d2e8 100%);
+          color: #3b3042;
+        }
+        #enfance .ph b {
+          font-family: "Caveat", cursive;
+          font-size: 150px;
+          font-weight: 700;
+          line-height: 1;
+        }
+        #enfance .ph span {
+          font-family: "Geist Mono", monospace;
+          font-size: 22px;
+          letter-spacing: 0.32em;
+        }
+        #enfance .ph i {
+          font-family: "Geist Mono", monospace;
+          font-style: normal;
+          font-size: 16px;
+          letter-spacing: 0.08em;
+          color: #4a3f52;
+        }
+
+        /* ------------------------------------------------------------ bulles (transition « bulles de savon ») */
+        .enf-bubble {
+          position: absolute;
+          border-radius: 50%;
+          border: 3px solid rgba(255, 255, 255, 0.85);
+          background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.7), rgba(182, 210, 232, 0.15) 60%, rgba(231, 185, 196, 0.25));
+          opacity: 0;
+        }
+
+        /* ------------------------------------------------------------ titres */
+        #enf-title {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+        }
+        #enf-title-num {
+          font-family: "Geist Mono", monospace;
+          font-size: 30px;
+          letter-spacing: 0.5em;
+          color: #4a3f52;
+        }
+        #enf-title-main {
+          font-size: 168px;
+          font-weight: 800;
+          letter-spacing: -0.045em;
+          line-height: 1.05;
+        }
+        #enf-title-main em {
+          font-style: italic;
+          font-weight: 300;
+        }
+        #enf-date {
+          position: absolute;
+          left: 300px;
+          top: 820px;
+          width: 520px;
+          height: 140px;
+          font-family: "Caveat", cursive;
+          font-size: 110px;
+          font-weight: 700;
+          color: #3b3042;
+          opacity: 0;
+        }
+        #enf-tag {
+          position: absolute;
+          left: 64px;
+          top: 52px;
+          display: flex;
+          gap: 18px;
+          align-items: baseline;
+          padding: 12px 20px;
+          border-radius: 12px;
+          background: rgba(251, 248, 244, 0.9);
+          font-family: "Geist Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.24em;
+          color: #3b3042;
+          opacity: 0;
+        }
+        #enf-tag b {
+          font-weight: 700;
+        }
+        #enf-count {
+          position: absolute;
+          right: 64px;
+          bottom: 52px;
+          padding: 10px 18px;
+          border-radius: 12px;
+          background: rgba(251, 248, 244, 0.9);
+          font-family: "Geist Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.2em;
+          color: #3b3042;
+          opacity: 0;
+        }
+      </style>
+
+      <div data-hf-id="hf-6333" id="enfance" data-composition-id="enfance" data-width="1920" data-height="1080">
+        <!-- Fonds animés (rendus HyperFrames de video/hyperframes/bg-enfance, boucles parfaites de 10 s).
+             Un fond par tranche de 30 s ; le suivant arrive 1 s avant, en fondu. -->
+        <div data-hf-id="hf-v4u8" class="enf-bg" id="enf-bg-1">
+          <video data-hf-id="hf-74ay" id="enf-bg-1a" src="assets/video/enfance/BG_ENF_01_AQUARELLE.mp4" muted playsinline data-start="0" data-duration="10"></video>
+          <video data-hf-id="hf-pnzo" id="enf-bg-1b" src="assets/video/enfance/BG_ENF_01_AQUARELLE.mp4" muted playsinline data-start="10" data-duration="10"></video>
+          <video data-hf-id="hf-pk1q" id="enf-bg-1c" src="assets/video/enfance/BG_ENF_01_AQUARELLE.mp4" muted playsinline data-start="20" data-duration="10"></video>
+        </div>
+        <div data-hf-id="hf-3sq3" class="enf-bg" id="enf-bg-2">
+          <video data-hf-id="hf-s62y" id="enf-bg-2a" src="assets/video/enfance/BG_ENF_02_BULLES.mp4" muted playsinline data-start="29" data-duration="10"></video>
+          <video data-hf-id="hf-6lyo" id="enf-bg-2b" src="assets/video/enfance/BG_ENF_02_BULLES.mp4" muted playsinline data-start="39" data-duration="10"></video>
+          <video data-hf-id="hf-u6ye" id="enf-bg-2c" src="assets/video/enfance/BG_ENF_02_BULLES.mp4" muted playsinline data-start="49" data-duration="10"></video>
+        </div>
+        <div data-hf-id="hf-zum2" class="enf-bg" id="enf-bg-3">
+          <video data-hf-id="hf-hoeu" id="enf-bg-3a" src="assets/video/enfance/BG_ENF_03_NUAGES.mp4" muted playsinline data-start="58" data-duration="10"></video>
+          <video data-hf-id="hf-0igq" id="enf-bg-3b" src="assets/video/enfance/BG_ENF_03_NUAGES.mp4" muted playsinline data-start="68" data-duration="10"></video>
+          <video data-hf-id="hf-s1ee" id="enf-bg-3c" src="assets/video/enfance/BG_ENF_03_NUAGES.mp4" muted playsinline data-start="78" data-duration="10"></video>
+        </div>
+        <div data-hf-id="hf-jai5" class="enf-bg" id="enf-bg-4">
+          <video data-hf-id="hf-6k9u" id="enf-bg-4a" src="assets/video/enfance/BG_ENF_04_BALLONS.mp4" muted playsinline data-start="87" data-duration="10"></video>
+          <video data-hf-id="hf-wsih" id="enf-bg-4b" src="assets/video/enfance/BG_ENF_04_BALLONS.mp4" muted playsinline data-start="97" data-duration="4"></video>
+        </div>
+        <div data-hf-id="hf-l6be" id="enf-wash"></div>
+
+        <div data-hf-id="hf-1fkv" id="enf-stage">
+          <!-- SLOTS:BEGIN (généré par scripts/build_film.py — ne pas éditer à la main) -->
+          <div class="slot" data-n="1" data-at="0.0" data-dur="4.81" data-kind="single" data-tr="aquarelle_depuis_titre"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>01</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="2" data-at="4.81" data-dur="4.81" data-kind="single" data-tr="bulles_de_savon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>02</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="3" data-at="9.619" data-dur="4.81" data-kind="single" data-tr="fondu_enchaine_doux"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>03</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="4" data-at="14.429" data-dur="4.81" data-kind="single" data-tr="page_tournee_pastel"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>04</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="5" data-at="19.238" data-dur="4.81" data-kind="single" data-tr="etoiles_scintillantes"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>05</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="6" data-at="24.048" data-dur="4.81" data-kind="single" data-tr="crossfade_aquarelle"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>06</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="7" data-at="28.857" data-dur="4.81" data-kind="single" data-tr="bulles_de_savon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>07</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="8" data-at="33.667" data-dur="4.81" data-kind="single" data-tr="fondu_enchaine_doux"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>08</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="9" data-at="38.476" data-dur="4.81" data-kind="single" data-tr="page_tournee_pastel"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>09</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="10" data-at="43.286" data-dur="4.81" data-kind="single" data-tr="etoiles_scintillantes"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>10</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="11" data-at="48.095" data-dur="4.81" data-kind="single" data-tr="crossfade_aquarelle"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>11</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="12" data-at="52.905" data-dur="4.81" data-kind="single" data-tr="bulles_de_savon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>12</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="13" data-at="57.714" data-dur="4.81" data-kind="single" data-tr="fondu_enchaine_doux"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>13</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="14" data-at="62.524" data-dur="4.81" data-kind="single" data-tr="page_tournee_pastel"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>14</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="15" data-at="67.333" data-dur="4.81" data-kind="single" data-tr="etoiles_scintillantes"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>15</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="16" data-at="72.143" data-dur="4.81" data-kind="single" data-tr="crossfade_aquarelle"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>16</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="17" data-at="76.952" data-dur="4.81" data-kind="single" data-tr="bulles_de_savon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>17</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="18" data-at="81.762" data-dur="4.81" data-kind="single" data-tr="fondu_enchaine_doux"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>18</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="19" data-at="86.571" data-dur="4.81" data-kind="single" data-tr="page_tournee_pastel"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>19</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="20" data-at="91.381" data-dur="4.81" data-kind="single" data-tr="etoiles_scintillantes"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>20</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <div class="slot" data-n="21" data-at="96.19" data-dur="4.81" data-kind="single" data-tr="crossfade_aquarelle"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>21</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Naissance-Enfance</i></div></div></div></div></div>
+          <!-- SLOTS:END -->
+        </div>
+        <div data-hf-id="hf-ftt0" id="enf-bubbles"></div>
+
+        <div data-hf-id="hf-jq0z" id="enf-title">
+          <div data-hf-id="hf-otuv" id="enf-title-num" data-layout-allow-overlap="">UNIVERS 01</div>
+          <div data-hf-id="hf-qtec" id="enf-title-main" data-layout-allow-overlap="">Naissance <em data-hf-id="hf-fqar">&amp;</em> enfance</div>
+        </div>
+        <div data-hf-id="hf-dsw9" id="enf-date" data-layout-allow-overlap="">Juillet 2009</div>
+        <div data-hf-id="hf-hz4h" id="enf-tag"><b data-hf-id="hf-27a2">01</b><span data-hf-id="hf-5pp8">NAISSANCE &amp; ENFANCE</span></div>
+        <div data-hf-id="hf-hi2h" id="enf-count"><span data-hf-id="hf-wlvf" id="enf-count-n">01</span> / <span data-hf-id="hf-rwut" id="enf-count-total">21</span></div>
+      </div>
+
+      <script>
+        (function () {
+          const ID = "enfance";
+          const DUR = 101;
+          const BG_SWITCHES = [29, 58, 87]; // début du fondu (1 s) vers le fond suivant
+          const TITLE_OUT = 2.4; // le titre se range dans l'étiquette du coin
+          const FIRST_SLOT_IN = 2.0;
+          const DATE_IN = 1.2;
+          const DATE_OUT = 7.6; // repère « Juillet 2009 » (TXT_DATE_NAISSANCE de timeline.json)
+          const IN_S = 1.2;
+          const KB_SCALE = 1.1;
+
+          // Générateur pseudo-aléatoire à graine fixe : rendu déterministe.
+          function mulberry32(seed) {
+            let a = seed >>> 0;
+            return () => {
+              a = (a + 0x6d2b79f5) | 0;
+              let t = Math.imul(a ^ (a >>> 15), 1 | a);
+              t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+              return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+          }
+          const rand = mulberry32(2009);
+
+          // Bulles décoratives de la transition « bulles de savon » (créées une fois, positions fixes).
+          const bubbleHost = document.getElementById("enf-bubbles");
+          const BUBBLES = Array.from({ length: 10 }, () => {
+            const b = document.createElement("div");
+            b.className = "enf-bubble";
+            const size = 60 + Math.round(rand() * 110);
+            b.style.width = b.style.height = size + "px";
+            b.style.left = Math.round(260 + rand() * 1300) + "px";
+            b.style.top = Math.round(700 + rand() * 260) + "px";
+            bubbleHost.appendChild(b);
+            return b;
+          });
+
+          function enter(tl, slot, style, at, tilt) {
+            if (style === "page_tournee_pastel") {
+              tl.fromTo(slot, { opacity: 0, rotationY: -75, rotation: tilt, transformOrigin: "0% 50%", x: -120 }, { opacity: 1, rotationY: 0, x: 0, duration: IN_S, ease: "power3.out" }, at);
+            } else if (style === "bulles_de_savon") {
+              tl.fromTo(slot, { opacity: 0, scale: 0.55, rotation: tilt * 2, y: 120 }, { opacity: 1, scale: 1, rotation: tilt, y: 0, duration: IN_S, ease: "back.out(1.5)" }, at);
+              BUBBLES.forEach((b, k) => {
+                tl.fromTo(b, { opacity: 0, y: 0, scale: 0.6 }, { opacity: 0.9, y: -260 - k * 30, scale: 1, duration: 1.4, ease: "sine.out", immediateRender: false }, at - 0.2 + k * 0.04);
+                tl.to(b, { opacity: 0, duration: 0.4 }, at + 1.2 + k * 0.04);
+              });
+            } else if (style === "etoiles_scintillantes") {
+              tl.fromTo(slot, { opacity: 0, scale: 0.9, rotation: tilt * 3, filter: "brightness(1.6)" }, { opacity: 1, scale: 1, rotation: tilt, filter: "brightness(1)", duration: IN_S, ease: "power2.out" }, at);
+            } else {
+              // fondu enchaîné doux / aquarelle
+              tl.fromTo(slot, { opacity: 0, scale: 1.05, rotation: tilt, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: IN_S + 0.3, ease: "sine.out" }, at);
+            }
+          }
+
+          function build() {
+            const tl = gsap.timeline({ paused: true });
+            const slots = Array.from(document.querySelectorAll("#enfance .slot"));
+            document.getElementById("enf-count-total").textContent = String(slots.length).padStart(2, "0");
+
+            // ---------------------------------------------------------------- fonds
+            ["#enf-bg-2", "#enf-bg-3", "#enf-bg-4"].forEach((sel, i) => {
+              tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 1, ease: "sine.inOut" }, BG_SWITCHES[i]);
+            });
+
+            // ---------------------------------------------------------------- titre d'univers
+            tl.fromTo("#enf-title-num", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 0.2);
+            tl.fromTo("#enf-title-main", { y: 60, opacity: 0, filter: "blur(14px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.1, ease: "power3.out" }, 0.35);
+            tl.to("#enf-title", { opacity: 0, y: -40, scale: 0.92, duration: 0.7, ease: "power2.in" }, TITLE_OUT);
+            tl.fromTo("#enf-tag", { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, TITLE_OUT + 0.5);
+            tl.fromTo("#enf-count", { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, TITLE_OUT + 0.5);
+            tl.to(["#enf-tag", "#enf-count"], { opacity: 0, duration: 0.5 }, DUR - 0.6);
+            tl.fromTo("#enf-date", { opacity: 0, rotation: -10, scale: 0.8 }, { opacity: 1, rotation: -5, scale: 1, duration: 0.9, ease: "back.out(1.6)" }, DATE_IN);
+            tl.to("#enf-date", { opacity: 0, y: 20, duration: 0.6 }, DATE_OUT);
+
+            // ---------------------------------------------------------------- photos : entrée, Ken Burns, sortie
+            const counter = document.getElementById("enf-count-n");
+            slots.forEach((slot, i) => {
+              const at = Math.max(Number(slot.dataset.at), i === 0 ? FIRST_SLOT_IN : 0);
+              const next = slots[i + 1];
+              const out = next ? Number(next.dataset.at) : DUR - 0.6;
+              const tilt = i % 2 ? 1.6 : -1.6;
+              const kb = slot.querySelector(".m-kb");
+
+              enter(tl, slot, slot.dataset.tr || "fondu_enchaine_doux", at, tilt);
+              tl.fromTo(kb, { scale: 1, xPercent: 0 }, { scale: KB_SCALE, xPercent: i % 2 ? 2 : -2, duration: out - at + 1, ease: "none" }, at);
+              tl.to(slot, { opacity: 0, y: -30, scale: 0.97, duration: 0.9, ease: "sine.in" }, out - 0.1);
+              tl.set(counter, { textContent: String(i + 1).padStart(2, "0") }, at);
+            });
+
+            window.__timelines[ID] = tl;
+          }
+
+          document.fonts.ready.then(build);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

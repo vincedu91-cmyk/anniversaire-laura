@@ -1,0 +1,554 @@
+[
+  {
+    "id": "w0",
+    "text": "Recommence.",
+    "start": 0.06,
+    "end": 6.78
+  },
+  {
+    "id": "w1",
+    "text": "Je",
+    "start": 6.78,
+    "end": 7.02
+  },
+  {
+    "id": "w2",
+    "text": "m'appelle",
+    "start": 7.02,
+    "end": 7.42
+  },
+  {
+    "id": "w3",
+    "text": "Lara",
+    "start": 7.42,
+    "end": 7.82
+  },
+  {
+    "id": "w4",
+    "text": "Jean.",
+    "start": 7.98,
+    "end": 8.86
+  },
+  {
+    "id": "w5",
+    "text": "Avant,",
+    "start": 8.86,
+    "end": 9.42
+  },
+  {
+    "id": "w6",
+    "text": "j'étais",
+    "start": 9.42,
+    "end": 9.9
+  },
+  {
+    "id": "w7",
+    "text": "totalement",
+    "start": 9.9,
+    "end": 10.3
+  },
+  {
+    "id": "w8",
+    "text": "invisible.",
+    "start": 10.3,
+    "end": 11.58
+  },
+  {
+    "id": "w9",
+    "text": "J'écris",
+    "start": 15.66,
+    "end": 16.22
+  },
+  {
+    "id": "w10",
+    "text": "une",
+    "start": 16.3,
+    "end": 16.46
+  },
+  {
+    "id": "w11",
+    "text": "lettre",
+    "start": 16.46,
+    "end": 16.78
+  },
+  {
+    "id": "w12",
+    "text": "chaque",
+    "start": 16.78,
+    "end": 16.94
+  },
+  {
+    "id": "w13",
+    "text": "fois",
+    "start": 16.94,
+    "end": 17.1
+  },
+  {
+    "id": "w14",
+    "text": "que",
+    "start": 17.1,
+    "end": 17.18
+  },
+  {
+    "id": "w15",
+    "text": "j'ai",
+    "start": 17.18,
+    "end": 17.34
+  },
+  {
+    "id": "w16",
+    "text": "un",
+    "start": 17.34,
+    "end": 17.42
+  },
+  {
+    "id": "w17",
+    "text": "coup",
+    "start": 17.42,
+    "end": 17.66
+  },
+  {
+    "id": "w18",
+    "text": "de",
+    "start": 17.66,
+    "end": 17.74
+  },
+  {
+    "id": "w19",
+    "text": "cœur",
+    "start": 17.74,
+    "end": 18.06
+  },
+  {
+    "id": "w20",
+    "text": "si",
+    "start": 18.06,
+    "end": 18.22
+  },
+  {
+    "id": "w21",
+    "text": "intense",
+    "start": 18.22,
+    "end": 18.54
+  },
+  {
+    "id": "w22",
+    "text": "que",
+    "start": 18.54,
+    "end": 18.62
+  },
+  {
+    "id": "w23",
+    "text": "je",
+    "start": 18.62,
+    "end": 18.7
+  },
+  {
+    "id": "w24",
+    "text": "sais",
+    "start": 18.78,
+    "end": 18.94
+  },
+  {
+    "id": "w25",
+    "text": "pas",
+    "start": 18.94,
+    "end": 19.1
+  },
+  {
+    "id": "w26",
+    "text": "quoi",
+    "start": 19.1,
+    "end": 19.34
+  },
+  {
+    "id": "w27",
+    "text": "faire",
+    "start": 19.34,
+    "end": 19.5
+  },
+  {
+    "id": "w28",
+    "text": "d'autre.",
+    "start": 19.5,
+    "end": 19.98
+  },
+  {
+    "id": "w29",
+    "text": "J'en",
+    "start": 19.98,
+    "end": 20.3
+  },
+  {
+    "id": "w30",
+    "text": "ai",
+    "start": 20.3,
+    "end": 20.46
+  },
+  {
+    "id": "w31",
+    "text": "écrit",
+    "start": 20.46,
+    "end": 20.7
+  },
+  {
+    "id": "w32",
+    "text": "pour",
+    "start": 20.7,
+    "end": 20.86
+  },
+  {
+    "id": "w33",
+    "text": "5",
+    "start": 20.86,
+    "end": 21.1
+  },
+  {
+    "id": "w34",
+    "text": "garçons.",
+    "start": 21.1,
+    "end": 21.66
+  },
+  {
+    "id": "w35",
+    "text": "Peter",
+    "start": 21.9,
+    "end": 22.38
+  },
+  {
+    "id": "w36",
+    "text": "et",
+    "start": 22.38,
+    "end": 22.62
+  },
+  {
+    "id": "w37",
+    "text": "ses",
+    "start": 22.62,
+    "end": 22.86
+  },
+  {
+    "id": "w38",
+    "text": "beaux",
+    "start": 22.86,
+    "end": 23.1
+  },
+  {
+    "id": "w39",
+    "text": "yeux,",
+    "start": 23.1,
+    "end": 23.66
+  },
+  {
+    "id": "w40",
+    "text": "Kenny",
+    "start": 23.66,
+    "end": 24.14
+  },
+  {
+    "id": "w41",
+    "text": "du",
+    "start": 24.14,
+    "end": 24.3
+  },
+  {
+    "id": "w42",
+    "text": "camp",
+    "start": 24.3,
+    "end": 24.46
+  },
+  {
+    "id": "w43",
+    "text": "de",
+    "start": 24.54,
+    "end": 24.62
+  },
+  {
+    "id": "w44",
+    "text": "vacances,",
+    "start": 24.62,
+    "end": 25.18
+  },
+  {
+    "id": "w45",
+    "text": "Lucas",
+    "start": 25.18,
+    "end": 25.66
+  },
+  {
+    "id": "w46",
+    "text": "du",
+    "start": 25.66,
+    "end": 25.82
+  },
+  {
+    "id": "w47",
+    "text": "bal",
+    "start": 25.82,
+    "end": 25.98
+  },
+  {
+    "id": "w48",
+    "text": "de",
+    "start": 26.14,
+    "end": 26.22
+  },
+  {
+    "id": "w49",
+    "text": "l'école,",
+    "start": 26.22,
+    "end": 26.7
+  },
+  {
+    "id": "w50",
+    "text": "John",
+    "start": 26.7,
+    "end": 26.94
+  },
+  {
+    "id": "w51",
+    "text": "du",
+    "start": 27.1,
+    "end": 27.18
+  },
+  {
+    "id": "w52",
+    "text": "club",
+    "start": 27.18,
+    "end": 27.42
+  },
+  {
+    "id": "w53",
+    "text": "de",
+    "start": 27.42,
+    "end": 27.5
+  },
+  {
+    "id": "w54",
+    "text": "modélisation",
+    "start": 27.5,
+    "end": 28.06
+  },
+  {
+    "id": "w55",
+    "text": "de",
+    "start": 28.06,
+    "end": 28.14
+  },
+  {
+    "id": "w56",
+    "text": "l'ONU",
+    "start": 28.14,
+    "end": 28.86
+  },
+  {
+    "id": "w57",
+    "text": "et",
+    "start": 28.94,
+    "end": 29.1
+  },
+  {
+    "id": "w58",
+    "text": "Josh,",
+    "start": 29.1,
+    "end": 29.66
+  },
+  {
+    "id": "w59",
+    "text": "le",
+    "start": 29.66,
+    "end": 29.82
+  },
+  {
+    "id": "w60",
+    "text": "garçon",
+    "start": 29.82,
+    "end": 30.14
+  },
+  {
+    "id": "w61",
+    "text": "d'à",
+    "start": 30.14,
+    "end": 30.38
+  },
+  {
+    "id": "w62",
+    "text": "côté.",
+    "start": 30.38,
+    "end": 31.42
+  },
+  {
+    "id": "w63",
+    "text": "Il",
+    "start": 33.9,
+    "end": 34.14
+  },
+  {
+    "id": "w64",
+    "text": "est",
+    "start": 34.14,
+    "end": 34.3
+  },
+  {
+    "id": "w65",
+    "text": "temps",
+    "start": 34.3,
+    "end": 34.54
+  },
+  {
+    "id": "w66",
+    "text": "que",
+    "start": 34.54,
+    "end": 34.7
+  },
+  {
+    "id": "w67",
+    "text": "tu",
+    "start": 34.7,
+    "end": 34.86
+  },
+  {
+    "id": "w68",
+    "text": "montres",
+    "start": 34.86,
+    "end": 35.18
+  },
+  {
+    "id": "w69",
+    "text": "à",
+    "start": 35.18,
+    "end": 35.26
+  },
+  {
+    "id": "w70",
+    "text": "tout",
+    "start": 35.26,
+    "end": 35.34
+  },
+  {
+    "id": "w71",
+    "text": "le",
+    "start": 35.34,
+    "end": 35.42
+  },
+  {
+    "id": "w72",
+    "text": "monde",
+    "start": 35.42,
+    "end": 35.66
+  },
+  {
+    "id": "w73",
+    "text": "qui",
+    "start": 35.66,
+    "end": 35.82
+  },
+  {
+    "id": "w74",
+    "text": "tu",
+    "start": 35.82,
+    "end": 36.06
+  },
+  {
+    "id": "w75",
+    "text": "es",
+    "start": 36.06,
+    "end": 36.3
+  },
+  {
+    "id": "w76",
+    "text": "vraiment.",
+    "start": 36.3,
+    "end": 37.26
+  },
+  {
+    "id": "w77",
+    "text": "La",
+    "start": 40.94,
+    "end": 41.1
+  },
+  {
+    "id": "w78",
+    "text": "Rin,",
+    "start": 41.26,
+    "end": 41.9
+  },
+  {
+    "id": "w79",
+    "text": "bienvenue",
+    "start": 41.9,
+    "end": 42.38
+  },
+  {
+    "id": "w80",
+    "text": "à",
+    "start": 42.38,
+    "end": 42.46
+  },
+  {
+    "id": "w81",
+    "text": "ma",
+    "start": 42.46,
+    "end": 42.62
+  },
+  {
+    "id": "w82",
+    "text": "fête.",
+    "start": 42.62,
+    "end": 43.58
+  },
+  {
+    "id": "w83",
+    "text": "Ne",
+    "start": 46.7,
+    "end": 46.94
+  },
+  {
+    "id": "w84",
+    "text": "cache",
+    "start": 46.94,
+    "end": 47.26
+  },
+  {
+    "id": "w85",
+    "text": "pas",
+    "start": 47.34,
+    "end": 47.5
+  },
+  {
+    "id": "w86",
+    "text": "cette",
+    "start": 47.5,
+    "end": 47.58
+  },
+  {
+    "id": "w87",
+    "text": "partie",
+    "start": 47.66,
+    "end": 47.9
+  },
+  {
+    "id": "w88",
+    "text": "de",
+    "start": 47.9,
+    "end": 47.98
+  },
+  {
+    "id": "w89",
+    "text": "toi,",
+    "start": 47.98,
+    "end": 48.22
+  },
+  {
+    "id": "w90",
+    "text": "d'accord,",
+    "start": 48.22,
+    "end": 48.62
+  },
+  {
+    "id": "w91",
+    "text": "chérie.",
+    "start": 48.62,
+    "end": 49.5
+  }
+]

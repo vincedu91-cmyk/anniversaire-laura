@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Film (projets HyperFrames / Remotion autonomes, hors build du site)
+    "video/**",
   ]),
 ]);
 

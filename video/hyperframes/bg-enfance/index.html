@@ -1,0 +1,575 @@
+<!doctype html>
+<html
+  lang="fr"
+  data-composition-variables='[
+    {"id":"variant","type":"enum","label":"Fond Enfance","default":"aquarelle","options":[
+      {"value":"aquarelle","label":"BG_ENF_01 — Aquarelle"},
+      {"value":"bulles","label":"BG_ENF_02 — Bulles de savon"},
+      {"value":"nuages","label":"BG_ENF_03 — Nuages papier découpé"},
+      {"value":"ballons","label":"BG_ENF_04 — Ballons"}
+    ]}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f5f1f2;
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+      }
+      #bg {
+        display: block;
+        width: 1920px;
+        height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      Fonds animés de la partie « Naissance & Enfance » (timeline.json : BG_ENF_01..04).
+      Boucle parfaite de 10 s : chaque mouvement a une période qui divise 10 s,
+      donc l'image à t = 10 s est identique à l'image à t = 0.
+      Palette : DESIGN.md › Enfance (désaturée).
+    -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+      <canvas id="bg" class="clip" data-start="0" data-duration="10" data-track-index="0" width="1920" height="1080"></canvas>
+    </div>
+    <script>
+      const W = 1920;
+      const H = 1080;
+      const LOOP_S = 10;
+      const TAU = Math.PI * 2;
+
+      const PALETTE = {
+        rose: "#E7B9C4",
+        bleu: "#B6D2E8",
+        jaune: "#F0E1A0",
+        lavande: "#DAD3EC",
+        blanc: "#F5F1F2",
+        prune: "#3B3042",
+      };
+
+      const vars = window.__hyperframes?.getVariables ? window.__hyperframes.getVariables() : {};
+      const VARIANT = vars.variant || "aquarelle";
+
+      const canvas = document.getElementById("bg");
+      const ctx = canvas.getContext("2d");
+
+      // ------------------------------------------------------------ utilitaires
+      function mulberry32(seed) {
+        let a = seed >>> 0;
+        return function () {
+          a = (a + 0x6d2b79f5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+
+      function hexToRgb(hex) {
+        const n = parseInt(hex.slice(1), 16);
+        return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+      }
+
+      function rgba(hex, alpha) {
+        const [r, g, b] = hexToRgb(hex);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      }
+
+      function mix(hexA, hexB, k) {
+        const a = hexToRgb(hexA);
+        const b = hexToRgb(hexB);
+        const c = a.map((v, i) => Math.round(v + (b[i] - v) * k));
+        return "#" + c.map((v) => v.toString(16).padStart(2, "0")).join("");
+      }
+
+      const phase = (t) => (TAU * t) / LOOP_S; // 0 → 2π sur la boucle
+      const frac = (x) => x - Math.floor(x);
+      const range = (rand, min, max) => min + rand() * (max - min);
+      const pick = (rand, items) => items[Math.floor(rand() * items.length)];
+
+      function makeCanvas(width, height) {
+        const c = document.createElement("canvas");
+        c.width = Math.ceil(width);
+        c.height = Math.ceil(height);
+        return c;
+      }
+
+      // Grain papier statique (atténue aussi le banding H.264 des dégradés clairs).
+      const grain = (() => {
+        const c = makeCanvas(W, H);
+        const g = c.getContext("2d");
+        const img = g.createImageData(W, H);
+        const rand = mulberry32(1818);
+        for (let i = 0; i < img.data.length; i += 4) {
+          const v = 128 + (rand() - 0.5) * 90;
+          img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+          img.data[i + 3] = 255;
+        }
+        g.putImageData(img, 0, 0);
+        return c;
+      })();
+
+      function applyGrain(alpha) {
+        ctx.save();
+        ctx.globalCompositeOperation = "overlay";
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(grain, 0, 0);
+        ctx.restore();
+      }
+
+      function verticalGradient(stops) {
+        const g = ctx.createLinearGradient(0, 0, 0, H);
+        stops.forEach(([at, color]) => g.addColorStop(at, color));
+        return g;
+      }
+
+      // ------------------------------------------------------------ lavis d'aquarelle (partagé : aquarelle + ciel des ballons)
+      function createWash({ seed, colors, count, alphaCenter, alphaEdge, drift }) {
+        const scale = 0.5; // dessin en demi-résolution, le flou masque la différence
+        const layer = makeCanvas(W * scale, H * scale);
+        const lctx = layer.getContext("2d");
+        const rand = mulberry32(seed);
+        const blobs = Array.from({ length: count }, (_, i) => ({
+          color: colors[i % colors.length],
+          x: range(rand, 0.05, 0.95) * W * scale,
+          y: range(rand, 0.08, 0.92) * H * scale,
+          r: range(rand, 0.17, 0.3) * W * scale,
+          ax: range(rand, 0.5, 1) * drift * scale,
+          ay: range(rand, 0.4, 0.8) * drift * scale,
+          fx: pick(rand, [1, 2]),
+          fy: pick(rand, [1, 2]),
+          p: Array.from({ length: 5 }, () => rand() * TAU),
+        }));
+
+        function blobPath(b, ph) {
+          const cx = b.x + b.ax * Math.sin(ph * b.fx + b.p[0]);
+          const cy = b.y + b.ay * Math.sin(ph * b.fy + b.p[1]);
+          const path = new Path2D();
+          const steps = 72;
+          for (let s = 0; s <= steps; s++) {
+            const a = (s / steps) * TAU;
+            const r =
+              b.r *
+              (1 +
+                0.12 * Math.sin(3 * a + ph + b.p[2]) +
+                0.08 * Math.sin(5 * a - 2 * ph + b.p[3]) +
+                0.05 * Math.sin(2 * a + ph + b.p[4]));
+            const x = cx + r * Math.cos(a);
+            const y = cy + r * Math.sin(a);
+            s === 0 ? path.moveTo(x, y) : path.lineTo(x, y);
+          }
+          path.closePath();
+          return { path, cx, cy };
+        }
+
+        return function draw(t, blur) {
+          const ph = phase(t);
+          lctx.globalCompositeOperation = "source-over";
+          lctx.clearRect(0, 0, layer.width, layer.height);
+          lctx.globalCompositeOperation = "multiply"; // les superpositions foncent, comme des couches de lavis
+          blobs.forEach((b) => {
+            const { path, cx, cy } = blobPath(b, ph);
+            // Le pigment se concentre sur les bords : centre plus clair, bord plus dense.
+            const g = lctx.createRadialGradient(cx, cy, 0, cx, cy, b.r * 1.2);
+            g.addColorStop(0, rgba(b.color, alphaCenter));
+            g.addColorStop(0.8, rgba(b.color, (alphaCenter + alphaEdge) / 2));
+            g.addColorStop(1, rgba(b.color, alphaEdge));
+            lctx.fillStyle = g;
+            lctx.fill(path);
+            lctx.lineWidth = 3;
+            lctx.strokeStyle = rgba(mix(b.color, PALETTE.prune, 0.15), alphaEdge * 0.45);
+            lctx.stroke(path);
+          });
+          ctx.save();
+          ctx.filter = `blur(${blur}px)`;
+          ctx.drawImage(layer, -40, -40, W + 80, H + 80); // léger débord pour éviter le liseré flouté
+          ctx.restore();
+        };
+      }
+
+      // ------------------------------------------------------------ BG_ENF_01 — aquarelle
+      function setupAquarelle() {
+        const wash = createWash({
+          seed: 101,
+          colors: [PALETTE.rose, PALETTE.bleu, PALETTE.jaune, PALETTE.lavande],
+          count: 9,
+          alphaCenter: 0.32,
+          alphaEdge: 0.6,
+          drift: 140,
+        });
+        return (t) => {
+          ctx.fillStyle = PALETTE.blanc;
+          ctx.fillRect(0, 0, W, H);
+          wash(t, 12);
+          applyGrain(0.1);
+        };
+      }
+
+      // ------------------------------------------------------------ BG_ENF_02 — bulles de savon
+      function drawBubble(target, x, y, r, sx, sy, spin) {
+        target.save();
+        target.translate(x, y);
+        target.scale(sx, sy);
+        const body = target.createRadialGradient(0, 0, 0, 0, 0, r);
+        body.addColorStop(0, rgba(PALETTE.blanc, 0.03));
+        body.addColorStop(0.82, rgba(PALETTE.blanc, 0.08));
+        body.addColorStop(1, rgba(PALETTE.lavande, 0.4));
+        target.fillStyle = body;
+        target.beginPath();
+        target.arc(0, 0, r, 0, TAU);
+        target.fill();
+        // Film irisé : anneau en dégradé conique qui tourne lentement.
+        const film = target.createConicGradient(spin, 0, 0);
+        [PALETTE.rose, PALETTE.jaune, PALETTE.bleu, PALETTE.lavande, PALETTE.rose].forEach((c, i) =>
+          film.addColorStop(i / 4, rgba(mix(c, PALETTE.prune, 0.08), 0.55)),
+        );
+        target.strokeStyle = film;
+        target.lineWidth = Math.max(1.5, r * 0.07);
+        target.beginPath();
+        target.arc(0, 0, r * 0.965, 0, TAU);
+        target.stroke();
+        // Reflets du soleil.
+        target.fillStyle = rgba(PALETTE.blanc, 0.85);
+        target.beginPath();
+        target.ellipse(-r * 0.38, -r * 0.42, r * 0.26, r * 0.13, -0.65, 0, TAU);
+        target.fill();
+        target.fillStyle = rgba(PALETTE.blanc, 0.4);
+        target.beginPath();
+        target.ellipse(r * 0.45, r * 0.4, r * 0.1, r * 0.05, -0.65, 0, TAU);
+        target.fill();
+        target.restore();
+      }
+
+      function setupBulles() {
+        const rand = mulberry32(202);
+        const layers = [
+          { count: 12, rMin: 16, rMax: 38, blur: 3, alpha: 0.7, sway: 18 },
+          { count: 10, rMin: 40, rMax: 76, blur: 0, alpha: 0.9, sway: 34 },
+          { count: 6, rMin: 82, rMax: 132, blur: 0, alpha: 1, sway: 50 },
+        ].map((layer, li) => ({
+          ...layer,
+          canvas: layer.blur ? makeCanvas(W, H) : null,
+          bubbles: Array.from({ length: layer.count }, (_, i) => ({
+            x: range(rand, 0.03, 0.97) * W,
+            r: range(rand, layer.rMin, layer.rMax),
+            offset: (i + range(rand, 0, 0.8)) / layer.count + li * 0.13,
+            swayK: pick(rand, [1, 2, 3]),
+            wobbleK: pick(rand, [2, 3, 4]),
+            p: rand() * TAU,
+            spinK: pick(rand, [-1, 1]),
+          })),
+        }));
+
+        return (t) => {
+          const ph = phase(t);
+          ctx.fillStyle = verticalGradient([
+            [0, PALETTE.bleu],
+            [0.55, mix(PALETTE.bleu, PALETTE.lavande, 0.6)],
+            [1, PALETTE.rose],
+          ]);
+          ctx.fillRect(0, 0, W, H);
+          // Lumière douce venant du haut à gauche.
+          const sun = ctx.createRadialGradient(W * 0.15, H * 0.05, 0, W * 0.15, H * 0.05, W * 0.6);
+          sun.addColorStop(0, rgba(PALETTE.blanc, 0.6));
+          sun.addColorStop(1, rgba(PALETTE.blanc, 0));
+          ctx.fillStyle = sun;
+          ctx.fillRect(0, 0, W, H);
+
+          layers.forEach((layer) => {
+            const target = layer.canvas ? layer.canvas.getContext("2d") : ctx;
+            if (layer.canvas) target.clearRect(0, 0, W, H);
+            target.save();
+            target.globalAlpha = layer.alpha;
+            layer.bubbles.forEach((b) => {
+              const travel = H + 2 * b.r + 40;
+              const y = H + b.r + 20 - frac(t / LOOP_S + b.offset) * travel; // une montée complète par boucle
+              const x = b.x + layer.sway * Math.sin(ph * b.swayK + b.p);
+              const wobble = 0.035 * Math.sin(ph * b.wobbleK + b.p);
+              drawBubble(target, x, y, b.r, 1 + wobble, 1 - wobble, ph * b.spinK + b.p);
+            });
+            target.restore();
+            if (layer.canvas) {
+              ctx.save();
+              ctx.filter = `blur(${layer.blur}px)`; // profondeur de champ : les petites bulles sont floues
+              ctx.drawImage(layer.canvas, 0, 0);
+              ctx.restore();
+            }
+          });
+          applyGrain(0.08);
+        };
+      }
+
+      // ------------------------------------------------------------ BG_ENF_03 — nuages en papier découpé
+      const SHADOW = { color: rgba(PALETTE.prune, 0.2), blur: 16, x: 5, y: 9 };
+
+      function spriteWithShadow(width, height, drawShape) {
+        const pad = 40;
+        const c = makeCanvas(width + pad * 2, height + pad * 2);
+        const g = c.getContext("2d");
+        g.translate(pad, pad);
+        g.shadowColor = SHADOW.color;
+        g.shadowBlur = SHADOW.blur;
+        g.shadowOffsetX = SHADOW.x;
+        g.shadowOffsetY = SHADOW.y;
+        drawShape(g);
+        return { canvas: c, pad };
+      }
+
+      function cloudSprite(rand, width, color) {
+        const height = width * 0.42;
+        const bumps = 4 + Math.floor(rand() * 3);
+        return spriteWithShadow(width, height, (g) => {
+          const path = new Path2D();
+          const base = height * 0.72;
+          path.rect(width * 0.06, base - height * 0.22, width * 0.88, height * 0.28);
+          for (let i = 0; i < bumps; i++) {
+            const cx = width * (0.14 + (0.72 * i) / (bumps - 1));
+            const middle = 1 - Math.abs(i / (bumps - 1) - 0.5) * 1.4; // les bosses centrales sont plus hautes
+            const r = height * (0.2 + 0.2 * middle + rand() * 0.08);
+            path.moveTo(cx + r, base - r * 0.55);
+            path.arc(cx, base - r * 0.55, r, 0, TAU);
+          }
+          path.moveTo(width * 0.94, base);
+          path.arc(width * 0.06 + height * 0.11, base - height * 0.05, height * 0.11, 0, TAU);
+          g.fillStyle = color;
+          g.fill(path); // remplissage « nonzero » = union des cercles
+        });
+      }
+
+      function moonSprite(radius) {
+        const shape = makeCanvas(radius * 2, radius * 2);
+        const s = shape.getContext("2d");
+        s.fillStyle = PALETTE.jaune;
+        s.beginPath();
+        s.arc(radius, radius, radius, 0, TAU);
+        s.fill();
+        s.globalCompositeOperation = "destination-out";
+        s.beginPath();
+        s.arc(radius * 1.45, radius * 0.78, radius * 0.86, 0, TAU);
+        s.fill();
+        return spriteWithShadow(radius * 2, radius * 2, (g) => g.drawImage(shape, 0, 0));
+      }
+
+      function starPath(g, size) {
+        g.beginPath();
+        for (let i = 0; i < 8; i++) {
+          const r = i % 2 === 0 ? size : size * 0.38;
+          const a = (i / 8) * TAU - Math.PI / 2;
+          g[i === 0 ? "moveTo" : "lineTo"](r * Math.cos(a), r * Math.sin(a));
+        }
+        g.closePath();
+      }
+
+      function setupNuages() {
+        const rand = mulberry32(303);
+        const moon = moonSprite(95);
+        const stars = Array.from({ length: 22 }, () => ({
+          x: range(rand, 0.03, 0.97) * W,
+          y: range(rand, 0.04, 0.5) * H,
+          size: range(rand, 7, 16),
+          color: pick(rand, [PALETTE.blanc, PALETTE.jaune]),
+          k: pick(rand, [1, 2, 3, 4, 5]),
+          p: rand() * TAU,
+        }));
+        const cloudLayers = [
+          { color: PALETTE.lavande, count: 4, wMin: 300, wMax: 420, yMin: 0.12, yMax: 0.42, sway: 22, bob: 6 },
+          { color: PALETTE.rose, count: 4, wMin: 380, wMax: 520, yMin: 0.38, yMax: 0.62, sway: 42, bob: 9 },
+          { color: PALETTE.blanc, count: 4, wMin: 520, wMax: 700, yMin: 0.66, yMax: 0.86, sway: 70, bob: 12 },
+        ].map((layer) => ({
+          ...layer,
+          clouds: Array.from({ length: layer.count }, (_, i) => {
+            const width = range(rand, layer.wMin, layer.wMax);
+            return {
+              sprite: cloudSprite(rand, width, layer.color),
+              x: ((i + range(rand, 0.1, 0.6)) / layer.count) * (W + 300) - 300,
+              y: range(rand, layer.yMin, layer.yMax) * H,
+              p: rand() * TAU,
+              k: pick(rand, [1, 1, 2]),
+            };
+          }),
+        }));
+
+        return (t) => {
+          const ph = phase(t);
+          ctx.fillStyle = verticalGradient([
+            [0, PALETTE.bleu],
+            [0.55, mix(PALETTE.bleu, PALETTE.blanc, 0.45)],
+            [1, PALETTE.jaune],
+          ]);
+          ctx.fillRect(0, 0, W, H);
+
+          stars.forEach((s) => {
+            const twinkle = 0.65 + 0.35 * Math.sin(ph * s.k + s.p);
+            ctx.save();
+            ctx.translate(s.x, s.y);
+            ctx.rotate(0.15 * Math.sin(ph + s.p));
+            ctx.scale(twinkle, twinkle);
+            ctx.globalAlpha = 0.55 + 0.45 * twinkle;
+            ctx.fillStyle = s.color;
+            starPath(ctx, s.size);
+            ctx.fill();
+            ctx.restore();
+          });
+
+          ctx.save();
+          ctx.translate(W * 0.82, H * 0.2 + 10 * Math.sin(ph));
+          ctx.rotate(0.07 * Math.sin(ph + 0.8));
+          ctx.drawImage(moon.canvas, -moon.canvas.width / 2, -moon.canvas.height / 2);
+          ctx.restore();
+
+          cloudLayers.forEach((layer) => {
+            layer.clouds.forEach((c) => {
+              const x = c.x + layer.sway * Math.sin(ph * c.k + c.p);
+              const y = c.y + layer.bob * Math.sin(ph * 2 + c.p);
+              ctx.drawImage(c.sprite.canvas, x - c.sprite.pad, y - c.sprite.pad);
+            });
+          });
+          applyGrain(0.09);
+        };
+      }
+
+      // ------------------------------------------------------------ BG_ENF_04 — ballons
+      function balloonSprite(radius, color) {
+        const w = radius * 2;
+        const h = radius * 2.5;
+        const c = makeCanvas(w + 20, h + 20);
+        const g = c.getContext("2d");
+        g.translate(w / 2 + 10, radius + 10);
+        const body = new Path2D();
+        body.moveTo(0, -radius);
+        body.bezierCurveTo(radius * 1.05, -radius, radius * 1.1, radius * 0.55, 0, radius * 1.32);
+        body.bezierCurveTo(-radius * 1.1, radius * 0.55, -radius * 1.05, -radius, 0, -radius);
+        const shade = g.createRadialGradient(-radius * 0.35, -radius * 0.45, radius * 0.1, 0, 0, radius * 1.4);
+        shade.addColorStop(0, mix(color, PALETTE.blanc, 0.55));
+        shade.addColorStop(0.55, color);
+        shade.addColorStop(1, mix(color, PALETTE.prune, 0.18));
+        g.fillStyle = shade;
+        g.fill(body);
+        g.fillStyle = rgba(PALETTE.blanc, 0.55);
+        g.beginPath();
+        g.ellipse(-radius * 0.4, -radius * 0.38, radius * 0.16, radius * 0.3, 0.5, 0, TAU);
+        g.fill();
+        g.fillStyle = mix(color, PALETTE.prune, 0.2);
+        g.beginPath();
+        g.moveTo(-radius * 0.1, radius * 1.42);
+        g.lineTo(radius * 0.1, radius * 1.42);
+        g.lineTo(0, radius * 1.3);
+        g.closePath();
+        g.fill();
+        return { canvas: c, anchorX: w / 2 + 10, anchorY: radius + 10, knotY: radius * 1.42 };
+      }
+
+      function bokehSprite(radius, color) {
+        const c = makeCanvas(radius * 2, radius * 2);
+        const g = c.getContext("2d");
+        const grad = g.createRadialGradient(radius, radius, 0, radius, radius, radius);
+        grad.addColorStop(0, rgba(color, 0.9));
+        grad.addColorStop(0.7, rgba(color, 0.55));
+        grad.addColorStop(1, rgba(color, 0));
+        g.fillStyle = grad;
+        g.fillRect(0, 0, radius * 2, radius * 2);
+        return c;
+      }
+
+      function setupBallons() {
+        const rand = mulberry32(404);
+        const sky = createWash({
+          seed: 414,
+          colors: [PALETTE.bleu, PALETTE.lavande, PALETTE.bleu, PALETTE.blanc],
+          count: 7,
+          alphaCenter: 0.3,
+          alphaEdge: 0.5,
+          drift: 90,
+        });
+        const balloonColors = [PALETTE.rose, PALETTE.bleu, PALETTE.jaune, PALETTE.lavande];
+        const bokeh = Array.from({ length: 18 }, (_, i) => ({
+          sprite: bokehSprite(range(rand, 30, 90), pick(rand, [PALETTE.blanc, PALETTE.jaune, PALETTE.rose])),
+          x: range(rand, 0, 1) * W,
+          offset: i / 18 + range(rand, 0, 0.05),
+          alpha: range(rand, 0.25, 0.5),
+          k: pick(rand, [1, 2]),
+          p: rand() * TAU,
+        }));
+        const balloons = [
+          ...Array.from({ length: 6 }, (_, i) => ({ depth: 0, r: range(rand, 34, 48), i, n: 6 })),
+          ...Array.from({ length: 5 }, (_, i) => ({ depth: 1, r: range(rand, 62, 86), i, n: 5 })),
+        ].map((b) => ({
+          ...b,
+          sprite: balloonSprite(b.r, balloonColors[(b.i + b.depth * 2) % balloonColors.length]),
+          x: ((b.i + range(rand, 0.15, 0.85)) / b.n) * W,
+          offset: (b.i + range(rand, 0, 0.6)) / b.n + b.depth * 0.27,
+          stringLen: b.r * range(rand, 2, 2.6),
+          k: pick(rand, [1, 2]),
+          p: rand() * TAU,
+        }));
+
+        function drawString(x, y, len, ph, b) {
+          const sway = len * 0.18 * Math.sin(ph * 2 + b.p);
+          ctx.strokeStyle = rgba(PALETTE.prune, 0.35);
+          ctx.lineWidth = b.depth ? 2 : 1.4;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.bezierCurveTo(x + sway, y + len * 0.35, x - sway, y + len * 0.7, x + sway * 0.6, y + len);
+          ctx.stroke();
+        }
+
+        return (t) => {
+          const ph = phase(t);
+          ctx.fillStyle = PALETTE.blanc;
+          ctx.fillRect(0, 0, W, H);
+          sky(t, 18);
+
+          bokeh.forEach((o) => {
+            const size = o.sprite.width;
+            const y = H + size - frac(t / LOOP_S + o.offset) * (H + size * 2);
+            ctx.globalAlpha = o.alpha;
+            ctx.drawImage(o.sprite, o.x + 30 * Math.sin(ph * o.k + o.p) - size / 2, y - size / 2);
+          });
+          ctx.globalAlpha = 1;
+
+          balloons.forEach((b) => {
+            const total = b.r * 2.5 + b.stringLen;
+            const y = H + b.r + 20 - frac(t / LOOP_S + b.offset) * (H + total + 60);
+            const x = b.x + (b.depth ? 45 : 25) * Math.sin(ph * b.k + b.p);
+            const tilt = 0.09 * Math.sin(ph * b.k + b.p + 1.2);
+            ctx.save();
+            ctx.globalAlpha = b.depth ? 1 : 0.8;
+            ctx.translate(x, y);
+            ctx.rotate(tilt);
+            drawString(0, b.sprite.knotY, b.stringLen, ph, b);
+            ctx.drawImage(b.sprite.canvas, -b.sprite.anchorX, -b.sprite.anchorY);
+            ctx.restore();
+          });
+          applyGrain(0.08);
+        };
+      }
+
+      // ------------------------------------------------------------ timeline
+      const SETUPS = { aquarelle: setupAquarelle, bulles: setupBulles, nuages: setupNuages, ballons: setupBallons };
+      const drawFrame = (SETUPS[VARIANT] || setupAquarelle)();
+
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.to(clock, { t: LOOP_S, duration: LOOP_S, ease: "none", onUpdate: () => drawFrame(clock.t) }, 0);
+      window.__timelines["main"] = tl;
+      drawFrame(0);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

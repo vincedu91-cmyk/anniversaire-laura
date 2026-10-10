@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Univers 02 — Adolescence</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Anton";
+          src: url("assets/fonts/Anton-latin.woff2") format("woff2");
+          font-weight: 400;
+        }
+        @font-face {
+          font-family: "Geist Mono";
+          src: url("assets/fonts/GeistMono-latin.woff2") format("woff2");
+          font-weight: 100 900;
+        }
+
+        #ado {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #08040f;
+          font-family: "Anton", sans-serif;
+          color: #f6f3ff;
+        }
+        #ado-fx {
+          position: absolute;
+          inset: 0;
+        }
+        #ado-marquee {
+          position: absolute;
+          left: 0;
+          top: 330px;
+          width: 6000px;
+          height: 420px;
+          white-space: nowrap;
+          font-size: 380px;
+          line-height: 420px;
+          color: transparent;
+          -webkit-text-stroke: 2px rgba(246, 243, 255, 0.13);
+        }
+        .ado-bar {
+          position: absolute;
+          left: -400px;
+          width: 2800px;
+        }
+        #ado-bar-1 {
+          top: 120px;
+          height: 110px;
+          background: #7b2bff;
+        }
+        #ado-bar-2 {
+          top: 800px;
+          height: 46px;
+          background: #ff2bd6;
+        }
+        #ado-bar-3 {
+          top: 900px;
+          height: 14px;
+          background: #00f0ff;
+        }
+        #ado-dots {
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(circle, rgba(246, 243, 255, 0.09) 2px, transparent 2.5px);
+          background-size: 18px 18px;
+        }
+
+        /* ------------------------------------------------------------ emplacements */
+        #ado-stage {
+          position: absolute;
+          inset: 0;
+        }
+        #ado .slot {
+          position: absolute;
+          left: 440px;
+          top: 170px;
+          width: 1040px;
+          height: 700px;
+          opacity: 0;
+        }
+        #ado .slot-media {
+          position: absolute;
+          inset: 0;
+          border: 7px solid var(--slot-accent, #ff2bd6);
+          background: #140a24;
+          box-shadow:
+            0 0 22px var(--slot-accent, #ff2bd6),
+            0 0 80px rgba(255, 43, 214, 0.25);
+        }
+        #ado .slot[data-kind="collage"] {
+          left: 0;
+          top: 0;
+          width: 1920px;
+          height: 1080px;
+        }
+        #ado .slot[data-kind="collage"] .slot-media {
+          width: 640px;
+          height: 450px;
+          inset: auto;
+        }
+        #ado .slot[data-kind="collage"] .slot-media:nth-child(1) {
+          left: 150px;
+          top: 230px;
+        }
+        #ado .slot[data-kind="collage"] .slot-media:nth-child(2) {
+          left: 640px;
+          top: 120px;
+        }
+        #ado .slot[data-kind="collage"] .slot-media:nth-child(3) {
+          left: 1140px;
+          top: 380px;
+        }
+        #ado .slot[data-kind="collage"] .slot-media::before {
+          content: "";
+          position: absolute;
+          left: 230px;
+          top: -26px;
+          width: 180px;
+          height: 46px;
+          background: rgba(228, 255, 26, 0.78);
+          transform: rotate(-4deg);
+          z-index: 2;
+        }
+        #ado .m-frame {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        #ado .m-kb {
+          position: absolute;
+          inset: 0;
+        }
+        #ado .m-bg {
+          position: absolute;
+          left: -40px;
+          top: -40px;
+          width: calc(100% + 80px);
+          height: calc(100% + 80px);
+          object-fit: cover;
+          filter: blur(26px) saturate(1.3) contrast(1.1);
+          opacity: 0.7;
+        }
+        #ado .m-fg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: contrast(1.12) saturate(1.1);
+        }
+        #ado .ph {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          background:
+            repeating-linear-gradient(-30deg, rgba(123, 43, 255, 0.35) 0 24px, rgba(123, 43, 255, 0) 24px 60px),
+            #1b0d33;
+        }
+        #ado .ph b {
+          font-family: "Anton", sans-serif;
+          font-weight: 400;
+          font-size: 170px;
+          line-height: 1;
+          color: #f6f3ff;
+          text-shadow:
+            -6px 0 0 #ff2bd6,
+            6px 0 0 #00f0ff;
+        }
+        #ado .slot[data-kind="collage"] .ph b {
+          font-size: 120px;
+        }
+        #ado .ph span {
+          font-family: "Geist Mono", monospace;
+          font-size: 22px;
+          letter-spacing: 0.32em;
+          color: #e4ff1a;
+        }
+        #ado .ph i {
+          font-family: "Geist Mono", monospace;
+          font-style: normal;
+          font-size: 15px;
+          letter-spacing: 0.08em;
+          color: #d9d2f0;
+        }
+        #ado .ado-street {
+          position: absolute;
+          right: -60px;
+          top: -90px;
+          font-size: 230px;
+          line-height: 1;
+          color: #e4ff1a;
+          text-shadow: 8px 8px 0 #7b2bff;
+          opacity: 0;
+        }
+
+        /* ------------------------------------------------------------ titres et effets plein cadre */
+        #ado-title {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        #ado-title-num {
+          font-family: "Geist Mono", monospace;
+          font-size: 30px;
+          letter-spacing: 0.5em;
+          color: #e4ff1a;
+        }
+        #ado-title-main {
+          font-size: 300px;
+          line-height: 1.05;
+          letter-spacing: 0.01em;
+          text-shadow:
+            -10px 0 0 #ff2bd6,
+            10px 0 0 #00f0ff;
+        }
+        #ado-tag {
+          position: absolute;
+          left: 64px;
+          top: 52px;
+          display: flex;
+          gap: 18px;
+          padding: 12px 20px;
+          border-left: 6px solid #e4ff1a;
+          background: rgba(8, 4, 15, 0.88);
+          font-family: "Geist Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.24em;
+          color: #f6f3ff;
+          opacity: 0;
+        }
+        #ado-count {
+          position: absolute;
+          right: 64px;
+          bottom: 52px;
+          padding: 10px 18px;
+          background: rgba(8, 4, 15, 0.88);
+          font-family: "Geist Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.2em;
+          color: #f6f3ff;
+          opacity: 0;
+        }
+        #ado-flash {
+          position: absolute;
+          inset: 0;
+          background: #f6f3ff;
+          opacity: 0;
+        }
+        #ado-cut {
+          position: absolute;
+          inset: 0;
+          background: #08040f;
+          opacity: 0;
+        }
+      </style>
+
+      <div data-hf-id="hf-hkrz" id="ado" data-composition-id="ado" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-de40" id="ado-fx">
+          <div data-hf-id="hf-03d2" id="ado-dots"></div>
+          <div data-hf-id="hf-6wrz" id="ado-marquee" data-layout-ignore="">ADO · 13 · 14 · 15 · 16 · 17 · ADO · 13 · 14 · 15 · 16 · 17 ·</div>
+          <div data-hf-id="hf-hrdc" class="ado-bar" id="ado-bar-1"></div>
+          <div data-hf-id="hf-mda3" class="ado-bar" id="ado-bar-2"></div>
+          <div data-hf-id="hf-if62" class="ado-bar" id="ado-bar-3"></div>
+
+          <div data-hf-id="hf-4tnk" id="ado-stage">
+            <!-- SLOTS:BEGIN (généré par scripts/build_film.py — ne pas éditer à la main) -->
+            <div class="slot" data-n="1" data-at="0.0" data-dur="5.0" data-kind="single" data-accent="#FF2BD6" data-tr="record_scratch_glitch"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>01</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="2" data-at="5.0" data-dur="5.0" data-kind="single" data-accent="#00F0FF" data-tr="flash_stroboscopique_leger"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>02</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="3" data-at="10.0" data-dur="5.0" data-kind="single" data-accent="#B6FF00" data-tr="whip_pan_neon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>03</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="4" data-at="15.0" data-dur="5.0" data-kind="single" data-accent="#FFE600" data-text="OMG" data-tr="demi_teinte_pop_art"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>04</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="5" data-at="20.0" data-dur="15.0" data-kind="collage" data-tr="datamosh_vhs"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>05</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>06</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>07</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="6" data-at="35.0" data-dur="5.0" data-kind="single" data-accent="#00F0FF" data-tr="tag_graffiti_wipe"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>08</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="7" data-at="40.0" data-dur="5.0" data-kind="single" data-accent="#B6FF00" data-tr="glitch_rgb"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>09</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="8" data-at="45.0" data-dur="5.0" data-kind="single" data-accent="#FFE600" data-tr="flash_stroboscopique_leger"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>10</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="9" data-at="50.0" data-dur="5.0" data-kind="single" data-accent="#FF2BD6" data-tr="whip_pan_neon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>11</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="10" data-at="55.0" data-dur="15.0" data-kind="collage" data-tr="demi_teinte_pop_art"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>12</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>13</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>14</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="11" data-at="70.0" data-dur="5.0" data-kind="single" data-accent="#B6FF00" data-tr="datamosh_vhs"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>15</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="12" data-at="75.0" data-dur="5.0" data-kind="single" data-accent="#FFE600" data-tr="tag_graffiti_wipe"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>16</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="13" data-at="80.0" data-dur="5.0" data-kind="single" data-accent="#FF2BD6" data-tr="glitch_rgb"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>17</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="14" data-at="85.0" data-dur="5.0" data-kind="single" data-accent="#00F0FF" data-tr="flash_stroboscopique_leger"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>18</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <div class="slot" data-n="15" data-at="90.0" data-dur="15.0" data-kind="collage" data-tr="whip_pan_neon"><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>19</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>20</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div><div class="slot-media"><div class="m-frame"><div class="m-kb"><div class="ph"><b data-layout-allow-overlap>21</b><span data-layout-allow-overlap>PHOTO À VENIR</span><i data-layout-allow-overlap>photos/Adolescence</i></div></div></div></div></div>
+            <!-- SLOTS:END -->
+          </div>
+
+          <div data-hf-id="hf-4gd4" id="ado-title">
+            <div data-hf-id="hf-02r5" id="ado-title-num" data-layout-allow-overlap="">UNIVERS 02</div>
+            <div data-hf-id="hf-v25m" id="ado-title-main" data-layout-allow-overlap="">ADOLESCENCE</div>
+          </div>
+          <div data-hf-id="hf-dazm" id="ado-tag"><b data-hf-id="hf-2ll3">02</b><span data-hf-id="hf-8u1f">ADOLESCENCE</span></div>
+          <div data-hf-id="hf-xxm8" id="ado-count"><span data-hf-id="hf-65us" id="ado-count-n">01</span> / <span data-hf-id="hf-3hb5" id="ado-count-total">15</span></div>
+        </div>
+        <div data-hf-id="hf-umja" id="ado-flash" data-layout-allow-occlusion=""></div>
+        <div data-hf-id="hf-nrag" id="ado-cut" data-layout-allow-occlusion=""></div>
+      </div>
+
+      <script>
+        (function () {
+          const ID = "ado";
+          const DUR = 105;
+          const BEAT = 60 / 99; // « La Boulette » ≈ 99 BPM (estimation de timeline.json)
+          const TITLE_OUT = 2.4;
+          const FIRST_SLOT_IN = 2.1;
+          const ACCEL_AT = 100.5; // SFX_ADO_ACCEL
+          const SCRATCH_AT = 103.9; // SFX_ADO_RECORD_SCRATCH : arrêt net
+          const CUT_AT = 104.35;
+          const SHAKE_STEP = 0.06;
+          const ACCENTS = ["#ff2bd6", "#00f0ff", "#e4ff1a", "#7b2bff", "#2d5bff"];
+          const COLLAGE_ROT = [-6, 3, -2];
+
+          function enter(tl, slot, style, at) {
+            switch (style) {
+              case "whip_pan_neon":
+                tl.fromTo(slot, { opacity: 0, x: 1800, skewX: -22, filter: "blur(22px)" }, { opacity: 1, x: 0, skewX: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, at);
+                break;
+              case "flash_stroboscopique_leger": // un seul éclair, bien sous le seuil de 3 flashs/s
+                tl.fromTo(slot, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" }, at);
+                tl.fromTo("#ado-flash", { opacity: 0.8 }, { opacity: 0, duration: 0.18, ease: "power1.out", immediateRender: false }, at);
+                break;
+              case "demi_teinte_pop_art":
+                tl.fromTo(slot, { opacity: 0, clipPath: "circle(0% at 50% 50%)" }, { opacity: 1, clipPath: "circle(80% at 50% 50%)", duration: 0.6, ease: "power3.out" }, at);
+                break;
+              case "datamosh_vhs":
+                tl.fromTo(slot, { opacity: 0, scaleY: 0.04, skewX: 30, filter: "hue-rotate(120deg)" }, { opacity: 1, scaleY: 1, skewX: 0, filter: "hue-rotate(0deg)", duration: 0.5, ease: "expo.out" }, at);
+                break;
+              case "tag_graffiti_wipe":
+                tl.fromTo(slot, { opacity: 0, clipPath: "inset(0% 100% 0% 0%)", rotation: -3 }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", rotation: 0, duration: 0.6, ease: "power2.out" }, at);
+                break;
+              default: // glitch_rgb, record_scratch_glitch
+                tl.fromTo(slot, { opacity: 0, x: -40, scale: style === "record_scratch_glitch" ? 1.2 : 1, filter: "blur(8px)" }, { opacity: 1, x: 0, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "steps(6)" }, at);
+            }
+          }
+
+          function build() {
+            const tl = gsap.timeline({ paused: true });
+            const slots = Array.from(document.querySelectorAll("#ado .slot"));
+            document.getElementById("ado-count-total").textContent = String(slots.length).padStart(2, "0");
+
+            // ---------------------------------------------------------------- fond : aplats qui défilent
+            tl.fromTo("#ado-marquee", { x: 0 }, { x: -3200, duration: DUR, ease: "none" }, 0);
+            tl.fromTo("#ado-bar-1", { x: -300, rotation: -14 }, { x: 300, rotation: -11, duration: DUR, ease: "none" }, 0);
+            tl.fromTo("#ado-bar-2", { x: 200, rotation: -14 }, { x: -500, rotation: -16, duration: DUR, ease: "none" }, 0);
+            tl.fromTo("#ado-bar-3", { x: -100, rotation: -14 }, { x: 600, rotation: -12, duration: DUR, ease: "none" }, 0);
+
+            // ---------------------------------------------------------------- titre
+            tl.fromTo("#ado-title-num", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.05);
+            tl.fromTo("#ado-title-main", { opacity: 0, scale: 1.4, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 0.5, ease: "steps(5)" }, 0.1);
+            tl.to("#ado-title", { opacity: 0, scale: 1.15, duration: 0.25, ease: "power2.in" }, TITLE_OUT);
+            tl.fromTo(["#ado-tag", "#ado-count"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, TITLE_OUT + 0.4);
+            tl.to(["#ado-tag", "#ado-count"], { opacity: 0, duration: 0.2 }, SCRATCH_AT);
+
+            // ---------------------------------------------------------------- emplacements
+            const counter = document.getElementById("ado-count-n");
+            slots.forEach((slot, i) => {
+              const accent = slot.dataset.accent || ACCENTS[i % ACCENTS.length];
+              slot.style.setProperty("--slot-accent", accent);
+              const at = Math.max(Number(slot.dataset.at), i === 0 ? FIRST_SLOT_IN : 0);
+              const next = slots[i + 1];
+              const out = next ? Number(next.dataset.at) : SCRATCH_AT;
+              tl.set(counter, { textContent: String(i + 1).padStart(2, "0") }, at);
+              tl.to("#ado-bar-2", { backgroundColor: accent, duration: 0.2 }, at);
+
+              if (slot.dataset.kind === "collage") {
+                tl.fromTo(slot, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at);
+                slot.querySelectorAll(".slot-media").forEach((m, k) => {
+                  tl.fromTo(m, { opacity: 0, scale: 1.7, rotation: COLLAGE_ROT[k] * 3 }, { opacity: 1, scale: 1, rotation: COLLAGE_ROT[k], duration: 0.45, ease: "back.out(2)" }, at + 0.1 + k * 0.25);
+                  tl.fromTo(m, { y: 0 }, { y: k % 2 ? -18 : 18, duration: out - at - 0.6, ease: "sine.inOut", immediateRender: false }, at + 0.6);
+                });
+              } else {
+                enter(tl, slot, slot.dataset.tr || "glitch_rgb", at);
+                // pulsation sur le tempo + lente poussée dans l'image
+                const media = slot.querySelector(".slot-media");
+                const beats = Math.max(1, Math.floor((out - at - 0.5) / BEAT));
+                tl.fromTo(media, { scale: 1.035 }, { scale: 1, duration: BEAT * 0.5, ease: "power2.out", repeat: beats - 1, repeatDelay: BEAT * 0.5, immediateRender: false }, at + 0.5);
+                tl.fromTo(slot.querySelector(".m-kb"), { scale: 1 }, { scale: 1.08, duration: out - at, ease: "none" }, at);
+              }
+
+              // texte street art (ex. « OMG »)
+              if (slot.dataset.text) {
+                const tag = document.createElement("div");
+                tag.className = "ado-street";
+                tag.setAttribute("data-layout-allow-overlap", "");
+                tag.textContent = slot.dataset.text;
+                slot.appendChild(tag);
+                tl.fromTo(tag, { opacity: 0, scale: 1.6, rotation: -9, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "power3.out" }, at + 0.4);
+                tl.to(tag, { opacity: 0, duration: 0.25 }, at + 2.4);
+              }
+
+              // sortie : le suivant chasse le précédent
+              if (next) {
+                const whip = next.dataset.tr === "whip_pan_neon";
+                tl.to(slot, whip ? { x: -1800, skewX: 18, opacity: 0, duration: 0.4, ease: "expo.in" } : { opacity: 0, duration: 0.2 }, out - (whip ? 0.12 : 0));
+              }
+            });
+
+            // ---------------------------------------------------------------- final : accélération puis arrêt net (scratch)
+            const last = slots[slots.length - 1];
+            tl.fromTo(last, { rotation: -0.6 }, { rotation: 0.6, duration: SHAKE_STEP, ease: "none", yoyo: true, repeat: Math.floor((SCRATCH_AT - ACCEL_AT) / SHAKE_STEP) - 1, immediateRender: false }, ACCEL_AT);
+            tl.fromTo(last, { scale: 1 }, { scale: 1.12, duration: SCRATCH_AT - ACCEL_AT, ease: "power2.in", immediateRender: false }, ACCEL_AT);
+            tl.fromTo("#ado-fx", { filter: "invert(0)" }, { filter: "invert(1)", duration: 0.05 }, SCRATCH_AT);
+            tl.to("#ado-fx", { filter: "invert(0)", duration: 0.05 }, SCRATCH_AT + 0.2);
+            tl.fromTo("#ado-cut", { opacity: 0 }, { opacity: 1, duration: 0.15 }, CUT_AT);
+
+            window.__timelines[ID] = tl;
+          }
+
+          document.fonts.ready.then(build);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

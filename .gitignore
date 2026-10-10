@@ -52,9 +52,22 @@ next-env.d.ts
 /public/film/*
 !/public/film/.gitkeep
 
-# production du film (workspace séparé du site)
+# production du film (workspace séparé du site) : sources versionnées, médias lourds et sorties en local
 /assets/
-/video/
+/video/**/node_modules/
+/video/**/renders/
+/video/**/snapshots/
+/video/**/out/
+/video/**/.hyperframes/
+/video/**/.waveform-cache/
+/video/**/*.mp4
+/video/**/*.mov
+/video/**/*.webm
+/video/**/*.mp3
+/video/**/*.wav
+/video/**/*.log
+/video/**/public/photos/
+/video/**/.thumbnails/
 
 # divers locaux
 *.stackdump

@@ -5,8 +5,8 @@
     "height": 1080,
     "fps": 30,
     "aspect_ratio": "16:9",
-    "duration_s": 600,
-    "duration_tc": "10:00:00",
+    "duration_s": 360,
+    "duration_tc": "06:00:00",
     "timecode_format": "MM:SS:FF",
     "export": {
       "container": "mp4",
@@ -416,306 +416,355 @@
       "type": "music",
       "path": "assets/audio/music/MUS_INTRO.wav",
       "bpm": 120,
-      "duration_s": 30,
-      "source": "higgsfield_text_to_audio"
+      "bpm_estimated": false,
+      "duration_s": 20,
+      "source": "à générer (text-to-audio)"
     },
     "MUS_ENFANCE": {
       "type": "music",
-      "path": "assets/audio/music/MUS_ENFANCE.wav",
-      "bpm": 100,
-      "duration_s": 180,
-      "source": "higgsfield_text_to_audio"
+      "path": "assets/audio/music/MUS_ENFANCE.mp3",
+      "bpm": 129,
+      "bpm_estimated": true,
+      "duration_s": 147.0,
+      "source": "fichier fourni",
+      "title": "Une chanson douce",
+      "artist": "Henri Salvador"
     },
     "MUS_ADO": {
       "type": "music",
-      "path": "assets/audio/music/MUS_ADO.wav",
-      "bpm": 128,
-      "duration_s": 180,
-      "source": "higgsfield_text_to_audio"
+      "path": "assets/audio/music/MUS_ADO.mp3",
+      "bpm": 99,
+      "bpm_estimated": true,
+      "duration_s": 218.6,
+      "source": "fichier fourni",
+      "title": "La Boulette",
+      "artist": "Diam's"
     },
     "MUS_CLOWN": {
       "type": "music",
-      "path": "assets/audio/music/MUS_CLOWN.wav",
-      "bpm": 120,
-      "duration_s": 180,
-      "source": "higgsfield_text_to_audio"
+      "path": "assets/audio/music/MUS_CLOWN.mp3",
+      "bpm": 129,
+      "bpm_estimated": true,
+      "duration_s": 192.1,
+      "source": "fichier fourni",
+      "title": "Maladie (Cheveux blonds)",
+      "artist": "Mauvais Djo"
     },
     "MUS_OUTRO": {
       "type": "music",
       "path": "assets/audio/music/MUS_OUTRO.wav",
       "bpm": 72,
-      "duration_s": 30,
-      "source": "higgsfield_text_to_audio"
-    },
-    "VO_INT_01": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_INT_01.wav",
-      "est_duration_s": 4,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ENF_01": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ENF_01.wav",
-      "est_duration_s": 10,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ENF_02": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ENF_02.wav",
-      "est_duration_s": 9,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ENF_03": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ENF_03.wav",
-      "est_duration_s": 10,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ENF_04": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ENF_04.wav",
-      "est_duration_s": 8,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ENF_05": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ENF_05.wav",
-      "est_duration_s": 7,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ADO_01": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ADO_01.wav",
-      "est_duration_s": 7,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ADO_02": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ADO_02.wav",
-      "est_duration_s": 7,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ADO_03": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ADO_03.wav",
-      "est_duration_s": 7,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_ADO_04": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_ADO_04.wav",
-      "est_duration_s": 8,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_CLO_01": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_CLO_01.wav",
-      "est_duration_s": 8,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_CLO_02": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_CLO_02.wav",
-      "est_duration_s": 8,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_CLO_03": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_CLO_03.wav",
-      "est_duration_s": 8,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_CLO_04": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_CLO_04.wav",
-      "est_duration_s": 7,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_OUT_01": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_OUT_01.wav",
-      "est_duration_s": 8,
-      "source": "higgsfield_text_to_speech"
-    },
-    "VO_OUT_02": {
-      "type": "voice_over",
-      "path": "assets/audio/vo/VO_OUT_02.wav",
-      "est_duration_s": 3,
-      "source": "higgsfield_text_to_speech"
+      "bpm_estimated": false,
+      "duration_s": 25,
+      "source": "à générer (text-to-audio)"
     },
     "SFX_INT_RISER": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_INT_RISER.wav",
-      "duration_s": 5,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 5.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_INT_IMPACT": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_INT_IMPACT.wav",
-      "duration_s": 2,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 2.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_INT_WHOOSH": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_INT_WHOOSH.wav",
-      "duration_s": 1,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 1.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ENF_BULLE_POP": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ENF_BULLE_POP.wav",
-      "duration_s": 1,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 0.3,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ENF_CARILLON": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ENF_CARILLON.wav",
-      "duration_s": 2,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 2.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ENF_WHOOSH_DOUX": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ENF_WHOOSH_DOUX.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ENF_PAGE": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ENF_PAGE.wav",
-      "duration_s": 1,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 1.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ENF_SCINTILLE": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ENF_SCINTILLE.wav",
-      "duration_s": 2,
-      "source": "higgsfield_text_to_audio"
-    },
-    "SFX_ENF_RIRE_BEBE": {
-      "type": "sfx",
-      "path": "assets/audio/sfx/SFX_ENF_RIRE_BEBE.wav",
-      "duration_s": 3,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 2.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_GLITCH": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_GLITCH.wav",
-      "duration_s": 1,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 1.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_FLASH": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_FLASH.wav",
       "duration_s": 0.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_ACCEL": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_ACCEL.wav",
-      "duration_s": 3,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 3.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_BASS_HIT": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_BASS_HIT.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_REWIND": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_REWIND.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_SPRAY": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_SPRAY.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_ADO_RECORD_SCRATCH": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_ADO_RECORD_SCRATCH.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_BOING": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_BOING.wav",
-      "duration_s": 1,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 1.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_HONK": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_HONK.wav",
-      "duration_s": 1,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 1.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_SIFFLET": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_SIFFLET.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_SIFFLET_COULISSE": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_SIFFLET_COULISSE.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_POP": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_POP.wav",
-      "duration_s": 0.5,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 0.3,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_SPLAT": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_SPLAT.wav",
       "duration_s": 1.5,
-      "source": "higgsfield_text_to_audio"
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_RIMSHOT": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_RIMSHOT.wav",
-      "duration_s": 2,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 2.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_WAH_WAH": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_WAH_WAH.wav",
-      "duration_s": 3,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 3.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_CLO_TADAA": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_CLO_TADAA.wav",
-      "duration_s": 3,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 3.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_OUT_WHOOSH_FLY": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_OUT_WHOOSH_FLY.wav",
-      "duration_s": 2,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 2.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_OUT_SCINTILLE": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_OUT_SCINTILLE.wav",
-      "duration_s": 4,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 4.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_OUT_FEU_ARTIFICE": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_OUT_FEU_ARTIFICE.wav",
-      "duration_s": 6,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 6.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
     },
     "SFX_OUT_APPLAUSE": {
       "type": "sfx",
       "path": "assets/audio/sfx/SFX_OUT_APPLAUSE.wav",
-      "duration_s": 8,
-      "source": "higgsfield_text_to_audio"
+      "duration_s": 8.0,
+      "source": "synthèse (generate_sfx.py)",
+      "status": "ok"
+    },
+    "VO_INT_01": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_INT_01.mp3",
+      "duration_s": 4.71,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ENF_01": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ENF_01.mp3",
+      "duration_s": 8.53,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ENF_02": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ENF_02.mp3",
+      "duration_s": 7.71,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ENF_03": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ENF_03.mp3",
+      "duration_s": 8.64,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ENF_04": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ENF_04.mp3",
+      "duration_s": 7.14,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ENF_05": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ENF_05.mp3",
+      "duration_s": 6.88,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ADO_01": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ADO_01.mp3",
+      "duration_s": 9.07,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ADO_02": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ADO_02.mp3",
+      "duration_s": 7.04,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ADO_03": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ADO_03.mp3",
+      "duration_s": 7.88,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_ADO_04": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_ADO_04.mp3",
+      "duration_s": 8.04,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_CLO_01": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_CLO_01.mp3",
+      "duration_s": 5.46,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_CLO_02": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_CLO_02.mp3",
+      "duration_s": 7.63,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_CLO_03": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_CLO_03.mp3",
+      "duration_s": 4.38,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_CLO_04": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_CLO_04.mp3",
+      "duration_s": 5.09,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_OUT_01": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_OUT_01.mp3",
+      "duration_s": 7.69,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
+    },
+    "VO_OUT_02": {
+      "type": "voice_over",
+      "path": "assets/audio/vo/VO_OUT_02.mp3",
+      "duration_s": 2.97,
+      "source": "ElevenLabs — Hugo (Deep French Storyteller)",
+      "status": "ok"
     }
   },
   "sections": [
@@ -726,18 +775,18 @@
       "music": "MUS_INTRO",
       "folder": null,
       "start": 0,
-      "end": 30,
+      "end": 20,
       "start_tc": "00:00:00",
-      "end_tc": "00:30:00",
-      "clip_count": 44,
+      "end_tc": "00:20:00",
+      "clip_count": 30,
       "clips": [
         {
           "id": "INT_TITLE_01",
           "start": 0.0,
-          "end": 4.0,
-          "duration": 4.0,
+          "end": 3.0,
+          "duration": 3.0,
           "start_tc": "00:00:00",
-          "end_tc": "00:04:00",
+          "end_tc": "00:03:00",
           "type": "title",
           "text": "LAURA : 18 ANS DE SOUVENIRS",
           "font": "Bungee",
@@ -774,11 +823,11 @@
         },
         {
           "id": "INT_TEASER_01",
-          "start": 4.0,
-          "end": 4.5,
+          "start": 3.0,
+          "end": 3.5,
           "duration": 0.5,
-          "start_tc": "00:04:00",
-          "end_tc": "00:04:15",
+          "start_tc": "00:03:00",
+          "end_tc": "00:03:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
@@ -807,15 +856,21 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 3.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_02",
-          "start": 4.5,
-          "end": 5.0,
+          "start": 3.5,
+          "end": 4.0,
           "duration": 0.5,
-          "start_tc": "00:04:15",
-          "end_tc": "00:05:00",
+          "start_tc": "00:03:15",
+          "end_tc": "00:04:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
@@ -848,11 +903,11 @@
         },
         {
           "id": "INT_TEASER_03",
-          "start": 5.0,
-          "end": 5.5,
+          "start": 4.0,
+          "end": 4.5,
           "duration": 0.5,
-          "start_tc": "00:05:00",
-          "end_tc": "00:05:15",
+          "start_tc": "00:04:00",
+          "end_tc": "00:04:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
@@ -881,15 +936,21 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 4.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_04",
-          "start": 5.5,
-          "end": 6.0,
+          "start": 4.5,
+          "end": 5.0,
           "duration": 0.5,
-          "start_tc": "00:05:15",
-          "end_tc": "00:06:00",
+          "start_tc": "00:04:15",
+          "end_tc": "00:05:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
@@ -922,11 +983,11 @@
         },
         {
           "id": "INT_TEASER_05",
-          "start": 6.0,
-          "end": 6.5,
+          "start": 5.0,
+          "end": 5.5,
           "duration": 0.5,
-          "start_tc": "00:06:00",
-          "end_tc": "00:06:15",
+          "start_tc": "00:05:00",
+          "end_tc": "00:05:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
@@ -955,15 +1016,21 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 5.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_06",
-          "start": 6.5,
-          "end": 7.0,
+          "start": 5.5,
+          "end": 6.0,
           "duration": 0.5,
-          "start_tc": "00:06:15",
-          "end_tc": "00:07:00",
+          "start_tc": "00:05:15",
+          "end_tc": "00:06:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
@@ -996,15 +1063,15 @@
         },
         {
           "id": "INT_TEASER_07",
-          "start": 7.0,
-          "end": 7.5,
+          "start": 6.0,
+          "end": 6.5,
           "duration": 0.5,
-          "start_tc": "00:07:00",
-          "end_tc": "00:07:15",
+          "start_tc": "00:06:00",
+          "end_tc": "00:06:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_006.jpg",
+            "file": "PHOTO_005.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1029,19 +1096,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 6.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_08",
-          "start": 7.5,
-          "end": 8.0,
+          "start": 6.5,
+          "end": 7.0,
           "duration": 0.5,
-          "start_tc": "00:07:15",
-          "end_tc": "00:08:00",
+          "start_tc": "00:06:15",
+          "end_tc": "00:07:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
-            "file": "PHOTO_006.jpg",
+            "file": "PHOTO_005.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1070,15 +1143,15 @@
         },
         {
           "id": "INT_TEASER_09",
-          "start": 8.0,
-          "end": 8.5,
+          "start": 7.0,
+          "end": 7.5,
           "duration": 0.5,
-          "start_tc": "00:08:00",
-          "end_tc": "00:08:15",
+          "start_tc": "00:07:00",
+          "end_tc": "00:07:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_006.jpg",
+            "file": "PHOTO_005.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1103,19 +1176,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 7.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_10",
-          "start": 8.5,
-          "end": 9.0,
+          "start": 7.5,
+          "end": 8.0,
           "duration": 0.5,
-          "start_tc": "00:08:15",
-          "end_tc": "00:09:00",
+          "start_tc": "00:07:15",
+          "end_tc": "00:08:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_008.jpg",
+            "file": "PHOTO_007.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1144,15 +1223,15 @@
         },
         {
           "id": "INT_TEASER_11",
-          "start": 9.0,
-          "end": 9.5,
+          "start": 8.0,
+          "end": 8.5,
           "duration": 0.5,
-          "start_tc": "00:09:00",
-          "end_tc": "00:09:15",
+          "start_tc": "00:08:00",
+          "end_tc": "00:08:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
-            "file": "PHOTO_008.jpg",
+            "file": "PHOTO_007.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1177,19 +1256,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 8.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_12",
-          "start": 9.5,
-          "end": 10.0,
+          "start": 8.5,
+          "end": 9.0,
           "duration": 0.5,
-          "start_tc": "00:09:15",
-          "end_tc": "00:10:00",
+          "start_tc": "00:08:15",
+          "end_tc": "00:09:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_008.jpg",
+            "file": "PHOTO_007.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1218,15 +1303,15 @@
         },
         {
           "id": "INT_TEASER_13",
-          "start": 10.0,
-          "end": 10.5,
+          "start": 9.0,
+          "end": 9.5,
           "duration": 0.5,
-          "start_tc": "00:10:00",
-          "end_tc": "00:10:15",
+          "start_tc": "00:09:00",
+          "end_tc": "00:09:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_011.jpg",
+            "file": "PHOTO_009.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1251,19 +1336,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 9.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_14",
-          "start": 10.5,
-          "end": 11.0,
+          "start": 9.5,
+          "end": 10.0,
           "duration": 0.5,
-          "start_tc": "00:10:15",
-          "end_tc": "00:11:00",
+          "start_tc": "00:09:15",
+          "end_tc": "00:10:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
-            "file": "PHOTO_011.jpg",
+            "file": "PHOTO_009.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1292,11 +1383,134 @@
         },
         {
           "id": "INT_TEASER_15",
+          "start": 10.0,
+          "end": 10.5,
+          "duration": 0.5,
+          "start_tc": "00:10:00",
+          "end_tc": "00:10:15",
+          "type": "teaser_flash",
+          "source": {
+            "folder": "photos/Laura-le-petit-clown",
+            "file": "PHOTO_009.jpg",
+            "placeholder": true,
+            "is_video": false
+          },
+          "look": "cartoon_pop",
+          "layers": [
+            {
+              "role": "photo",
+              "fit": "cover_blur_fill",
+              "scale": 1.0
+            }
+          ],
+          "effects": [
+            {
+              "type": "punch_in",
+              "from_scale": 1.0,
+              "to_scale": 1.12,
+              "on_beat": true
+            }
+          ],
+          "transition_in": {
+            "style": "cut_on_beat",
+            "asset": null,
+            "duration": 0
+          },
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 10.0,
+              "gain_db": -16
+            }
+          ]
+        },
+        {
+          "id": "INT_TEASER_16",
+          "start": 10.5,
+          "end": 11.0,
+          "duration": 0.5,
+          "start_tc": "00:10:15",
+          "end_tc": "00:11:00",
+          "type": "teaser_flash",
+          "source": {
+            "folder": "photos/Naissance-Enfance",
+            "file": "PHOTO_011.jpg",
+            "placeholder": true,
+            "is_video": false
+          },
+          "look": "pastel_soft",
+          "layers": [
+            {
+              "role": "photo",
+              "fit": "cover_blur_fill",
+              "scale": 1.0
+            }
+          ],
+          "effects": [
+            {
+              "type": "punch_in",
+              "from_scale": 1.0,
+              "to_scale": 1.12,
+              "on_beat": true
+            }
+          ],
+          "transition_in": {
+            "style": "cut_on_beat",
+            "asset": null,
+            "duration": 0
+          },
+          "sfx": []
+        },
+        {
+          "id": "INT_TEASER_17",
           "start": 11.0,
           "end": 11.5,
           "duration": 0.5,
           "start_tc": "00:11:00",
           "end_tc": "00:11:15",
+          "type": "teaser_flash",
+          "source": {
+            "folder": "photos/Adolescence",
+            "file": "PHOTO_011.jpg",
+            "placeholder": true,
+            "is_video": false
+          },
+          "look": "neon_cyberpunk",
+          "layers": [
+            {
+              "role": "photo",
+              "fit": "cover_blur_fill",
+              "scale": 1.0
+            }
+          ],
+          "effects": [
+            {
+              "type": "punch_in",
+              "from_scale": 1.0,
+              "to_scale": 1.12,
+              "on_beat": true
+            }
+          ],
+          "transition_in": {
+            "style": "cut_on_beat",
+            "asset": null,
+            "duration": 0
+          },
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 11.0,
+              "gain_db": -16
+            }
+          ]
+        },
+        {
+          "id": "INT_TEASER_18",
+          "start": 11.5,
+          "end": 12.0,
+          "duration": 0.5,
+          "start_tc": "00:11:15",
+          "end_tc": "00:12:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
@@ -1328,44 +1542,7 @@
           "sfx": []
         },
         {
-          "id": "INT_TEASER_16",
-          "start": 11.5,
-          "end": 12.0,
-          "duration": 0.5,
-          "start_tc": "00:11:15",
-          "end_tc": "00:12:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_013.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_17",
+          "id": "INT_TEASER_19",
           "start": 12.0,
           "end": 12.5,
           "duration": 0.5,
@@ -1373,82 +1550,8 @@
           "end_tc": "00:12:15",
           "type": "teaser_flash",
           "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_013.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "neon_cyberpunk",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_18",
-          "start": 12.5,
-          "end": 13.0,
-          "duration": 0.5,
-          "start_tc": "00:12:15",
-          "end_tc": "00:13:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_013.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_19",
-          "start": 13.0,
-          "end": 13.5,
-          "duration": 0.5,
-          "start_tc": "00:13:00",
-          "end_tc": "00:13:15",
-          "type": "teaser_flash",
-          "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_016.jpg",
+            "file": "PHOTO_013.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1473,19 +1576,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 12.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_20",
-          "start": 13.5,
-          "end": 14.0,
+          "start": 12.5,
+          "end": 13.0,
           "duration": 0.5,
-          "start_tc": "00:13:15",
-          "end_tc": "00:14:00",
+          "start_tc": "00:12:15",
+          "end_tc": "00:13:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
-            "file": "PHOTO_016.jpg",
+            "file": "PHOTO_013.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1514,15 +1623,15 @@
         },
         {
           "id": "INT_TEASER_21",
-          "start": 14.0,
-          "end": 14.5,
+          "start": 13.0,
+          "end": 13.5,
           "duration": 0.5,
-          "start_tc": "00:14:00",
-          "end_tc": "00:14:15",
+          "start_tc": "00:13:00",
+          "end_tc": "00:13:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_016.jpg",
+            "file": "PHOTO_013.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1547,19 +1656,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 13.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_22",
-          "start": 14.5,
-          "end": 15.0,
+          "start": 13.5,
+          "end": 14.0,
           "duration": 0.5,
-          "start_tc": "00:14:15",
-          "end_tc": "00:15:00",
+          "start_tc": "00:13:15",
+          "end_tc": "00:14:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_019.jpg",
+            "file": "PHOTO_015.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1588,15 +1703,15 @@
         },
         {
           "id": "INT_TEASER_23",
-          "start": 15.0,
-          "end": 15.5,
+          "start": 14.0,
+          "end": 14.5,
           "duration": 0.5,
-          "start_tc": "00:15:00",
-          "end_tc": "00:15:15",
+          "start_tc": "00:14:00",
+          "end_tc": "00:14:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
-            "file": "PHOTO_019.jpg",
+            "file": "PHOTO_015.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1621,19 +1736,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 14.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_24",
-          "start": 15.5,
-          "end": 16.0,
+          "start": 14.5,
+          "end": 15.0,
           "duration": 0.5,
-          "start_tc": "00:15:15",
-          "end_tc": "00:16:00",
+          "start_tc": "00:14:15",
+          "end_tc": "00:15:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_019.jpg",
+            "file": "PHOTO_015.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1662,15 +1783,15 @@
         },
         {
           "id": "INT_TEASER_25",
-          "start": 16.0,
-          "end": 16.5,
+          "start": 15.0,
+          "end": 15.5,
           "duration": 0.5,
-          "start_tc": "00:16:00",
-          "end_tc": "00:16:15",
+          "start_tc": "00:15:00",
+          "end_tc": "00:15:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_021.jpg",
+            "file": "PHOTO_017.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1695,19 +1816,25 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 15.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_26",
-          "start": 16.5,
-          "end": 17.0,
+          "start": 15.5,
+          "end": 16.0,
           "duration": 0.5,
-          "start_tc": "00:16:15",
-          "end_tc": "00:17:00",
+          "start_tc": "00:15:15",
+          "end_tc": "00:16:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Adolescence",
-            "file": "PHOTO_021.jpg",
+            "file": "PHOTO_017.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1736,15 +1863,15 @@
         },
         {
           "id": "INT_TEASER_27",
-          "start": 17.0,
-          "end": 17.5,
+          "start": 16.0,
+          "end": 16.5,
           "duration": 0.5,
-          "start_tc": "00:17:00",
-          "end_tc": "00:17:15",
+          "start_tc": "00:16:00",
+          "end_tc": "00:16:15",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_021.jpg",
+            "file": "PHOTO_017.jpg",
             "placeholder": true,
             "is_video": false
           },
@@ -1769,541 +1896,29 @@
             "asset": null,
             "duration": 0
           },
-          "sfx": []
+          "sfx": [
+            {
+              "asset": "SFX_INT_WHOOSH",
+              "at": 16.0,
+              "gain_db": -16
+            }
+          ]
         },
         {
           "id": "INT_TEASER_28",
-          "start": 17.5,
-          "end": 18.0,
+          "start": 16.5,
+          "end": 17.0,
           "duration": 0.5,
-          "start_tc": "00:17:15",
-          "end_tc": "00:18:00",
+          "start_tc": "00:16:15",
+          "end_tc": "00:17:00",
           "type": "teaser_flash",
           "source": {
             "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_024.jpg",
+            "file": "PHOTO_019.jpg",
             "placeholder": true,
             "is_video": false
           },
           "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_29",
-          "start": 18.0,
-          "end": 18.5,
-          "duration": 0.5,
-          "start_tc": "00:18:00",
-          "end_tc": "00:18:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_024.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "neon_cyberpunk",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_30",
-          "start": 18.5,
-          "end": 19.0,
-          "duration": 0.5,
-          "start_tc": "00:18:15",
-          "end_tc": "00:19:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_024.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_31",
-          "start": 19.0,
-          "end": 19.5,
-          "duration": 0.5,
-          "start_tc": "00:19:00",
-          "end_tc": "00:19:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_026.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_32",
-          "start": 19.5,
-          "end": 20.0,
-          "duration": 0.5,
-          "start_tc": "00:19:15",
-          "end_tc": "00:20:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_026.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "neon_cyberpunk",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_33",
-          "start": 20.0,
-          "end": 20.5,
-          "duration": 0.5,
-          "start_tc": "00:20:00",
-          "end_tc": "00:20:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_026.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_34",
-          "start": 20.5,
-          "end": 21.0,
-          "duration": 0.5,
-          "start_tc": "00:20:15",
-          "end_tc": "00:21:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_029.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_35",
-          "start": 21.0,
-          "end": 21.5,
-          "duration": 0.5,
-          "start_tc": "00:21:00",
-          "end_tc": "00:21:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_029.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "neon_cyberpunk",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_36",
-          "start": 21.5,
-          "end": 22.0,
-          "duration": 0.5,
-          "start_tc": "00:21:15",
-          "end_tc": "00:22:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_029.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_37",
-          "start": 22.0,
-          "end": 22.5,
-          "duration": 0.5,
-          "start_tc": "00:22:00",
-          "end_tc": "00:22:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_031.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_38",
-          "start": 22.5,
-          "end": 23.0,
-          "duration": 0.5,
-          "start_tc": "00:22:15",
-          "end_tc": "00:23:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_031.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "neon_cyberpunk",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_39",
-          "start": 23.0,
-          "end": 23.5,
-          "duration": 0.5,
-          "start_tc": "00:23:00",
-          "end_tc": "00:23:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_031.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_40",
-          "start": 23.5,
-          "end": 24.0,
-          "duration": 0.5,
-          "start_tc": "00:23:15",
-          "end_tc": "00:24:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_034.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_41",
-          "start": 24.0,
-          "end": 24.5,
-          "duration": 0.5,
-          "start_tc": "00:24:00",
-          "end_tc": "00:24:15",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_034.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "neon_cyberpunk",
-          "layers": [
-            {
-              "role": "photo",
-              "fit": "cover_blur_fill",
-              "scale": 1.0
-            }
-          ],
-          "effects": [
-            {
-              "type": "punch_in",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "cut_on_beat",
-            "asset": null,
-            "duration": 0
-          },
-          "sfx": []
-        },
-        {
-          "id": "INT_TEASER_42",
-          "start": 24.5,
-          "end": 25.0,
-          "duration": 0.5,
-          "start_tc": "00:24:15",
-          "end_tc": "00:25:00",
-          "type": "teaser_flash",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_034.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
           "layers": [
             {
               "role": "photo",
@@ -2328,11 +1943,11 @@
         },
         {
           "id": "INT_TITLE_LOCK",
-          "start": 25.0,
-          "end": 30.0,
-          "duration": 5.0,
-          "start_tc": "00:25:00",
-          "end_tc": "00:30:00",
+          "start": 17.0,
+          "end": 20.0,
+          "duration": 3.0,
+          "start_tc": "00:17:00",
+          "end_tc": "00:20:00",
           "type": "title_lock",
           "text": "LAURA : 18 ANS DE SOUVENIRS",
           "font": "Bungee",
@@ -2378,19 +1993,19 @@
       "mood": "Pastel rose / bleu ciel / jaune doux, aquarelle, bulles de savon, Ken Burns",
       "music": "MUS_ENFANCE",
       "folder": "photos/Naissance-Enfance",
-      "start": 30,
-      "end": 210,
-      "start_tc": "00:30:00",
-      "end_tc": "03:30:00",
-      "clip_count": 36,
+      "start": 20,
+      "end": 125,
+      "start_tc": "00:20:00",
+      "end_tc": "02:05:00",
+      "clip_count": 21,
       "clips": [
         {
           "id": "ENF_001",
-          "start": 30.0,
-          "end": 35.0,
+          "start": 20.0,
+          "end": 25.0,
           "duration": 5.0,
-          "start_tc": "00:30:00",
-          "end_tc": "00:35:00",
+          "start_tc": "00:20:00",
+          "end_tc": "00:25:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_001.jpg",
@@ -2441,18 +2056,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_SCINTILLE",
-              "at": 29.267,
+              "at": 19.267,
               "gain_db": -14
             }
           ]
         },
         {
           "id": "ENF_002",
-          "start": 35.0,
-          "end": 40.0,
+          "start": 25.0,
+          "end": 30.0,
           "duration": 5.0,
-          "start_tc": "00:35:00",
-          "end_tc": "00:40:00",
+          "start_tc": "00:25:00",
+          "end_tc": "00:30:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_002.jpg",
@@ -2497,18 +2112,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_BULLE_POP",
-              "at": 34.5,
+              "at": 24.5,
               "gain_db": -14
             }
           ]
         },
         {
           "id": "ENF_003",
-          "start": 40.0,
-          "end": 45.0,
+          "start": 30.0,
+          "end": 35.0,
           "duration": 5.0,
-          "start_tc": "00:40:00",
-          "end_tc": "00:45:00",
+          "start_tc": "00:30:00",
+          "end_tc": "00:35:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_003.jpg",
@@ -2553,18 +2168,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_CARILLON",
-              "at": 39.267,
+              "at": 29.267,
               "gain_db": -18
             }
           ]
         },
         {
           "id": "ENF_004",
-          "start": 45.0,
-          "end": 50.0,
+          "start": 35.0,
+          "end": 40.0,
           "duration": 5.0,
-          "start_tc": "00:45:00",
-          "end_tc": "00:50:00",
+          "start_tc": "00:35:00",
+          "end_tc": "00:40:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_004.jpg",
@@ -2609,18 +2224,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_PAGE",
-              "at": 44.5,
+              "at": 34.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_005",
-          "start": 50.0,
-          "end": 55.0,
+          "start": 40.0,
+          "end": 45.0,
           "duration": 5.0,
-          "start_tc": "00:50:00",
-          "end_tc": "00:55:00",
+          "start_tc": "00:40:00",
+          "end_tc": "00:45:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_005.jpg",
@@ -2671,18 +2286,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_SCINTILLE",
-              "at": 49.5,
+              "at": 39.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_006",
-          "start": 55.0,
-          "end": 60.0,
+          "start": 45.0,
+          "end": 50.0,
           "duration": 5.0,
-          "start_tc": "00:55:00",
-          "end_tc": "01:00:00",
+          "start_tc": "00:45:00",
+          "end_tc": "00:50:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_006.jpg",
@@ -2727,18 +2342,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 54.4,
+              "at": 44.4,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_007",
-          "start": 60.0,
-          "end": 65.0,
+          "start": 50.0,
+          "end": 55.0,
           "duration": 5.0,
-          "start_tc": "01:00:00",
-          "end_tc": "01:05:00",
+          "start_tc": "00:50:00",
+          "end_tc": "00:55:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_007.jpg",
@@ -2783,18 +2398,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_BULLE_POP",
-              "at": 59.5,
+              "at": 49.5,
               "gain_db": -14
             }
           ]
         },
         {
           "id": "ENF_008",
-          "start": 65.0,
-          "end": 70.0,
+          "start": 55.0,
+          "end": 60.0,
           "duration": 5.0,
-          "start_tc": "01:05:00",
-          "end_tc": "01:10:00",
+          "start_tc": "00:55:00",
+          "end_tc": "01:00:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_008.jpg",
@@ -2839,18 +2454,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_CARILLON",
-              "at": 64.267,
+              "at": 54.267,
               "gain_db": -18
             }
           ]
         },
         {
           "id": "ENF_009",
-          "start": 70.0,
-          "end": 75.0,
+          "start": 60.0,
+          "end": 65.0,
           "duration": 5.0,
-          "start_tc": "01:10:00",
-          "end_tc": "01:15:00",
+          "start_tc": "01:00:00",
+          "end_tc": "01:05:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_009.jpg",
@@ -2901,18 +2516,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_PAGE",
-              "at": 69.5,
+              "at": 59.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_010",
-          "start": 75.0,
-          "end": 80.0,
+          "start": 65.0,
+          "end": 70.0,
           "duration": 5.0,
-          "start_tc": "01:15:00",
-          "end_tc": "01:20:00",
+          "start_tc": "01:05:00",
+          "end_tc": "01:10:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_010.jpg",
@@ -2957,18 +2572,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_SCINTILLE",
-              "at": 74.5,
+              "at": 64.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_011",
-          "start": 80.0,
-          "end": 85.0,
+          "start": 70.0,
+          "end": 75.0,
           "duration": 5.0,
-          "start_tc": "01:20:00",
-          "end_tc": "01:25:00",
+          "start_tc": "01:10:00",
+          "end_tc": "01:15:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_011.jpg",
@@ -3013,18 +2628,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 79.4,
+              "at": 69.4,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_012",
-          "start": 85.0,
-          "end": 90.0,
+          "start": 75.0,
+          "end": 80.0,
           "duration": 5.0,
-          "start_tc": "01:25:00",
-          "end_tc": "01:30:00",
+          "start_tc": "01:15:00",
+          "end_tc": "01:20:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_012.jpg",
@@ -3069,18 +2684,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_BULLE_POP",
-              "at": 84.5,
+              "at": 74.5,
               "gain_db": -14
             }
           ]
         },
         {
           "id": "ENF_013",
-          "start": 90.0,
-          "end": 95.0,
+          "start": 80.0,
+          "end": 85.0,
           "duration": 5.0,
-          "start_tc": "01:30:00",
-          "end_tc": "01:35:00",
+          "start_tc": "01:20:00",
+          "end_tc": "01:25:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_013.jpg",
@@ -3131,18 +2746,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_CARILLON",
-              "at": 89.267,
+              "at": 79.267,
               "gain_db": -18
             }
           ]
         },
         {
           "id": "ENF_014",
-          "start": 95.0,
-          "end": 100.0,
+          "start": 85.0,
+          "end": 90.0,
           "duration": 5.0,
-          "start_tc": "01:35:00",
-          "end_tc": "01:40:00",
+          "start_tc": "01:25:00",
+          "end_tc": "01:30:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_014.jpg",
@@ -3187,18 +2802,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_PAGE",
-              "at": 94.5,
+              "at": 84.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_015",
-          "start": 100.0,
-          "end": 105.0,
+          "start": 90.0,
+          "end": 95.0,
           "duration": 5.0,
-          "start_tc": "01:40:00",
-          "end_tc": "01:45:00",
+          "start_tc": "01:30:00",
+          "end_tc": "01:35:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_015.jpg",
@@ -3243,18 +2858,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_SCINTILLE",
-              "at": 99.5,
+              "at": 89.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_016",
-          "start": 105.0,
-          "end": 110.0,
+          "start": 95.0,
+          "end": 100.0,
           "duration": 5.0,
-          "start_tc": "01:45:00",
-          "end_tc": "01:50:00",
+          "start_tc": "01:35:00",
+          "end_tc": "01:40:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_016.jpg",
@@ -3299,18 +2914,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 104.4,
+              "at": 94.4,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_017",
-          "start": 110.0,
-          "end": 115.0,
+          "start": 100.0,
+          "end": 105.0,
           "duration": 5.0,
-          "start_tc": "01:50:00",
-          "end_tc": "01:55:00",
+          "start_tc": "01:40:00",
+          "end_tc": "01:45:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_017.jpg",
@@ -3361,18 +2976,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_BULLE_POP",
-              "at": 109.5,
+              "at": 99.5,
               "gain_db": -14
             }
           ]
         },
         {
           "id": "ENF_018",
-          "start": 115.0,
-          "end": 120.0,
+          "start": 105.0,
+          "end": 110.0,
           "duration": 5.0,
-          "start_tc": "01:55:00",
-          "end_tc": "02:00:00",
+          "start_tc": "01:45:00",
+          "end_tc": "01:50:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_018.jpg",
@@ -3417,18 +3032,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_CARILLON",
-              "at": 114.267,
+              "at": 104.267,
               "gain_db": -18
             }
           ]
         },
         {
           "id": "ENF_019",
-          "start": 120.0,
-          "end": 125.0,
+          "start": 110.0,
+          "end": 115.0,
           "duration": 5.0,
-          "start_tc": "02:00:00",
-          "end_tc": "02:05:00",
+          "start_tc": "01:50:00",
+          "end_tc": "01:55:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_019.jpg",
@@ -3473,18 +3088,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_PAGE",
-              "at": 119.5,
+              "at": 109.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_020",
-          "start": 125.0,
-          "end": 130.0,
+          "start": 115.0,
+          "end": 120.0,
           "duration": 5.0,
-          "start_tc": "02:05:00",
-          "end_tc": "02:10:00",
+          "start_tc": "01:55:00",
+          "end_tc": "02:00:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_020.jpg",
@@ -3529,18 +3144,18 @@
           "sfx": [
             {
               "asset": "SFX_ENF_SCINTILLE",
-              "at": 124.5,
+              "at": 114.5,
               "gain_db": -16
             }
           ]
         },
         {
           "id": "ENF_021",
-          "start": 130.0,
-          "end": 135.0,
+          "start": 120.0,
+          "end": 125.0,
           "duration": 5.0,
-          "start_tc": "02:10:00",
-          "end_tc": "02:15:00",
+          "start_tc": "02:00:00",
+          "end_tc": "02:05:00",
           "source": {
             "folder": "photos/Naissance-Enfance",
             "file": "PHOTO_021.jpg",
@@ -3591,865 +3206,7 @@
           "sfx": [
             {
               "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 129.4,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_022",
-          "start": 135.0,
-          "end": 140.0,
-          "duration": 5.0,
-          "start_tc": "02:15:00",
-          "end_tc": "02:20:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_022.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_04_BALLONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.12,
-              "to_scale": 1.0,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "bulles_de_savon",
-            "asset": "TR_ENF_BULLES",
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_BULLE_POP",
-              "at": 134.5,
-              "gain_db": -14
-            }
-          ]
-        },
-        {
-          "id": "ENF_023",
-          "start": 140.0,
-          "end": 145.0,
-          "duration": 5.0,
-          "start_tc": "02:20:00",
-          "end_tc": "02:25:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_023.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_04_BALLONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "left_to_right",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "fondu_enchaine_doux",
-            "asset": null,
-            "duration": 1.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_CARILLON",
-              "at": 139.267,
-              "gain_db": -18
-            }
-          ]
-        },
-        {
-          "id": "ENF_024",
-          "start": 145.0,
-          "end": 150.0,
-          "duration": 5.0,
-          "start_tc": "02:25:00",
-          "end_tc": "02:30:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_024.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_04_BALLONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "right_to_left",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "page_tournee_pastel",
-            "asset": null,
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_PAGE",
-              "at": 144.5,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_025",
-          "start": 150.0,
-          "end": 155.0,
-          "duration": 5.0,
-          "start_tc": "02:30:00",
-          "end_tc": "02:35:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_025.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_01_AQUARELLE",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_PARTICULES",
-              "blend": "screen",
-              "opacity": 0.6
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "etoiles_scintillantes",
-            "asset": "TR_ENF_ETOILES",
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_SCINTILLE",
-              "at": 149.5,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_026",
-          "start": 155.0,
-          "end": 160.0,
-          "duration": 5.0,
-          "start_tc": "02:35:00",
-          "end_tc": "02:40:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_026.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_01_AQUARELLE",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.12,
-              "to_scale": 1.0,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "crossfade_aquarelle",
-            "asset": "TR_ENF_AQUARELLE",
-            "duration": 1.2
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 154.4,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_027",
-          "start": 160.0,
-          "end": 165.0,
-          "duration": 5.0,
-          "start_tc": "02:40:00",
-          "end_tc": "02:45:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_027.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_01_AQUARELLE",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "left_to_right",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "bulles_de_savon",
-            "asset": "TR_ENF_BULLES",
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_BULLE_POP",
-              "at": 159.5,
-              "gain_db": -14
-            }
-          ]
-        },
-        {
-          "id": "ENF_028",
-          "start": 165.0,
-          "end": 170.0,
-          "duration": 5.0,
-          "start_tc": "02:45:00",
-          "end_tc": "02:50:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_028.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_02_BULLES",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "right_to_left",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "fondu_enchaine_doux",
-            "asset": null,
-            "duration": 1.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_CARILLON",
-              "at": 164.267,
-              "gain_db": -18
-            }
-          ]
-        },
-        {
-          "id": "ENF_029",
-          "start": 170.0,
-          "end": 175.0,
-          "duration": 5.0,
-          "start_tc": "02:50:00",
-          "end_tc": "02:55:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_029.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_02_BULLES",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_PARTICULES",
-              "blend": "screen",
-              "opacity": 0.6
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "page_tournee_pastel",
-            "asset": null,
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_PAGE",
-              "at": 169.5,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_030",
-          "start": 175.0,
-          "end": 180.0,
-          "duration": 5.0,
-          "start_tc": "02:55:00",
-          "end_tc": "03:00:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_030.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_02_BULLES",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.12,
-              "to_scale": 1.0,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "etoiles_scintillantes",
-            "asset": "TR_ENF_ETOILES",
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_SCINTILLE",
-              "at": 174.5,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_031",
-          "start": 180.0,
-          "end": 185.0,
-          "duration": 5.0,
-          "start_tc": "03:00:00",
-          "end_tc": "03:05:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_031.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_03_NUAGES",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "left_to_right",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "crossfade_aquarelle",
-            "asset": "TR_ENF_AQUARELLE",
-            "duration": 1.2
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 179.4,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_032",
-          "start": 185.0,
-          "end": 190.0,
-          "duration": 5.0,
-          "start_tc": "03:05:00",
-          "end_tc": "03:10:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_032.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_03_NUAGES",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "right_to_left",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "bulles_de_savon",
-            "asset": "TR_ENF_BULLES",
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_BULLE_POP",
-              "at": 184.5,
-              "gain_db": -14
-            }
-          ]
-        },
-        {
-          "id": "ENF_033",
-          "start": 190.0,
-          "end": 195.0,
-          "duration": 5.0,
-          "start_tc": "03:10:00",
-          "end_tc": "03:15:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_033.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_03_NUAGES",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_PARTICULES",
-              "blend": "screen",
-              "opacity": 0.6
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.0,
-              "to_scale": 1.12,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "fondu_enchaine_doux",
-            "asset": null,
-            "duration": 1.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_CARILLON",
-              "at": 189.267,
-              "gain_db": -18
-            }
-          ]
-        },
-        {
-          "id": "ENF_034",
-          "start": 195.0,
-          "end": 200.0,
-          "duration": 5.0,
-          "start_tc": "03:15:00",
-          "end_tc": "03:20:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_034.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_04_BALLONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.12,
-              "to_scale": 1.0,
-              "pan": "none",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "page_tournee_pastel",
-            "asset": null,
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_PAGE",
-              "at": 194.5,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_035",
-          "start": 200.0,
-          "end": 205.0,
-          "duration": 5.0,
-          "start_tc": "03:20:00",
-          "end_tc": "03:25:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_035.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_04_BALLONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "left_to_right",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "etoiles_scintillantes",
-            "asset": "TR_ENF_ETOILES",
-            "duration": 1.0
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_SCINTILLE",
-              "at": 199.5,
-              "gain_db": -16
-            }
-          ]
-        },
-        {
-          "id": "ENF_036",
-          "start": 205.0,
-          "end": 210.0,
-          "duration": 5.0,
-          "start_tc": "03:25:00",
-          "end_tc": "03:30:00",
-          "source": {
-            "folder": "photos/Naissance-Enfance",
-            "file": "PHOTO_036.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "pastel_soft",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ENF_04_BALLONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.86,
-              "corner_radius_px": 28,
-              "shadow": "soft"
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ENF_BULLES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "ken_burns",
-              "from_scale": 1.05,
-              "to_scale": 1.15,
-              "pan": "right_to_left",
-              "ease": "ease_in_out_sine"
-            }
-          ],
-          "transition_in": {
-            "style": "crossfade_aquarelle",
-            "asset": "TR_ENF_AQUARELLE",
-            "duration": 1.2
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ENF_WHOOSH_DOUX",
-              "at": 204.4,
+              "at": 119.4,
               "gain_db": -16
             }
           ]
@@ -4462,19 +3219,19 @@
       "mood": "Déjanté, néons, cyberpunk / pop-art, glitch, collages, street-art",
       "music": "MUS_ADO",
       "folder": "photos/Adolescence",
-      "start": 210,
-      "end": 390,
-      "start_tc": "03:30:00",
-      "end_tc": "06:30:00",
-      "clip_count": 26,
+      "start": 125,
+      "end": 230,
+      "start_tc": "02:05:00",
+      "end_tc": "03:50:00",
+      "clip_count": 15,
       "clips": [
         {
           "id": "ADO_001",
-          "start": 210.0,
-          "end": 215.0,
+          "start": 125.0,
+          "end": 130.0,
           "duration": 5.0,
-          "start_tc": "03:30:00",
-          "end_tc": "03:35:00",
+          "start_tc": "02:05:00",
+          "end_tc": "02:10:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4521,18 +3278,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_RECORD_SCRATCH",
-              "at": 209.0,
+              "at": 124.0,
               "gain_db": -6
             }
           ]
         },
         {
           "id": "ADO_002",
-          "start": 215.0,
-          "end": 220.0,
+          "start": 130.0,
+          "end": 135.0,
           "duration": 5.0,
-          "start_tc": "03:35:00",
-          "end_tc": "03:40:00",
+          "start_tc": "02:10:00",
+          "end_tc": "02:15:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4579,18 +3336,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_FLASH",
-              "at": 214.867,
+              "at": 129.867,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_003",
-          "start": 220.0,
-          "end": 225.0,
+          "start": 135.0,
+          "end": 140.0,
           "duration": 5.0,
-          "start_tc": "03:40:00",
-          "end_tc": "03:45:00",
+          "start_tc": "02:15:00",
+          "end_tc": "02:20:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4644,18 +3401,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_ACCEL",
-              "at": 219.733,
+              "at": 134.733,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_004",
-          "start": 225.0,
-          "end": 230.0,
+          "start": 140.0,
+          "end": 145.0,
           "duration": 5.0,
-          "start_tc": "03:45:00",
-          "end_tc": "03:50:00",
+          "start_tc": "02:20:00",
+          "end_tc": "02:25:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4710,18 +3467,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_BASS_HIT",
-              "at": 224.7,
+              "at": 139.7,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "ADO_005",
-          "start": 230.0,
-          "end": 245.0,
+          "start": 145.0,
+          "end": 160.0,
           "duration": 15.0,
-          "start_tc": "03:50:00",
-          "end_tc": "04:05:00",
+          "start_tc": "02:25:00",
+          "end_tc": "02:40:00",
           "look": "neon_cyberpunk",
           "type": "collage",
           "sources": [
@@ -4788,18 +3545,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_REWIND",
-              "at": 229.733,
+              "at": 144.733,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_006",
-          "start": 245.0,
-          "end": 250.0,
+          "start": 160.0,
+          "end": 165.0,
           "duration": 5.0,
-          "start_tc": "04:05:00",
-          "end_tc": "04:10:00",
+          "start_tc": "02:40:00",
+          "end_tc": "02:45:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4853,18 +3610,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_SPRAY",
-              "at": 244.7,
+              "at": 159.7,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_007",
-          "start": 250.0,
-          "end": 255.0,
+          "start": 165.0,
+          "end": 170.0,
           "duration": 5.0,
-          "start_tc": "04:10:00",
-          "end_tc": "04:15:00",
+          "start_tc": "02:45:00",
+          "end_tc": "02:50:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4911,18 +3668,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_GLITCH",
-              "at": 249.8,
+              "at": 164.8,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "ADO_008",
-          "start": 255.0,
-          "end": 260.0,
+          "start": 170.0,
+          "end": 175.0,
           "duration": 5.0,
-          "start_tc": "04:15:00",
-          "end_tc": "04:20:00",
+          "start_tc": "02:50:00",
+          "end_tc": "02:55:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -4969,18 +3726,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_FLASH",
-              "at": 254.867,
+              "at": 169.867,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_009",
-          "start": 260.0,
-          "end": 265.0,
+          "start": 175.0,
+          "end": 180.0,
           "duration": 5.0,
-          "start_tc": "04:20:00",
-          "end_tc": "04:25:00",
+          "start_tc": "02:55:00",
+          "end_tc": "03:00:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -5034,18 +3791,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_ACCEL",
-              "at": 259.733,
+              "at": 174.733,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_010",
-          "start": 265.0,
-          "end": 280.0,
+          "start": 180.0,
+          "end": 195.0,
           "duration": 15.0,
-          "start_tc": "04:25:00",
-          "end_tc": "04:40:00",
+          "start_tc": "03:00:00",
+          "end_tc": "03:15:00",
           "look": "neon_cyberpunk",
           "type": "collage",
           "sources": [
@@ -5112,18 +3869,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_BASS_HIT",
-              "at": 264.7,
+              "at": 179.7,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "ADO_011",
-          "start": 280.0,
-          "end": 285.0,
+          "start": 195.0,
+          "end": 200.0,
           "duration": 5.0,
-          "start_tc": "04:40:00",
-          "end_tc": "04:45:00",
+          "start_tc": "03:15:00",
+          "end_tc": "03:20:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -5170,18 +3927,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_REWIND",
-              "at": 279.733,
+              "at": 194.733,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_012",
-          "start": 285.0,
-          "end": 290.0,
+          "start": 200.0,
+          "end": 205.0,
           "duration": 5.0,
-          "start_tc": "04:45:00",
-          "end_tc": "04:50:00",
+          "start_tc": "03:20:00",
+          "end_tc": "03:25:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -5235,18 +3992,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_SPRAY",
-              "at": 284.7,
+              "at": 199.7,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_013",
-          "start": 290.0,
-          "end": 295.0,
+          "start": 205.0,
+          "end": 210.0,
           "duration": 5.0,
-          "start_tc": "04:50:00",
-          "end_tc": "04:55:00",
+          "start_tc": "03:25:00",
+          "end_tc": "03:30:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -5293,18 +4050,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_GLITCH",
-              "at": 289.8,
+              "at": 204.8,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "ADO_014",
-          "start": 295.0,
-          "end": 300.0,
+          "start": 210.0,
+          "end": 215.0,
           "duration": 5.0,
-          "start_tc": "04:55:00",
-          "end_tc": "05:00:00",
+          "start_tc": "03:30:00",
+          "end_tc": "03:35:00",
           "look": "neon_cyberpunk",
           "source": {
             "folder": "photos/Adolescence",
@@ -5351,18 +4108,18 @@
           "sfx": [
             {
               "asset": "SFX_ADO_FLASH",
-              "at": 294.867,
+              "at": 209.867,
               "gain_db": -12
             }
           ]
         },
         {
           "id": "ADO_015",
-          "start": 300.0,
-          "end": 315.0,
+          "start": 215.0,
+          "end": 230.0,
           "duration": 15.0,
-          "start_tc": "05:00:00",
-          "end_tc": "05:15:00",
+          "start_tc": "03:35:00",
+          "end_tc": "03:50:00",
           "look": "neon_cyberpunk",
           "type": "collage",
           "sources": [
@@ -5429,722 +4186,7 @@
           "sfx": [
             {
               "asset": "SFX_ADO_ACCEL",
-              "at": 299.733,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_016",
-          "start": 315.0,
-          "end": 320.0,
-          "duration": 5.0,
-          "start_tc": "05:15:00",
-          "end_tc": "05:20:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_022.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_04_GRAFFITI",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#FFE600",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            },
-            {
-              "type": "texte_street_art",
-              "text": "LOL",
-              "font": "Rubik Spray Paint",
-              "anim": "spray_in",
-              "in_offset_s": 0.4,
-              "hold_s": 2.0
-            }
-          ],
-          "transition_in": {
-            "style": "demi_teinte_pop_art",
-            "asset": "TR_ADO_DEMITEINTE",
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_BASS_HIT",
-              "at": 314.7,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "ADO_017",
-          "start": 320.0,
-          "end": 325.0,
-          "duration": 5.0,
-          "start_tc": "05:20:00",
-          "end_tc": "05:25:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_023.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_01_GRILLE_NEON",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#FF2BD6",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "datamosh_vhs",
-            "asset": "TR_ADO_VHS",
-            "duration": 0.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_REWIND",
-              "at": 319.733,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_018",
-          "start": 325.0,
-          "end": 330.0,
-          "duration": 5.0,
-          "start_tc": "05:25:00",
-          "end_tc": "05:30:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_024.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_01_GRILLE_NEON",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#00F0FF",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            },
-            {
-              "type": "stroboscope_leger",
-              "flashes": 2,
-              "window_s": 1.0,
-              "intensity": 0.25,
-              "max_hz": 2
-            }
-          ],
-          "transition_in": {
-            "style": "tag_graffiti_wipe",
-            "asset": "TR_ADO_SPRAY",
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_SPRAY",
-              "at": 324.7,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_019",
-          "start": 330.0,
-          "end": 335.0,
-          "duration": 5.0,
-          "start_tc": "05:30:00",
-          "end_tc": "05:35:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_025.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_02_POPART",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#B6FF00",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "glitch_rgb",
-            "asset": "TR_ADO_GLITCH",
-            "duration": 0.4
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_GLITCH",
-              "at": 329.8,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "ADO_020",
-          "start": 335.0,
-          "end": 350.0,
-          "duration": 15.0,
-          "start_tc": "05:35:00",
-          "end_tc": "05:50:00",
-          "look": "neon_cyberpunk",
-          "type": "collage",
-          "sources": [
-            {
-              "folder": "photos/Adolescence",
-              "file": "PHOTO_026.jpg",
-              "placeholder": true,
-              "is_video": false
-            },
-            {
-              "folder": "photos/Adolescence",
-              "file": "PHOTO_027.jpg",
-              "placeholder": true,
-              "is_video": false
-            },
-            {
-              "folder": "photos/Adolescence",
-              "file": "PHOTO_028.jpg",
-              "placeholder": true,
-              "is_video": false
-            }
-          ],
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_02_POPART",
-              "blend": "normal"
-            },
-            {
-              "role": "photo_group",
-              "count": 3,
-              "scale": 0.5,
-              "rotations_deg": [
-                -6,
-                3,
-                -2
-              ],
-              "stagger_s": 0.25
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            },
-            {
-              "role": "element",
-              "asset": "ELT_ADO_COLLAGE",
-              "blend": "chroma_key"
-            }
-          ],
-          "effects": [
-            {
-              "type": "collage_anime",
-              "entry": "slam_with_tape",
-              "ease": "out_back"
-            }
-          ],
-          "transition_in": {
-            "style": "flash_stroboscopique_leger",
-            "asset": null,
-            "duration": 0.3
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_FLASH",
-              "at": 334.867,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_021",
-          "start": 350.0,
-          "end": 355.0,
-          "duration": 5.0,
-          "start_tc": "05:50:00",
-          "end_tc": "05:55:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_029.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_03_VILLE_NEON",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#FF2BD6",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            },
-            {
-              "type": "stroboscope_leger",
-              "flashes": 2,
-              "window_s": 1.0,
-              "intensity": 0.25,
-              "max_hz": 2
-            }
-          ],
-          "transition_in": {
-            "style": "whip_pan_neon",
-            "asset": "TR_ADO_WHIP",
-            "duration": 0.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_ACCEL",
-              "at": 349.733,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_022",
-          "start": 355.0,
-          "end": 360.0,
-          "duration": 5.0,
-          "start_tc": "05:55:00",
-          "end_tc": "06:00:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_030.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_03_VILLE_NEON",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#00F0FF",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            },
-            {
-              "type": "texte_street_art",
-              "text": "TROP BIEN",
-              "font": "Rubik Spray Paint",
-              "anim": "spray_in",
-              "in_offset_s": 0.4,
-              "hold_s": 2.0
-            }
-          ],
-          "transition_in": {
-            "style": "demi_teinte_pop_art",
-            "asset": "TR_ADO_DEMITEINTE",
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_BASS_HIT",
-              "at": 354.7,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "ADO_023",
-          "start": 360.0,
-          "end": 365.0,
-          "duration": 5.0,
-          "start_tc": "06:00:00",
-          "end_tc": "06:05:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_031.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_04_GRAFFITI",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#B6FF00",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "datamosh_vhs",
-            "asset": "TR_ADO_VHS",
-            "duration": 0.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_REWIND",
-              "at": 359.733,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_024",
-          "start": 365.0,
-          "end": 370.0,
-          "duration": 5.0,
-          "start_tc": "06:05:00",
-          "end_tc": "06:10:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_032.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_04_GRAFFITI",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#FFE600",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            },
-            {
-              "type": "stroboscope_leger",
-              "flashes": 2,
-              "window_s": 1.0,
-              "intensity": 0.25,
-              "max_hz": 2
-            }
-          ],
-          "transition_in": {
-            "style": "tag_graffiti_wipe",
-            "asset": "TR_ADO_SPRAY",
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_SPRAY",
-              "at": 364.7,
-              "gain_db": -12
-            }
-          ]
-        },
-        {
-          "id": "ADO_025",
-          "start": 370.0,
-          "end": 385.0,
-          "duration": 15.0,
-          "start_tc": "06:10:00",
-          "end_tc": "06:25:00",
-          "look": "neon_cyberpunk",
-          "type": "collage",
-          "sources": [
-            {
-              "folder": "photos/Adolescence",
-              "file": "PHOTO_033.jpg",
-              "placeholder": true,
-              "is_video": false
-            },
-            {
-              "folder": "photos/Adolescence",
-              "file": "PHOTO_034.jpg",
-              "placeholder": true,
-              "is_video": false
-            },
-            {
-              "folder": "photos/Adolescence",
-              "file": "PHOTO_035.jpg",
-              "placeholder": true,
-              "is_video": false
-            }
-          ],
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_01_GRILLE_NEON",
-              "blend": "normal"
-            },
-            {
-              "role": "photo_group",
-              "count": 3,
-              "scale": 0.5,
-              "rotations_deg": [
-                -6,
-                3,
-                -2
-              ],
-              "stagger_s": 0.25
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            },
-            {
-              "role": "element",
-              "asset": "ELT_ADO_COLLAGE",
-              "blend": "chroma_key"
-            }
-          ],
-          "effects": [
-            {
-              "type": "collage_anime",
-              "entry": "slam_with_tape",
-              "ease": "out_back"
-            }
-          ],
-          "transition_in": {
-            "style": "glitch_rgb",
-            "asset": "TR_ADO_GLITCH",
-            "duration": 0.4
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_GLITCH",
-              "at": 369.8,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "ADO_026",
-          "start": 385.0,
-          "end": 390.0,
-          "duration": 5.0,
-          "start_tc": "06:25:00",
-          "end_tc": "06:30:00",
-          "look": "neon_cyberpunk",
-          "source": {
-            "folder": "photos/Adolescence",
-            "file": "PHOTO_036.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_ADO_01_GRILLE_NEON",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.84
-            },
-            {
-              "role": "overlay",
-              "asset": "OVL_ADO_NEON_FLARES",
-              "blend": "screen",
-              "opacity": 0.5
-            }
-          ],
-          "effects": [
-            {
-              "type": "neon_frame",
-              "color": "#00F0FF",
-              "glow_px": 24
-            },
-            {
-              "type": "zoom_punch",
-              "from_scale": 1.0,
-              "to_scale": 1.06,
-              "on_beat": true
-            }
-          ],
-          "transition_in": {
-            "style": "flash_stroboscopique_leger",
-            "asset": null,
-            "duration": 0.3
-          },
-          "sfx": [
-            {
-              "asset": "SFX_ADO_FLASH",
-              "at": 384.867,
+              "at": 214.733,
               "gain_db": -12
             }
           ]
@@ -6157,19 +4199,19 @@
       "mood": "Cartoon jaune / rouge / vert vif, bulles BD, stickers, ralentis comiques",
       "music": "MUS_CLOWN",
       "folder": "photos/Laura-le-petit-clown",
-      "start": 390,
-      "end": 570,
-      "start_tc": "06:30:00",
-      "end_tc": "09:30:00",
-      "clip_count": 36,
+      "start": 230,
+      "end": 335,
+      "start_tc": "03:50:00",
+      "end_tc": "05:35:00",
+      "clip_count": 21,
       "clips": [
         {
           "id": "CLO_001",
-          "start": 390.0,
-          "end": 395.0,
+          "start": 230.0,
+          "end": 235.0,
           "duration": 5.0,
-          "start_tc": "06:30:00",
-          "end_tc": "06:35:00",
+          "start_tc": "03:50:00",
+          "end_tc": "03:55:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_001.jpg",
@@ -6212,18 +4254,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_HONK",
-              "at": 389.7,
+              "at": 229.7,
               "gain_db": -8
             }
           ]
         },
         {
           "id": "CLO_002",
-          "start": 395.0,
-          "end": 400.0,
+          "start": 235.0,
+          "end": 240.0,
           "duration": 5.0,
-          "start_tc": "06:35:00",
-          "end_tc": "06:40:00",
+          "start_tc": "03:55:00",
+          "end_tc": "04:00:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_002.jpg",
@@ -6274,23 +4316,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_BOING",
-              "at": 394.7,
+              "at": 234.7,
               "gain_db": -10
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 395.6,
+              "at": 235.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_003",
-          "start": 400.0,
-          "end": 405.0,
+          "start": 240.0,
+          "end": 245.0,
           "duration": 5.0,
-          "start_tc": "06:40:00",
-          "end_tc": "06:45:00",
+          "start_tc": "04:00:00",
+          "end_tc": "04:05:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_003.jpg",
@@ -6339,18 +4381,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SPLAT",
-              "at": 399.6,
+              "at": 239.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_004",
-          "start": 405.0,
-          "end": 410.0,
+          "start": 245.0,
+          "end": 250.0,
           "duration": 5.0,
-          "start_tc": "06:45:00",
-          "end_tc": "06:50:00",
+          "start_tc": "04:05:00",
+          "end_tc": "04:10:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_004.jpg",
@@ -6401,23 +4443,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SIFFLET_COULISSE",
-              "at": 404.7,
+              "at": 244.7,
               "gain_db": -12
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 405.6,
+              "at": 245.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_005",
-          "start": 410.0,
-          "end": 415.0,
+          "start": 250.0,
+          "end": 255.0,
           "duration": 5.0,
-          "start_tc": "06:50:00",
-          "end_tc": "06:55:00",
+          "start_tc": "04:10:00",
+          "end_tc": "04:15:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_005.jpg",
@@ -6460,18 +4502,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_HONK",
-              "at": 409.667,
+              "at": 249.667,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_006",
-          "start": 415.0,
-          "end": 420.0,
+          "start": 255.0,
+          "end": 260.0,
           "duration": 5.0,
-          "start_tc": "06:55:00",
-          "end_tc": "07:00:00",
+          "start_tc": "04:15:00",
+          "end_tc": "04:20:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_006.jpg",
@@ -6528,23 +4570,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SIFFLET",
-              "at": 414.733,
+              "at": 254.733,
               "gain_db": -12
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 415.6,
+              "at": 255.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_007",
-          "start": 420.0,
-          "end": 425.0,
+          "start": 260.0,
+          "end": 265.0,
           "duration": 5.0,
-          "start_tc": "07:00:00",
-          "end_tc": "07:05:00",
+          "start_tc": "04:20:00",
+          "end_tc": "04:25:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_007.jpg",
@@ -6587,18 +4629,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_POP",
-              "at": 419.7,
+              "at": 259.7,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_008",
-          "start": 425.0,
-          "end": 430.0,
+          "start": 265.0,
+          "end": 270.0,
           "duration": 5.0,
-          "start_tc": "07:05:00",
-          "end_tc": "07:10:00",
+          "start_tc": "04:25:00",
+          "end_tc": "04:30:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_008.jpg",
@@ -6649,23 +4691,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_BOING",
-              "at": 424.7,
+              "at": 264.7,
               "gain_db": -10
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 425.6,
+              "at": 265.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_009",
-          "start": 430.0,
-          "end": 435.0,
+          "start": 270.0,
+          "end": 275.0,
           "duration": 5.0,
-          "start_tc": "07:10:00",
-          "end_tc": "07:15:00",
+          "start_tc": "04:30:00",
+          "end_tc": "04:35:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_009.jpg",
@@ -6714,18 +4756,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SPLAT",
-              "at": 429.6,
+              "at": 269.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_010",
-          "start": 435.0,
-          "end": 440.0,
+          "start": 275.0,
+          "end": 280.0,
           "duration": 5.0,
-          "start_tc": "07:15:00",
-          "end_tc": "07:20:00",
+          "start_tc": "04:35:00",
+          "end_tc": "04:40:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_010.jpg",
@@ -6776,23 +4818,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SIFFLET_COULISSE",
-              "at": 434.7,
+              "at": 274.7,
               "gain_db": -12
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 435.6,
+              "at": 275.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_011",
-          "start": 440.0,
-          "end": 445.0,
+          "start": 280.0,
+          "end": 285.0,
           "duration": 5.0,
-          "start_tc": "07:20:00",
-          "end_tc": "07:25:00",
+          "start_tc": "04:40:00",
+          "end_tc": "04:45:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_011.jpg",
@@ -6835,18 +4877,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_HONK",
-              "at": 439.667,
+              "at": 279.667,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_012",
-          "start": 445.0,
-          "end": 450.0,
+          "start": 285.0,
+          "end": 290.0,
           "duration": 5.0,
-          "start_tc": "07:25:00",
-          "end_tc": "07:30:00",
+          "start_tc": "04:45:00",
+          "end_tc": "04:50:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_012.jpg",
@@ -6903,23 +4945,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SIFFLET",
-              "at": 444.733,
+              "at": 284.733,
               "gain_db": -12
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 445.6,
+              "at": 285.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_013",
-          "start": 450.0,
-          "end": 455.0,
+          "start": 290.0,
+          "end": 295.0,
           "duration": 5.0,
-          "start_tc": "07:30:00",
-          "end_tc": "07:35:00",
+          "start_tc": "04:50:00",
+          "end_tc": "04:55:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_013.jpg",
@@ -6962,18 +5004,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_POP",
-              "at": 449.7,
+              "at": 289.7,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_014",
-          "start": 455.0,
-          "end": 460.0,
+          "start": 295.0,
+          "end": 300.0,
           "duration": 5.0,
-          "start_tc": "07:35:00",
-          "end_tc": "07:40:00",
+          "start_tc": "04:55:00",
+          "end_tc": "05:00:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_014.jpg",
@@ -7024,23 +5066,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_BOING",
-              "at": 454.7,
+              "at": 294.7,
               "gain_db": -10
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 455.6,
+              "at": 295.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_015",
-          "start": 460.0,
-          "end": 465.0,
+          "start": 300.0,
+          "end": 305.0,
           "duration": 5.0,
-          "start_tc": "07:40:00",
-          "end_tc": "07:45:00",
+          "start_tc": "05:00:00",
+          "end_tc": "05:05:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_015.jpg",
@@ -7089,18 +5131,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SPLAT",
-              "at": 459.6,
+              "at": 299.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_016",
-          "start": 465.0,
-          "end": 470.0,
+          "start": 305.0,
+          "end": 310.0,
           "duration": 5.0,
-          "start_tc": "07:45:00",
-          "end_tc": "07:50:00",
+          "start_tc": "05:05:00",
+          "end_tc": "05:10:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_016.jpg",
@@ -7151,23 +5193,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SIFFLET_COULISSE",
-              "at": 464.7,
+              "at": 304.7,
               "gain_db": -12
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 465.6,
+              "at": 305.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_017",
-          "start": 470.0,
-          "end": 475.0,
+          "start": 310.0,
+          "end": 315.0,
           "duration": 5.0,
-          "start_tc": "07:50:00",
-          "end_tc": "07:55:00",
+          "start_tc": "05:10:00",
+          "end_tc": "05:15:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_017.jpg",
@@ -7210,18 +5252,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_HONK",
-              "at": 469.667,
+              "at": 309.667,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_018",
-          "start": 475.0,
-          "end": 480.0,
+          "start": 315.0,
+          "end": 320.0,
           "duration": 5.0,
-          "start_tc": "07:55:00",
-          "end_tc": "08:00:00",
+          "start_tc": "05:15:00",
+          "end_tc": "05:20:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_018.jpg",
@@ -7278,23 +5320,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SIFFLET",
-              "at": 474.733,
+              "at": 314.733,
               "gain_db": -12
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 475.6,
+              "at": 315.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_019",
-          "start": 480.0,
-          "end": 485.0,
+          "start": 320.0,
+          "end": 325.0,
           "duration": 5.0,
-          "start_tc": "08:00:00",
-          "end_tc": "08:05:00",
+          "start_tc": "05:20:00",
+          "end_tc": "05:25:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_019.jpg",
@@ -7337,18 +5379,18 @@
           "sfx": [
             {
               "asset": "SFX_CLO_POP",
-              "at": 479.7,
+              "at": 319.7,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_020",
-          "start": 485.0,
-          "end": 490.0,
+          "start": 325.0,
+          "end": 330.0,
           "duration": 5.0,
-          "start_tc": "08:05:00",
-          "end_tc": "08:10:00",
+          "start_tc": "05:25:00",
+          "end_tc": "05:30:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_020.jpg",
@@ -7399,23 +5441,23 @@
           "sfx": [
             {
               "asset": "SFX_CLO_BOING",
-              "at": 484.7,
+              "at": 324.7,
               "gain_db": -10
             },
             {
               "asset": "SFX_CLO_POP",
-              "at": 485.6,
+              "at": 325.6,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "CLO_021",
-          "start": 490.0,
-          "end": 495.0,
+          "start": 330.0,
+          "end": 335.0,
           "duration": 5.0,
-          "start_tc": "08:10:00",
-          "end_tc": "08:15:00",
+          "start_tc": "05:30:00",
+          "end_tc": "05:35:00",
           "source": {
             "folder": "photos/Laura-le-petit-clown",
             "file": "PHOTO_021.jpg",
@@ -7464,951 +5506,7 @@
           "sfx": [
             {
               "asset": "SFX_CLO_SPLAT",
-              "at": 489.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_022",
-          "start": 495.0,
-          "end": 500.0,
-          "duration": 5.0,
-          "start_tc": "08:15:00",
-          "end_tc": "08:20:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_022.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_01_CHAPITEAU",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_ETOILES_VERTIGE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_PAROLE",
-              "text": "PAF !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            }
-          ],
-          "transition_in": {
-            "style": "etoile_wipe",
-            "asset": null,
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SIFFLET_COULISSE",
-              "at": 494.7,
-              "gain_db": -12
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 495.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_023",
-          "start": 500.0,
-          "end": 505.0,
-          "duration": 5.0,
-          "start_tc": "08:20:00",
-          "end_tc": "08:25:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_023.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_02_BD_RAYONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_LARMES_RIRE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            }
-          ],
-          "transition_in": {
-            "style": "confettis_burst",
-            "asset": "TR_CLO_CONFETTIS",
-            "duration": 0.7
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_HONK",
-              "at": 499.667,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_024",
-          "start": 505.0,
-          "end": 510.0,
-          "duration": 5.0,
-          "start_tc": "08:25:00",
-          "end_tc": "08:30:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_024.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_03_CONFETTIS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_COEURS_YEUX",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_CRI",
-              "text": "HONK !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            },
-            {
-              "type": "ralenti_comique",
-              "if_video_speed": 0.4,
-              "if_photo": "punch_in_lent_puis_freeze_tremblant",
-              "hold_s": 1.0
-            }
-          ],
-          "transition_in": {
-            "style": "squash_stretch",
-            "asset": null,
-            "duration": 0.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SIFFLET",
-              "at": 504.733,
-              "gain_db": -12
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 505.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_025",
-          "start": 510.0,
-          "end": 515.0,
-          "duration": 5.0,
-          "start_tc": "08:30:00",
-          "end_tc": "08:35:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_025.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_01_CHAPITEAU",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_NEZ_ROUGE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            }
-          ],
-          "transition_in": {
-            "style": "explosion_bulle_bd",
-            "asset": "TR_CLO_EXPLOSION_BD",
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 509.7,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_026",
-          "start": 515.0,
-          "end": 520.0,
-          "duration": 5.0,
-          "start_tc": "08:35:00",
-          "end_tc": "08:40:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_026.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_02_BD_RAYONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_YEUX_ROLLING",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_PAROLE",
-              "text": "TADAAA !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            }
-          ],
-          "transition_in": {
-            "style": "iris_cercle_cartoon",
-            "asset": null,
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_BOING",
-              "at": 514.7,
-              "gain_db": -10
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 515.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_027",
-          "start": 520.0,
-          "end": 525.0,
-          "duration": 5.0,
-          "start_tc": "08:40:00",
-          "end_tc": "08:45:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_027.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_03_CONFETTIS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_CHAPEAU_FETE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "ralenti_comique",
-              "if_video_speed": 0.4,
-              "if_photo": "punch_in_lent_puis_freeze_tremblant",
-              "hold_s": 1.0
-            }
-          ],
-          "transition_in": {
-            "style": "tarte_a_la_creme_splat",
-            "asset": "TR_CLO_TARTE",
-            "duration": 0.8
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SPLAT",
-              "at": 519.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_028",
-          "start": 525.0,
-          "end": 530.0,
-          "duration": 5.0,
-          "start_tc": "08:45:00",
-          "end_tc": "08:50:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_028.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_01_CHAPITEAU",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_PERRUQUE_ARC",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_CRI",
-              "text": "MDR",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            }
-          ],
-          "transition_in": {
-            "style": "etoile_wipe",
-            "asset": null,
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SIFFLET_COULISSE",
-              "at": 524.7,
-              "gain_db": -12
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 525.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_029",
-          "start": 530.0,
-          "end": 535.0,
-          "duration": 5.0,
-          "start_tc": "08:50:00",
-          "end_tc": "08:55:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_029.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_02_BD_RAYONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_MOUSTACHE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            }
-          ],
-          "transition_in": {
-            "style": "confettis_burst",
-            "asset": "TR_CLO_CONFETTIS",
-            "duration": 0.7
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_HONK",
-              "at": 529.667,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_030",
-          "start": 535.0,
-          "end": 540.0,
-          "duration": 5.0,
-          "start_tc": "08:55:00",
-          "end_tc": "09:00:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_030.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_03_CONFETTIS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_ETOILES_VERTIGE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_PAROLE",
-              "text": "AU SECOURS !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            },
-            {
-              "type": "ralenti_comique",
-              "if_video_speed": 0.4,
-              "if_photo": "punch_in_lent_puis_freeze_tremblant",
-              "hold_s": 1.0
-            }
-          ],
-          "transition_in": {
-            "style": "squash_stretch",
-            "asset": null,
-            "duration": 0.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SIFFLET",
-              "at": 534.733,
-              "gain_db": -12
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 535.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_031",
-          "start": 540.0,
-          "end": 545.0,
-          "duration": 5.0,
-          "start_tc": "09:00:00",
-          "end_tc": "09:05:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_031.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_01_CHAPITEAU",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_LARMES_RIRE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            }
-          ],
-          "transition_in": {
-            "style": "explosion_bulle_bd",
-            "asset": "TR_CLO_EXPLOSION_BD",
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 539.7,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_032",
-          "start": 545.0,
-          "end": 550.0,
-          "duration": 5.0,
-          "start_tc": "09:05:00",
-          "end_tc": "09:10:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_032.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_02_BD_RAYONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_COEURS_YEUX",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_CRI",
-              "text": "LAURA SHOW !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            }
-          ],
-          "transition_in": {
-            "style": "iris_cercle_cartoon",
-            "asset": null,
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_BOING",
-              "at": 544.7,
-              "gain_db": -10
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 545.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_033",
-          "start": 550.0,
-          "end": 555.0,
-          "duration": 5.0,
-          "start_tc": "09:10:00",
-          "end_tc": "09:15:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_033.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_03_CONFETTIS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_NEZ_ROUGE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "ralenti_comique",
-              "if_video_speed": 0.4,
-              "if_photo": "punch_in_lent_puis_freeze_tremblant",
-              "hold_s": 1.0
-            }
-          ],
-          "transition_in": {
-            "style": "tarte_a_la_creme_splat",
-            "asset": "TR_CLO_TARTE",
-            "duration": 0.8
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SPLAT",
-              "at": 549.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_034",
-          "start": 555.0,
-          "end": 560.0,
-          "duration": 5.0,
-          "start_tc": "09:15:00",
-          "end_tc": "09:20:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_034.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_01_CHAPITEAU",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_YEUX_ROLLING",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_PAROLE",
-              "text": "BOING !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            }
-          ],
-          "transition_in": {
-            "style": "etoile_wipe",
-            "asset": null,
-            "duration": 0.6
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SIFFLET_COULISSE",
-              "at": 554.7,
-              "gain_db": -12
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 555.6,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_035",
-          "start": 560.0,
-          "end": 565.0,
-          "duration": 5.0,
-          "start_tc": "09:20:00",
-          "end_tc": "09:25:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_035.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_02_BD_RAYONS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": 2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_CHAPEAU_FETE",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            }
-          ],
-          "transition_in": {
-            "style": "confettis_burst",
-            "asset": "TR_CLO_CONFETTIS",
-            "duration": 0.7
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_HONK",
-              "at": 559.667,
-              "gain_db": -10
-            }
-          ]
-        },
-        {
-          "id": "CLO_036",
-          "start": 565.0,
-          "end": 570.0,
-          "duration": 5.0,
-          "start_tc": "09:25:00",
-          "end_tc": "09:30:00",
-          "source": {
-            "folder": "photos/Laura-le-petit-clown",
-            "file": "PHOTO_036.jpg",
-            "placeholder": true,
-            "is_video": false
-          },
-          "look": "cartoon_pop",
-          "layers": [
-            {
-              "role": "background",
-              "asset": "BG_CLO_03_CONFETTIS",
-              "blend": "normal"
-            },
-            {
-              "role": "photo",
-              "fit": "contain",
-              "scale": 0.82
-            }
-          ],
-          "effects": [
-            {
-              "type": "cartoon_outline",
-              "width_px": 8,
-              "color": "#111111",
-              "rotation_deg": -2
-            },
-            {
-              "type": "sticker_visage",
-              "asset": "STK_CLO_PERRUQUE_ARC",
-              "tracking": "face_auto",
-              "in_offset_s": 0.5,
-              "duration_s": 4.0
-            },
-            {
-              "type": "bulle_bd_popup",
-              "asset": "STK_CLO_BULLE_CRI",
-              "text": "OUPS !",
-              "font": "Bangers",
-              "in_offset_s": 0.6,
-              "duration_s": 1.6
-            },
-            {
-              "type": "ralenti_comique",
-              "if_video_speed": 0.4,
-              "if_photo": "punch_in_lent_puis_freeze_tremblant",
-              "hold_s": 1.0
-            }
-          ],
-          "transition_in": {
-            "style": "squash_stretch",
-            "asset": null,
-            "duration": 0.5
-          },
-          "sfx": [
-            {
-              "asset": "SFX_CLO_SIFFLET",
-              "at": 564.733,
-              "gain_db": -12
-            },
-            {
-              "asset": "SFX_CLO_POP",
-              "at": 565.6,
+              "at": 329.6,
               "gain_db": -10
             }
           ]
@@ -8421,19 +5519,19 @@
       "mood": "Doré et féerique",
       "music": "MUS_OUTRO",
       "folder": null,
-      "start": 570,
-      "end": 600,
-      "start_tc": "09:30:00",
-      "end_tc": "10:00:00",
+      "start": 335,
+      "end": 360,
+      "start_tc": "05:35:00",
+      "end_tc": "06:00:00",
       "clip_count": 3,
       "clips": [
         {
           "id": "OUT_MOSAIC_ASSEMBLY",
-          "start": 570.0,
-          "end": 586.0,
-          "duration": 16.0,
-          "start_tc": "09:30:00",
-          "end_tc": "09:46:00",
+          "start": 335.0,
+          "end": 347.0,
+          "duration": 12.0,
+          "start_tc": "05:35:00",
+          "end_tc": "05:47:00",
           "type": "mosaic_assembly",
           "layers": [
             {
@@ -8480,22 +5578,7 @@
                   "PHOTO_018.jpg",
                   "PHOTO_019.jpg",
                   "PHOTO_020.jpg",
-                  "PHOTO_021.jpg",
-                  "PHOTO_022.jpg",
-                  "PHOTO_023.jpg",
-                  "PHOTO_024.jpg",
-                  "PHOTO_025.jpg",
-                  "PHOTO_026.jpg",
-                  "PHOTO_027.jpg",
-                  "PHOTO_028.jpg",
-                  "PHOTO_029.jpg",
-                  "PHOTO_030.jpg",
-                  "PHOTO_031.jpg",
-                  "PHOTO_032.jpg",
-                  "PHOTO_033.jpg",
-                  "PHOTO_034.jpg",
-                  "PHOTO_035.jpg",
-                  "PHOTO_036.jpg"
+                  "PHOTO_021.jpg"
                 ]
               },
               {
@@ -8521,22 +5604,7 @@
                   "PHOTO_018.jpg",
                   "PHOTO_019.jpg",
                   "PHOTO_020.jpg",
-                  "PHOTO_021.jpg",
-                  "PHOTO_022.jpg",
-                  "PHOTO_023.jpg",
-                  "PHOTO_024.jpg",
-                  "PHOTO_025.jpg",
-                  "PHOTO_026.jpg",
-                  "PHOTO_027.jpg",
-                  "PHOTO_028.jpg",
-                  "PHOTO_029.jpg",
-                  "PHOTO_030.jpg",
-                  "PHOTO_031.jpg",
-                  "PHOTO_032.jpg",
-                  "PHOTO_033.jpg",
-                  "PHOTO_034.jpg",
-                  "PHOTO_035.jpg",
-                  "PHOTO_036.jpg"
+                  "PHOTO_021.jpg"
                 ]
               },
               {
@@ -8562,22 +5630,7 @@
                   "PHOTO_018.jpg",
                   "PHOTO_019.jpg",
                   "PHOTO_020.jpg",
-                  "PHOTO_021.jpg",
-                  "PHOTO_022.jpg",
-                  "PHOTO_023.jpg",
-                  "PHOTO_024.jpg",
-                  "PHOTO_025.jpg",
-                  "PHOTO_026.jpg",
-                  "PHOTO_027.jpg",
-                  "PHOTO_028.jpg",
-                  "PHOTO_029.jpg",
-                  "PHOTO_030.jpg",
-                  "PHOTO_031.jpg",
-                  "PHOTO_032.jpg",
-                  "PHOTO_033.jpg",
-                  "PHOTO_034.jpg",
-                  "PHOTO_035.jpg",
-                  "PHOTO_036.jpg"
+                  "PHOTO_021.jpg"
                 ]
               }
             ],
@@ -8600,18 +5653,18 @@
           "sfx": [
             {
               "asset": "SFX_OUT_WHOOSH_FLY",
-              "at": 569.733,
+              "at": 334.733,
               "gain_db": -10
             }
           ]
         },
         {
           "id": "OUT_MOSAIC_HOLD",
-          "start": 586.0,
-          "end": 592.0,
-          "duration": 6.0,
-          "start_tc": "09:46:00",
-          "end_tc": "09:52:00",
+          "start": 347.0,
+          "end": 352.0,
+          "duration": 5.0,
+          "start_tc": "05:47:00",
+          "end_tc": "05:52:00",
           "type": "mosaic_hold",
           "layers": [
             {
@@ -8647,11 +5700,11 @@
         },
         {
           "id": "OUT_FINAL_MESSAGE",
-          "start": 592.0,
-          "end": 600.0,
+          "start": 352.0,
+          "end": 360.0,
           "duration": 8.0,
-          "start_tc": "09:52:00",
-          "end_tc": "10:00:00",
+          "start_tc": "05:52:00",
+          "end_tc": "06:00:00",
           "type": "final_message",
           "text": "Joyeux 18ème Anniversaire Laura !",
           "font": "Playfair Display",
@@ -8682,7 +5735,7 @@
           "effects": [
             {
               "type": "fade_to_black",
-              "start": 597.0,
+              "start": 357.0,
               "duration_s": 3.0
             }
           ],
@@ -8699,272 +5752,298 @@
   "audio": {
     "loudness_target_lufs": -16,
     "sample_rate_hz": 48000,
-    "ducking": {
-      "target": "music",
-      "trigger": "voice_over",
-      "reduction_db": -12,
-      "attack_s": 0.2,
-      "release_s": 0.6
-    },
     "music": [
       {
-        "asset": "MUS_INTRO",
-        "start": 0.0,
-        "end": 30.5,
-        "fade_in_s": 0.0,
-        "fade_out_s": 1.5,
-        "gain_db": -6,
-        "bpm": 120
-      },
-      {
         "asset": "MUS_ENFANCE",
-        "start": 30.0,
-        "end": 209.6,
+        "start": 20,
+        "end": 124.6,
+        "media_start_s": 0.0,
         "fade_in_s": 1.5,
         "fade_out_s": 0.1,
-        "gain_db": -10,
-        "bpm": 100
+        "gain_db": -6,
+        "bpm": 129,
+        "note": "coupe nette sous le record scratch"
       },
       {
         "asset": "MUS_ADO",
-        "start": 210.0,
-        "end": 389.6,
+        "start": 125,
+        "end": 229.6,
+        "media_start_s": 0.0,
         "fade_in_s": 0.0,
         "fade_out_s": 0.05,
-        "gain_db": -8,
-        "bpm": 128
+        "gain_db": -6,
+        "bpm": 99,
+        "note": "La Boulette ; point d'entrée à ajuster si besoin ; coupe nette sous le 2e scratch"
       },
       {
         "asset": "MUS_CLOWN",
-        "start": 390.0,
-        "end": 570.0,
+        "start": 230,
+        "end": 335,
+        "media_start_s": 0.0,
         "fade_in_s": 0.0,
-        "fade_out_s": 0.5,
-        "gain_db": -8,
-        "bpm": 120
+        "fade_out_s": 2.5,
+        "gain_db": -6,
+        "bpm": 129
       },
       {
-        "asset": "MUS_OUTRO",
-        "start": 570.0,
-        "end": 600.0,
-        "fade_in_s": 1.0,
-        "fade_out_s": 3.0,
-        "gain_db": -8,
-        "bpm": 72
+        "asset": "MUS_ENFANCE",
+        "start": 335,
+        "end": 360,
+        "media_start_s": 119.4,
+        "fade_in_s": 1.5,
+        "fade_out_s": 2.5,
+        "gain_db": -6,
+        "bpm": 129,
+        "note": "fin d'« Une chanson douce » en attendant une musique d'outro"
       }
     ],
+    "ducking": {
+      "target": "music",
+      "trigger": "voice_over",
+      "reduction_db": -10,
+      "attack_s": 0.25,
+      "release_s": 0.6
+    },
     "voice_over": [
       {
         "asset": "VO_INT_01",
-        "start": 25.5,
-        "est_duration": 4,
+        "start": 11.5,
         "section": "intro",
-        "gain_db": -2
+        "text": "Laura ! Dix-huit ans de souvenirs… Allez, c'est parti !",
+        "duration": 4.71,
+        "gain_db": 0
       },
       {
         "asset": "VO_ENF_01",
-        "start": 33.0,
-        "est_duration": 10,
+        "start": 22.0,
         "section": "enfance",
-        "gain_db": -2
+        "text": "Tout a commencé en juillet 2009, quand une toute petite Laura est arrivée… et le monde de toute une famille a changé pour toujours.",
+        "duration": 8.53,
+        "gain_db": 0
       },
       {
         "asset": "VO_ENF_02",
-        "start": 75.0,
-        "est_duration": 9,
+        "start": 45.0,
         "section": "enfance",
-        "gain_db": -2
+        "text": "Tes premiers sourires, tes premiers pas… et tes premières bêtises ! Chaque jour, une découverte… et un éclat de rire.",
+        "duration": 7.71,
+        "gain_db": 0
       },
       {
         "asset": "VO_ENF_03",
-        "start": 120.0,
-        "est_duration": 10,
+        "start": 68.0,
         "section": "enfance",
-        "gain_db": -2
+        "text": "Les premières chutes, les anniversaires, les petits exploits du quotidien… C’est souvent dans ces moments tout simples que se fabriquent les meilleurs souvenirs.",
+        "duration": 8.64,
+        "gain_db": 0
       },
       {
         "asset": "VO_ENF_04",
-        "start": 165.0,
-        "est_duration": 8,
+        "start": 92.0,
         "section": "enfance",
-        "gain_db": -2
+        "text": "À l'école, au jardin, en vacances… tu grandissais, curieuse de tout, toujours prête à tout essayer !",
+        "duration": 7.14,
+        "gain_db": 0
       },
       {
         "asset": "VO_ENF_05",
-        "start": 199.0,
-        "est_duration": 7,
+        "start": 113.0,
         "section": "enfance",
-        "gain_db": -2
+        "text": "Et puis… doucement, sans prévenir, la petite fille a commencé à grandir. Un peu trop vite !",
+        "duration": 6.88,
+        "gain_db": 0
       },
       {
         "asset": "VO_ADO_01",
-        "start": 212.0,
-        "est_duration": 7,
+        "start": 127.0,
         "section": "ado",
-        "gain_db": -2
+        "text": "Ouh là ! Attention, ça accélère ! Bienvenue chez les ados : musique à fond, regards en coin, caractère bien trempé… et fous rires jusqu'à minuit !",
+        "duration": 9.07,
+        "gain_db": 0
       },
       {
         "asset": "VO_ADO_02",
-        "start": 258.0,
-        "est_duration": 7,
+        "start": 152.0,
         "section": "ado",
-        "gain_db": -2
+        "text": "Les selfies, les copines, les soirées, les playlists sans fin… et toujours, toujours à ta façon !",
+        "duration": 7.04,
+        "gain_db": 0
       },
       {
         "asset": "VO_ADO_03",
-        "start": 305.0,
-        "est_duration": 7,
+        "start": 178.0,
         "section": "ado",
-        "gain_db": -2
+        "text": "Des fous rires incontrôlables, des moments inoubliables… et parfois quelques grands moments de solitude ! Mais toujours avec style.",
+        "duration": 7.88,
+        "gain_db": 0
       },
       {
         "asset": "VO_ADO_04",
-        "start": 355.0,
-        "est_duration": 8,
+        "start": 205.0,
         "section": "ado",
-        "gain_db": -2
+        "text": "Les opinions bien tranchées, les réponses du tac au tac et cette façon de toujours vouloir avoir le dernier mot… Ah, l'adolescence !",
+        "duration": 8.04,
+        "gain_db": 0
       },
       {
         "asset": "VO_CLO_01",
-        "start": 393.0,
-        "est_duration": 8,
+        "start": 232.0,
         "section": "clown",
-        "gain_db": -2
+        "text": "Mais attention… parce qu'avec Laura, il y a toujours un moment où ça part complètement en vrille.",
+        "duration": 5.46,
+        "gain_db": 0
       },
       {
         "asset": "VO_CLO_02",
-        "start": 440.0,
-        "est_duration": 8,
+        "start": 258.0,
         "section": "clown",
-        "gain_db": -2
+        "text": "Une grimace, un déguisement, une imitation complètement improbable… Tu trouves toujours un moyen de nous surprendre.",
+        "duration": 7.63,
+        "gain_db": 0
       },
       {
         "asset": "VO_CLO_03",
-        "start": 490.0,
-        "est_duration": 8,
+        "start": 284.0,
         "section": "clown",
-        "gain_db": -2
+        "text": "Et forcément, il suffit d'une seconde pour que tout le monde soit mort de rire.",
+        "duration": 4.38,
+        "gain_db": 0
       },
       {
         "asset": "VO_CLO_04",
-        "start": 540.0,
-        "est_duration": 7,
+        "start": 308.0,
         "section": "clown",
-        "gain_db": -2
+        "text": "Bref… reste comme tu es. Parce qu'avec toi, on ne sait jamais vraiment ce qui va arriver !",
+        "duration": 5.09,
+        "gain_db": 0
       },
       {
         "asset": "VO_OUT_01",
-        "start": 575.0,
-        "est_duration": 8,
+        "start": 337.0,
         "section": "outro",
-        "gain_db": -2
+        "text": "Dix-huit ans… Dix-huit années de rires, de larmes, de bêtises et de tendresse. Et ce n'est que le début de ton histoire.",
+        "duration": 7.69,
+        "gain_db": 0
       },
       {
         "asset": "VO_OUT_02",
-        "start": 592.5,
-        "est_duration": 3,
+        "start": 353.0,
         "section": "outro",
-        "gain_db": -2
+        "text": "Joyeux dix-huitième anniversaire, Laura !",
+        "duration": 2.97,
+        "gain_db": 0
+      }
+    ],
+    "screen_texts": [
+      {
+        "id": "TXT_DATE_NAISSANCE",
+        "text": "Juillet 2009",
+        "start": 21.5,
+        "end": 28.5,
+        "section": "enfance",
+        "style": "date_manuscrite",
+        "font": "Caveat"
       }
     ],
     "sfx_global": [
       {
         "asset": "SFX_INT_RISER",
-        "at": 20.0,
-        "gain_db": -10,
-        "note": "montée vers le titre"
+        "at": 12.0,
+        "gain_db": -8,
+        "note": "montée vers le titre verrouillé"
       },
       {
         "asset": "SFX_INT_IMPACT",
-        "at": 25.0,
-        "gain_db": -6,
+        "at": 17.0,
+        "gain_db": -4,
         "note": "verrouillage du titre"
       },
       {
-        "asset": "SFX_ENF_RIRE_BEBE",
-        "at": 90.0,
-        "gain_db": -16
-      },
-      {
-        "asset": "SFX_ENF_RIRE_BEBE",
-        "at": 150.0,
-        "gain_db": -16
+        "asset": "SFX_ENF_SCINTILLE",
+        "at": 21.5,
+        "gain_db": -12,
+        "note": "apparition de « Juillet 2009 »"
       },
       {
         "asset": "SFX_ADO_ACCEL",
-        "at": 385.5,
-        "gain_db": -8,
+        "at": 225.5,
+        "gain_db": -6,
         "note": "accélération avant le gag de fin"
       },
       {
         "asset": "SFX_ADO_RECORD_SCRATCH",
-        "at": 388.9,
-        "gain_db": -6,
-        "note": "stop net à 389.6"
+        "at": 228.9,
+        "gain_db": -4,
+        "note": "stop net 0,4 s avant la coupe"
       },
       {
         "asset": "SFX_CLO_RIMSHOT",
-        "at": 401.5,
-        "gain_db": -10
-      },
-      {
-        "asset": "SFX_CLO_WAH_WAH",
-        "at": 468.0,
-        "gain_db": -10
-      },
-      {
-        "asset": "SFX_CLO_RIMSHOT",
-        "at": 498.5,
-        "gain_db": -10
-      },
-      {
-        "asset": "SFX_OUT_APPLAUSE",
-        "at": 547.5,
-        "gain_db": -12,
-        "note": "après VO_CLO_04"
-      },
-      {
-        "asset": "SFX_CLO_TADAA",
-        "at": 567.0,
+        "at": 252.5,
         "gain_db": -8
       },
       {
-        "asset": "SFX_OUT_SCINTILLE",
-        "at": 586.0,
-        "gain_db": -12
+        "asset": "SFX_CLO_WAH_WAH",
+        "at": 280.0,
+        "gain_db": -8
       },
       {
-        "asset": "SFX_OUT_FEU_ARTIFICE",
-        "at": 592.0,
-        "gain_db": -10
+        "asset": "SFX_CLO_RIMSHOT",
+        "at": 305.5,
+        "gain_db": -8
       },
       {
         "asset": "SFX_OUT_APPLAUSE",
-        "at": 594.5,
-        "gain_db": -14
+        "at": 322.0,
+        "gain_db": -12
+      },
+      {
+        "asset": "SFX_CLO_TADAA",
+        "at": 332.0,
+        "gain_db": -6
+      },
+      {
+        "asset": "SFX_OUT_SCINTILLE",
+        "at": 347.0,
+        "gain_db": -10
+      },
+      {
+        "asset": "SFX_OUT_FEU_ARTIFICE",
+        "at": 352.0,
+        "gain_db": -8
+      },
+      {
+        "asset": "SFX_OUT_APPLAUSE",
+        "at": 354.5,
+        "gain_db": -12
       }
     ]
   },
   "validation": {
     "section_totals_s": {
-      "intro": 30,
-      "enfance": 180,
-      "ado": 180,
-      "clown": 180,
-      "outro": 30
+      "intro": 20,
+      "enfance": 105,
+      "ado": 105,
+      "clown": 105,
+      "outro": 25
     },
     "photo_counts": {
-      "enfance": 36,
-      "ado": 36,
-      "clown": 36
+      "enfance": 21,
+      "ado": 21,
+      "clown": 21
     },
     "placeholders": {
       "enfance": true,
       "ado": true,
       "clown": true
     },
-    "assets_declared": 94,
-    "assets_referenced": 94,
-    "assets_unused": []
+    "assets_declared": 93,
+    "assets_referenced": 91,
+    "assets_unused": [
+      "MUS_INTRO",
+      "MUS_OUTRO"
+    ],
+    "sfx_missing": [],
+    "voice_missing": [],
+    "voice_overlaps": []
   }
 }

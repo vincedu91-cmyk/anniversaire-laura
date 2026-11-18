@@ -12,8 +12,20 @@ import { UniverseNavigation } from "../navigation/UniverseNavigation";
 import { ScrollProgress } from "../navigation/ScrollProgress";
 import { FilmShortcut } from "../navigation/FilmShortcut";
 
-/** Pages volontairement absentes de la navigation: projection, réponse d'invité, administration. */
-const BARE_PATHS = ["/projection", "/invitation", "/gestion-invitations", "/moderation"];
+/** Pages volontairement absentes de la navigation: projection, réponse d'invité, administration, galerie de la soirée. */
+const BARE_PATHS = [
+  "/projection",
+  "/projection/live",
+  "/invitation",
+  "/gestion-invitations",
+  "/moderation",
+  "/photos",
+  "/galerie",
+  "/galerie/diaporama",
+  "/gestion-photos",
+];
+/** Écrans géants: les animations ne sont jamais neutralisées. */
+const WALL_PATHS = ["/projection", "/projection/live", "/galerie/diaporama"];
 
 /** Coque de l'expérience: contexte de scène, navigation, curseur, son, visionneuse. */
 export function ExperienceShell({ children }: { children: ReactNode }) {
@@ -22,7 +34,7 @@ export function ExperienceShell({ children }: { children: ReactNode }) {
   // Pages sans interface de site (navigation, curseur, boutons): écran géant et pages utilitaires.
   if (BARE_PATHS.includes(pathname)) {
     return (
-      <MotionConfig reducedMotion={pathname === "/projection" ? "never" : "user"}>
+      <MotionConfig reducedMotion={WALL_PATHS.includes(pathname) ? "never" : "user"}>
         <SceneProvider>
           <div className="grain" aria-hidden="true" />
           <main id="main">{children}</main>

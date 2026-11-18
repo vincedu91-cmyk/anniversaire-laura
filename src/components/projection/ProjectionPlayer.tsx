@@ -7,6 +7,7 @@ import { childhood } from "@/data/childhood";
 import { fetchApprovedMessages, type GuestbookMessage } from "@/data/guestbook";
 import { mischief } from "@/data/mischief";
 import { pickPhotos } from "@/data/photos";
+import type { Photo } from "@/data/types";
 import { buildPlan, chapterIndexAt, type TimedChapter, type TransitionKey } from "@/data/projection";
 import { audio } from "@/lib/audio";
 import { markReady } from "@/lib/ready";
@@ -20,6 +21,7 @@ import { LauraIntroStage } from "@/sections/laura/LauraIntro";
 import { AdolescenceToLauraStage } from "@/sections/transitions/AdolescenceToLaura";
 import { ChildhoodToAdolescenceStage } from "@/sections/transitions/ChildhoodToAdolescence";
 import { LauraToFinaleStage } from "@/sections/transitions/LauraToFinale";
+import { usePartyMosaicPhotos } from "@/components/gallery/usePartyMosaicPhotos";
 import { ProjectionSlides } from "./ProjectionSlides";
 
 const UNIVERSES = { childhood, adolescence } as const;
@@ -35,7 +37,7 @@ const TRANSITIONS: Record<TransitionKey, { Stage: (props: { progress: MotionValu
 
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 
-function ChapterView({ chapter, clock, messages }: { chapter: TimedChapter; clock: MotionValue<number>; messages: readonly GuestbookMessage[] }) {
+function ChapterView({ chapter, clock, messages, partyPhotos }: { chapter: TimedChapter; clock: MotionValue<number>; messages: readonly GuestbookMessage[]; partyPhotos: readonly Photo[] }) {
   const progress = useTransform(clock, (time) => clamp01((time - chapter.start) / chapter.seconds));
   const switchAt = chapter.audioSwitch;
   useCrossing(progress, switchAt?.at ?? 2, () => switchAt && audio.setScene(switchAt.scene));
@@ -72,7 +74,7 @@ function ChapterView({ chapter, clock, messages }: { chapter: TimedChapter; cloc
     case "mosaic":
       return (
         <div className="absolute inset-0 overflow-hidden bg-finale-background text-finale-ink">
-          <MosaicStage progress={progress} interactive={false} />
+          <MosaicStage progress={progress} interactive={false} partyPhotos={partyPhotos} />
         </div>
       );
     case "message":
@@ -108,6 +110,7 @@ type Phase = "gate" | "playing" | "paused";
  */
 export function ProjectionPlayer() {
   const [messages, setMessages] = useState<GuestbookMessage[]>([]);
+  const partyPhotos = usePartyMosaicPhotos();
   const { chapters, total } = useMemo(() => buildPlan(messages.length), [messages.length]);
   const clock = useMotionValue(0);
   const barScale = useTransform(clock, (time) => (total > 0 ? clamp01(time / total) : 0));
@@ -238,7 +241,7 @@ export function ProjectionPlayer() {
   return (
     <MotionConfig reducedMotion="never">
       <div className={`fixed inset-0 bg-neutral-ink ${phase === "gate" ? "" : "cursor-none"}`} data-scene="intro">
-        {phase !== "gate" && <ChapterView key={chapter.id} chapter={chapter} clock={clock} messages={messages} />}
+        {phase !== "gate" && <ChapterView key={chapter.id} chapter={chapter} clock={clock} messages={messages} partyPhotos={partyPhotos} />}
 
         {phase === "gate" && (
           <div className="absolute inset-0 grid place-items-center bg-neutral-background px-6 text-center text-neutral-ink">

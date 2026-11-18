@@ -76,3 +76,6 @@ next-env.d.ts
 # e-mail d'invitation: sorties générées (contiennent les photos de Laura)
 /email/dist/
 /public/mail/polaroid-*
+
+# QR code de la galerie de la soirée: sorties générées (contiennent la clé secrète)
+/qr/dist/

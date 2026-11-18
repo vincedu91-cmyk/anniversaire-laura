@@ -133,8 +133,21 @@ Voir `src/` : `data/` (photos, univers, timeline, film), `motion/` (tokens, pres
 Remplace l'ancien concept "Les bêtises" (cartoon). Règle: on rit avec Laura, jamais de Laura; aucun ton enfantin.
 
 - **Direction**: scrapbook éditorial + dossier confidentiel + chaos maîtrisé. Un seul accent (rouge tampon `#C4302B`), papier gris clair, encre, stylo bille bleu (annotations), post-it jaune sourd. Police d'annotation: Reenie Beanie. Thème `data-universe="laura"` (tokens `--color-laura-*`).
-- **Rythme** (`src/sections/laura/`): Acte 1 `LauraIntro` ("On pourrait s'arrêter là." / "Mais..." / titre ligne par ligne) > Acte 2 `LauraDossier` (calme, 4 preuves) > Actes 3 à 5 `LauraEvidence` (arrivées de plus en plus rapides, chaos contrôlé, FREEZE en noir et blanc + tampon "DOSSIER CLASSÉ.", silence).
+- **Rythme** (`src/sections/laura/`): Acte 1 `LauraIntro` ("On pourrait s'arrêter là." / titre ligne par ligne) > Acte 2 `LauraDossier` (calme, 4 preuves) > Actes 3 à 5 `LauraEvidence` (arrivées de plus en plus rapides, chaos contrôlé, FREEZE en noir et blanc + tampon "DOSSIER CLASSÉ.", silence).
 - **Textes**: uniquement des micro-textes génériques (`src/data/mischief.ts`: tampons, notes, post-its). Aucun événement réel n'est affirmé.
 - **Identifiants internes inchangés** (`mischief`) pour ne pas toucher aux autres univers. Route: `/et-puis-il-y-a-laura` (l'ancienne `/les-betises` redirige). Nom dans la navigation: `03 LAURA`.
 - **Transitions**: `AdolescenceToLaura` (papier qui tombe) et `LauraToFinale`. Projection: chapitres `laura-intro` et `laura-evidence` (`src/data/projection.ts`).
 - **Son**: partition sèche (basse, tic-tac, silences) à la place de la fanfare; silence au freeze en mode projection.
+
+## 16. Galerie collaborative de la soirée
+
+Les invités envoient leurs photos depuis leur téléphone (QR code); elles s'affichent dans une galerie et sur l'écran géant.
+
+- **Identité**: nuit et or, la palette du finale (`data-universe="finale"`): fond `#070605`, or `#ffd27a`, ivoire `#f4ebdd`. Titres Bricolage 800 (`.display`), notes manuscrites Caveat (`font-hand`), polaroïds ivoire avec ruban doré. Pages hors navigation (`BARE_PATHS`), jamais indexées.
+- **Pages**: `/photos` (envoi, ouverte par le QR), `/galerie` (mur de photos, filtres, défis, cœurs, visionneuse), `/galerie/diaporama` (diaporama automatique), `/projection/live` (mur live pour l'écran géant), `/gestion-photos` (organisateur: liens, ouverture des envois, masquage, export ZIP).
+- **Envoi**: réduction sur le téléphone (2000 px, JPEG, miniature 480 px) puis file d'envoi persistante (IndexedDB) qui reprend toute seule après une coupure (4G, Wi-Fi capricieux). Réservation > envoi des fichiers > publication, voir `supabase/README.md`.
+- **Défis** (`src/data/party.ts`): Selfie avec Laura, La photo de groupe la plus folle, Le meilleur du dancefloor, Pièce à conviction (clin d'oeil à l'Univers 03), Santé !, Le détail que personne n'a vu.
+- **Mur live**: la nouvelle photo tombe (ressort), badge "NOUVELLE PHOTO", puis défilent les plus aimées et les plus récentes sur un fond de tuiles qui changent. QR et compteur en coin. Clavier: F plein écran, Espace pause, flèche droite suivante.
+- **Mosaïque vivante**: `MosaicStage` accepte `partyPhotos`; sur un appareil qui a la clé de la soirée, les photos les plus aimées prennent la place d'une partie des tuiles du 18 (accueil et `/projection`). Sans clé, rien ne change.
+- **Visuels imprimables**: `npm run qr` produit l'affiche A4 de porte et la planche de cartes de table (A6 x 4), en version nuit et clair (`qr/dist/`, ignoré par Git).
+

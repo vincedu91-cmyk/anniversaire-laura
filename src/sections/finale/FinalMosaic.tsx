@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { animate, motion, useMotionValue, useMotionValueEvent, useTransform, type MotionValue } from "motion/react";
 import { adolescence } from "@/data/adolescence";
 import { childhood } from "@/data/childhood";
@@ -8,6 +8,7 @@ import { mischief } from "@/data/mischief";
 import type { Photo } from "@/data/types";
 import { PhotoFrame } from "@/components/media/PhotoFrame";
 import { usePhotoViewer } from "@/components/media/PhotoViewer";
+import { usePartyMosaicPhotos } from "@/components/gallery/usePartyMosaicPhotos";
 import { ScrollStory } from "@/components/motion/ScrollStory";
 import { mosaicAssemble } from "@/motion/presets";
 import { spring } from "@/motion/tokens";
@@ -111,6 +112,19 @@ function mosaicPhotos(): Photo[] {
 }
 const TILE_PHOTOS = mosaicPhotos();
 
+/**
+ * Mosaïque vivante: les photos de la soirée prennent la place d'une partie des tuiles (réparties sur tout le 18,
+ * pas de 7 sur 59 tuiles = jamais deux fois la même case). Sans photo de la soirée, rien ne change.
+ */
+function withPartyPhotos(party: readonly Photo[]): Photo[] {
+  if (party.length === 0) return TILE_PHOTOS;
+  const tiles = [...TILE_PHOTOS];
+  party.slice(0, tiles.length).forEach((photo, i) => {
+    tiles[(i * 7) % tiles.length] = photo;
+  });
+  return tiles;
+}
+
 interface TileProps {
   progress: MotionValue<number>;
   reform: MotionValue<number>;
@@ -173,8 +187,9 @@ const INTERACTIVE_FROM = 0.84;
  * Scène de la mosaïque, pilotée par une progression 0..1 (scroll ou chronomètre).
  * `interactive` = false pour le mode projection (sans souris).
  */
-export function MosaicStage({ progress, interactive = true }: { progress: MotionValue<number>; interactive?: boolean }) {
+export function MosaicStage({ progress, interactive = true, partyPhotos = [] }: { progress: MotionValue<number>; interactive?: boolean; partyPhotos?: readonly Photo[] }) {
   const { open } = usePhotoViewer();
+  const tilePhotos = useMemo(() => withPartyPhotos(partyPhotos), [partyPhotos]);
   const reform = useMotionValue(0);
   const settle = useTransform(progress, [0.86, 1], [1, 0.94]);
   const [assembled, setAssembled] = useState(false);
@@ -186,7 +201,7 @@ export function MosaicStage({ progress, interactive = true }: { progress: Motion
 
   const onOpen = (photo: Photo) => {
     void animate(reform, 1, spring.soft);
-    open(photo, TILE_PHOTOS, () => {
+    open(photo, tilePhotos, () => {
       void animate(reform, 0, spring.bouncy);
     });
   };
@@ -197,7 +212,7 @@ export function MosaicStage({ progress, interactive = true }: { progress: Motion
       <div className="rm-hide absolute inset-0 grid place-items-center">
         <motion.div data-m className={`relative h-[calc(var(--rows)*var(--tile))] w-[calc(var(--cols)*var(--tile))] ${GRID_CLASSES}`} style={{ scale: settle }}>
           {CELLS.map((cell, i) => (
-            <Tile key={i} progress={progress} reform={reform} cell={cell} scatter={SCATTER[i]} photo={TILE_PHOTOS[i]} index={i} interactive={canClick} onOpen={onOpen} />
+            <Tile key={i} progress={progress} reform={reform} cell={cell} scatter={SCATTER[i]} photo={tilePhotos[i]} index={i} interactive={canClick} onOpen={onOpen} />
           ))}
         </motion.div>
       </div>
@@ -210,8 +225,8 @@ export function MosaicStage({ progress, interactive = true }: { progress: Motion
               className="absolute left-[calc(var(--x)*var(--tile))] top-[calc(var(--y)*var(--tile))] h-(--tile) w-(--tile) p-[2px] [--x:var(--dx)] [--y:var(--dy)] max-md:[--x:var(--mx)] max-md:[--y:var(--my)]"
               style={{ ["--dx" as string]: cell.dx, ["--dy" as string]: cell.dy, ["--mx" as string]: cell.mx, ["--my" as string]: cell.my }}
             >
-              <button type="button" aria-label={`Ouvrir la photo n°${i + 1} du 18`} onClick={() => open(TILE_PHOTOS[i], TILE_PHOTOS)} className="block h-full w-full overflow-hidden">
-                <PhotoFrame photo={TILE_PHOTOS[i]} index={i} sizes="12vw" />
+              <button type="button" aria-label={`Ouvrir la photo n°${i + 1} du 18`} onClick={() => open(tilePhotos[i], tilePhotos)} className="block h-full w-full overflow-hidden">
+                <PhotoFrame photo={tilePhotos[i]} index={i} sizes="12vw" />
               </button>
             </div>
           ))}
@@ -223,6 +238,7 @@ export function MosaicStage({ progress, interactive = true }: { progress: Motion
 
 /** Finale: dans le noir, des photos apparaissent une à une, puis s'assemblent pour former 18. */
 export function FinalMosaic() {
+  const partyPhotos = usePartyMosaicPhotos();
   return (
     <ScrollStory
       id="finale"
@@ -235,7 +251,7 @@ export function FinalMosaic() {
       {(progress) => (
         <>
           <h2 className="sr-only">Dix-huit ans de souvenirs</h2>
-          <MosaicStage progress={progress} />
+          <MosaicStage progress={progress} partyPhotos={partyPhotos} />
         </>
       )}
     </ScrollStory>

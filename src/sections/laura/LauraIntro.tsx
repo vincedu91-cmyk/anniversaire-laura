@@ -5,12 +5,10 @@ import { LAURA_TITLE_LINES } from "@/data/mischief";
 import { ScrollStory } from "@/components/motion/ScrollStory";
 
 // Calendrier de l'acte 1 (fractions de la scène): lent, un élément à la fois.
-const FIRST_LINE = [0.02, 0.1, 0.24, 0.3] as const; // "On pourrait s'arrêter là."
-const BUT = [0.32, 0.38, 0.56, 0.62] as const; // "Mais"
-const DOTS = [0.4, 0.45, 0.5] as const; // les trois points de "Mais..."
-const TITLE_START = 0.58;
+const FIRST_LINE = [0.02, 0.1, 0.38, 0.46] as const; // "On pourrait s'arrêter là."
+const TITLE_START = 0.5;
 const TITLE_STEP = 0.1;
-const TITLE_DOTS = [0.93, 0.95, 0.97] as const; // les points de "QUOI..."
+const TITLE_DOTS = [0.9, 0.93, 0.96] as const; // les points de "QUOI..."
 
 // Décalages de chaque ligne du titre: une phrase lancée, pas un bloc institutionnel.
 const INDENTS = ["0vw", "9vw", "2vw", "15vw"] as const;
@@ -59,8 +57,6 @@ function Dot({ count, n }: { count: MotionValue<number>; n: number }) {
 function Stage({ progress }: { progress: MotionValue<number> }) {
   const firstOpacity = useTransform(progress, [...FIRST_LINE], [0, 1, 1, 0]);
   const firstY = useTransform(progress, [FIRST_LINE[0], FIRST_LINE[1]], ["3vh", "0vh"], { ease: easeOut });
-  const butOpacity = useTransform(progress, [...BUT], [0, 1, 1, 0]);
-  const dotsShown = useTransform(progress, (value) => DOTS.filter((threshold) => value >= threshold).length);
   const tag = useTransform(progress, [TITLE_START, TITLE_START + 0.04], [0, 1]);
 
   return (
@@ -72,16 +68,6 @@ function Stage({ progress }: { progress: MotionValue<number> }) {
           style={{ opacity: firstOpacity, y: firstY }}
         >
           On pourrait s&apos;arrêter là.
-        </motion.p>
-
-        <motion.p
-          data-m
-          aria-hidden="true"
-          className="absolute left-4 top-1/2 -translate-y-1/2 font-medium tracking-tight text-[clamp(3rem,10vw,9rem)] md:left-44"
-          style={{ opacity: butOpacity }}
-        >
-          Mais
-          <Ellipsis count={dotsShown} />
         </motion.p>
 
         <motion.p data-m className="mono absolute left-4 top-[12dvh] md:left-44" style={{ opacity: tag }}>
@@ -100,7 +86,6 @@ function Stage({ progress }: { progress: MotionValue<number> }) {
 
       <div className="rm-only bg-laura-paper px-6 py-24 text-laura-ink md:pl-44">
         <p className="text-3xl font-medium">On pourrait s&apos;arrêter là.</p>
-        <p className="mt-6 text-3xl font-medium">Mais...</p>
         <h2 className="display mt-10 text-[clamp(3rem,13vw,14rem)] leading-[0.86]">
           Et puis il y a <span className="text-laura-red">Laura</span>, quoi...
         </h2>
@@ -111,7 +96,7 @@ function Stage({ progress }: { progress: MotionValue<number> }) {
 
 export { Stage as LauraIntroStage };
 
-/** Acte 1: "On pourrait s'arrêter là. Mais... ET PUIS IL Y A LAURA, QUOI..." */
+/** Acte 1: "On pourrait s'arrêter là. ET PUIS IL Y A LAURA, QUOI..." */
 export function LauraIntro() {
   return (
     <ScrollStory
